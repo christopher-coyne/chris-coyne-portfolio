@@ -1,3 +1,9 @@
+import { BodyContainer } from "../components/layout/Container";
+
 export default function Home() {
-  return <div>hello world</div>;
+  return (
+    <BodyContainer>
+      <div>hello world</div>
+    </BodyContainer>
+  );
 }
