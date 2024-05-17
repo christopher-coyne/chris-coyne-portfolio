@@ -4,6 +4,8 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import Tag from '../../components/Tag.astro';
 import Navbar from '../../components/Navbar.astro';
 import '../../styles/GlobalStyles.css'
+import '@fontsource/open-sans';
+import '@fontsource/poppins';
 
 const { frontmatter } = Astro.props;
 
@@ -32,6 +34,6 @@ if (!post) {
   <h1>{title}</h1>
   <p>{summary}</p>
   <p>{date}</p>
-  {tags.map((tag: string) => <Tag title={tag}/>)}
+  {tags && tags.map((tag: string) => <Tag title={tag}/>)}
   <Content />
 </div>

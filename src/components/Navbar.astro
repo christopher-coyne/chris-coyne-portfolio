@@ -2,20 +2,24 @@
 
 
 const { href } = Astro.props;
+import '@fontsource/poppins';
+import { Icon } from 'astro-icon/components'
 ---
 
 <nav>
-    <h2>
+    <div class="titleContainer">
+    <h2 class="title">
         Chris Coyne
     </h2>
-    <ul>
-        <li>About</li>
-        <li>Art</li>
-        <li>Blog</li>
-    </ul>
     <button class="button" id="themeToggle">
-        dark mode
+        <Icon name="mdi:moon-waning-crescent" />
       </button>
+    </div>
+    <ul class="linkContainer">
+        <li><a href="/">About</a></li>
+        <li><a href="/art">Art</a></li>
+        <li><a href="/blog">Blog</a></li>
+    </ul>
 </nav>
 
 <script is:inline>
@@ -52,10 +56,34 @@ const { href } = Astro.props;
 
 <style>
     nav {
-        padding: 16px;
+        width: 70%;
+        margin: auto;
+        padding: 0px 32px;
         borderRadius: 24px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         background-color: var(--background-color);
         color: var(--text-color);
+        border-radius: 16px;
+        font-family: 'Poppins';
+    }
+    a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+    .linkContainer {
+        display: flex;
+        flex-direction: row;
+    }
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+    #themeToggle {
+        height: 50px;
+        width: 50px;
     }
 </style>

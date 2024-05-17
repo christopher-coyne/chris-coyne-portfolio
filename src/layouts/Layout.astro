@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import { ViewTransitions } from 'astro:transitions';
+import { fade } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -16,7 +18,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body transition:animate={fade({ duration: '0.4s' })}>
+		{/* <ViewTransitions /> */}
 		<slot />
 	</body>
 </html>

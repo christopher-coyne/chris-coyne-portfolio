@@ -13,7 +13,11 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/markdown-remark": "^5.1.0",
     "@astrojs/mdx": "^3.0.0",
+    "@fontsource/open-sans": "^5.0.28",
+    "@fontsource/poppins": "^5.0.14",
+    "@iconify-json/mdi": "^1.1.66",
     "astro": "^4.8.5",
+    "astro-icon": "^1.1.0",
     "typescript": "^5.4.5"
   }
 }
