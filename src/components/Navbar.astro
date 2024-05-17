@@ -13,4 +13,49 @@ const { href } = Astro.props;
         <li>Art</li>
         <li>Blog</li>
     </ul>
+    <button class="button" id="themeToggle">
+        dark mode
+      </button>
 </nav>
+
+<script is:inline>
+    let theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+        return 'light';
+    })();
+
+    console.log('is darkmode ', theme)
+    document.documentElement.setAttribute('data-theme', theme);
+  
+    const handleToggleClick = () => {
+        // Toggle dark mode state
+        const newTheme = theme === 'dark' ? 'light' : 'dark'
+
+        console.log('new theme ', newTheme)
+        console.log('old theme ', theme)
+        
+        // Update the theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        theme = newTheme
+        
+        // Save the new theme in localStorage
+        window.localStorage.setItem('theme', newTheme);
+    }
+  
+    document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
+  </script>
+
+<style>
+    nav {
+        padding: 16px;
+        borderRadius: 24px;
+        display: flex;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+</style>

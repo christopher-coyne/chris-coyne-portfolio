@@ -1,7 +1,9 @@
 ---
 import { getCollection, getEntryBySlug } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
-import { Markdown } from '@astrojs/markdown-remark';
+import Tag from '../../components/Tag.astro';
+import Navbar from '../../components/Navbar.astro';
+import '../../styles/GlobalStyles.css'
 
 const { frontmatter } = Astro.props;
 
@@ -17,7 +19,7 @@ export async function getStaticPaths() {
 // Fetch the specific post data
 const { slug } = Astro.params;
 const post = await getEntryBySlug('blog', slug);
-const { title, date } = post.data;
+const { title, summary, date, tags } = post.data;
 const {Content} = await post?.render()
 
 if (!post) {
@@ -26,6 +28,10 @@ if (!post) {
 ---
 
 <div>
-  <h1>TEST123</h1>
-    <Content />
+  <Navbar />
+  <h1>{title}</h1>
+  <p>{summary}</p>
+  <p>{date}</p>
+  {tags.map((tag: string) => <Tag title={tag}/>)}
+  <Content />
 </div>

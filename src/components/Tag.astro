@@ -1,0 +1,18 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="tag">
+    {title}
+</div>
+<style>
+	.tag{
+		padding: 4px;
+        background-color: var(--primary-color)
+	}
+
+</style>

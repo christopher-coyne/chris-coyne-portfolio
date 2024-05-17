@@ -1,0 +1,23 @@
+body {
+  color: black;
+}
+
+li {
+  list-style-type: none;
+}
+
+:root {
+  --font-size-base: 16px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #0081d7;
+  --background-color: #000549;
+  --text-color: #ffffff;
+}
+
+[data-theme="light"] {
+  --background-color: #000549;
+  --background-color: #f1f1f1;
+  --text-color: #000000;
+}
