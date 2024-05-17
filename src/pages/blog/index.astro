@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
+console.log('blog posts , ', blogPosts)
+---
+
+<Layout title="Chris's Blog">
+	<main>
+		<nav>
+			<h1>
+				Blog
+			</h1>
+			<div>
+				<input></input>
+				<button>Sort By</button>
+				<button>Filter</button>
+			</div>
+		</nav>
+
+		<section>
+			{blogPosts.map((post: any) => (
+				<li><a href={`/blog/${post.slug}`}>{post.data.title}</a></li>
+			  ))}
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+</style>
