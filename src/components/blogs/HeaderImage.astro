@@ -1,0 +1,21 @@
+---
+interface Props {
+	src: string;
+}
+
+const { src } = Astro.props;
+
+---
+
+<img
+  src={src}
+  alt="Description of image"
+  class="headerImage"
+/>
+<style>
+	.headerImage {
+		width: 100%;
+        height: auto;
+	}
+
+</style>

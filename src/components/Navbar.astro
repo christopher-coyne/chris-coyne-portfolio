@@ -3,23 +3,26 @@
 
 const { href } = Astro.props;
 import '@fontsource/poppins';
+import '@fontsource/open-sans/700.css';
 import { Icon } from 'astro-icon/components'
 ---
 
 <nav>
     <div class="titleContainer">
-    <h2 class="title">
+    <a class="title" href="/">
         Chris Coyne
-    </h2>
-    <button class="button" id="themeToggle">
-        <Icon name="mdi:moon-waning-crescent" />
-      </button>
+    </a>
     </div>
+    <div class="rightContainer">
+    <button class="button" id="themeToggle">
+        <Icon name="mdi:white-balance-sunny" size={28}/>
+      </button>
     <ul class="linkContainer">
         <li><a href="/">About</a></li>
         <li><a href="/art">Art</a></li>
         <li><a href="/blog">Blog</a></li>
     </ul>
+</div>
 </nav>
 
 <script is:inline>
@@ -55,35 +58,56 @@ import { Icon } from 'astro-icon/components'
   </script>
 
 <style>
+    .button {
+        border-radius: 50px;
+        padding: 0;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        margin: 0px;
+    }
+    .button:hover {
+        cursor: pointer;
+    }
     nav {
-        width: 70%;
-        margin: auto;
-        padding: 0px 32px;
+        width: 50%;
+        margin: 16px auto;
         borderRadius: 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: var(--background-color);
-        color: var(--text-color);
+        color: black;
         border-radius: 16px;
-        font-family: 'Poppins';
+        border: 1px solid black;
     }
     a {
         text-decoration: none;
-        color: var(--text-color);
+        color: black;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    a:hover {
+        background-color: aqua;
     }
     .linkContainer {
         display: flex;
         flex-direction: row;
+        font-weight: 'bold';
+        gap: 12px;
     }
     .titleContainer {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 16px;
+        font-weight: 700;
     }
-    #themeToggle {
-        height: 50px;
-        width: 50px;
+    .rightContainer {
+        display: flex;
+        gap: 16px;
+        flex-direction: row;
+        align-items: center;
     }
 </style>

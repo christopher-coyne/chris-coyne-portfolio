@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
 import '../styles/GlobalStyles.css'
+import '@fontsource/poppins/600.css';
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<Navbar />
 		<h1>Christopher Coyne</h1>
 		<h2>Software Engineer and Creator</h2>
 		<section>
@@ -37,4 +36,15 @@ import '../styles/GlobalStyles.css'
 		</section>
 	</main>
 </Layout>
+<style>
+	main {
+		width: 50%;
+		margin: auto;
+		border: 1px solid black;
+	}
+	h1, h2 {
+		font-family: 'Poppins';
+		font-weight: 600;
+	}
+</style>
 

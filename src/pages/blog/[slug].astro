@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntryBySlug } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import Layout from '../../layouts/Layout.astro';
 import Tag from '../../components/Tag.astro';
 import Navbar from '../../components/Navbar.astro';
 import '../../styles/GlobalStyles.css'
@@ -29,11 +29,35 @@ if (!post) {
 }
 ---
 
-<div>
-  <Navbar />
+<Layout title="test">
+  <div class="container">
   <h1>{title}</h1>
   <p>{summary}</p>
-  <p>{date}</p>
-  {tags && tags.map((tag: string) => <Tag title={tag}/>)}
+  <div class="subinfoContainer">
+    <div>{date}</div>
+    <div class="tagContainer">{tags && tags.map((tag: string) => <Tag title={tag}/>)}</div>
+  </div>
   <Content />
 </div>
+</Layout>
+
+<style>
+  h1, h2, h3, h4 {
+   font-family: 'Poppins';
+}
+.container {
+  width: 50%;
+  margin: auto;
+}
+.subinfoContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px
+}
+</style>

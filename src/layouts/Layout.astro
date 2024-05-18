@@ -6,6 +6,8 @@ interface Props {
 const { title } = Astro.props;
 import { ViewTransitions } from 'astro:transitions';
 import { fade } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import '@fontsource/open-sans';
 ---
 
 <!doctype html>
@@ -20,6 +22,14 @@ import { fade } from 'astro:transitions';
 	</head>
 	<body transition:animate={fade({ duration: '0.4s' })}>
 		{/* <ViewTransitions /> */}
+		<Navbar />
 		<slot />
 	</body>
 </html>
+
+<style>
+	body {
+		font-family: 'Open Sans';
+		line-height: 1.5; /* Adjust the value as needed */
+	}
+</style>
