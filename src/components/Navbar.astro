@@ -1,6 +1,6 @@
 ---
 
-
+import '../styles/GlobalStyles.css'
 const { href } = Astro.props;
 import '@fontsource/poppins';
 import '@fontsource/open-sans/700.css';
@@ -14,15 +14,15 @@ import { Icon } from 'astro-icon/components'
     </a>
     </div>
     <div class="rightContainer">
-    <button class="button" id="themeToggle">
-        <Icon name="mdi:white-balance-sunny" size={28}/>
-      </button>
-    <ul class="linkContainer">
-        <li><a href="/">About</a></li>
-        <li><a href="/art">Art</a></li>
-        <li><a href="/blog">Blog</a></li>
-    </ul>
-</div>
+        <button id="themeToggle">
+            <Icon name="mdi:white-balance-sunny" size={28}/>
+        </button>
+        <ul class="linkContainer">
+            <li><a href="/">About</a></li>
+            <li><a href="/art">Art</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+    </div>
 </nav>
 
 <script is:inline>
@@ -58,7 +58,7 @@ import { Icon } from 'astro-icon/components'
   </script>
 
 <style>
-    .button {
+    button {
         border-radius: 50px;
         padding: 0;
         background-color: white;
@@ -68,7 +68,7 @@ import { Icon } from 'astro-icon/components'
         border: none;
         margin: 0px;
     }
-    .button:hover {
+    button:hover {
         cursor: pointer;
     }
     nav {
@@ -78,15 +78,15 @@ import { Icon } from 'astro-icon/components'
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: black;
         border-radius: 16px;
         border: 1px solid black;
+        padding: 8px 16px;
     }
     a {
         text-decoration: none;
-        color: black;
         padding: 8px 16px;
         border-radius: 8px;
+        color: black;
     }
     a:hover {
         background-color: aqua;
@@ -95,6 +95,7 @@ import { Icon } from 'astro-icon/components'
         display: flex;
         flex-direction: row;
         font-weight: 'bold';
+        align-items: center;
         gap: 12px;
     }
     .titleContainer {
@@ -110,4 +111,7 @@ import { Icon } from 'astro-icon/components'
         flex-direction: row;
         align-items: center;
     }
+
+
+
 </style>
