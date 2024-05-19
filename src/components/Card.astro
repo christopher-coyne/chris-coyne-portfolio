@@ -1,42 +1,53 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
-	tags: string[]
+  title: string;
+  body: string;
+  href: string;
+  date: string;
+  tags: string[];
 }
 
-import Tag from './Tag.astro'
+import Tag from "./Tag.astro";
 
-const { href, title, body, tags } = Astro.props;
+const { href, title, body, date, tags } = Astro.props;
 
-console.log('title ', title)
+console.log("title ", title);
 ---
 
+{/* card for blog posts */}
 <li class="link-card">
-	<a href={href}>
-		<div class="test">
-		<h2>
-			{title}
-		</h2>
-		{tags.map(tag => (<Tag title={tag} />))}
-		<p>
-			{body}
-		</p>
-	</div>
-	</a>
+  <a href={href}>
+    <h3>
+      {title}
+    </h3>
+    <div class="tagContainer">
+      {tags.map((tag) => <Tag title={tag} />)}
+      <p>{date}</p>
+    </div>
+    <p>
+      {body}
+    </p>
+  </a>
 </li>
 <style>
-	.link-card {
-		border-radius: 8px;
-		box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-	}
-	.test {
-		padding: 24px;
-	}
-	a {
-		text-decoration: none; /* Removes the underline */
-		color: inherit; /* Makes the link color inherit from its parent */
-		}
-
+  .link-card {
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(140, 140, 140, 0.5);
+  }
+  a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Makes the link color inherit from its parent */
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+  .tagContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+  }
 </style>

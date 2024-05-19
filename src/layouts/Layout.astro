@@ -1,35 +1,35 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-import { ViewTransitions } from 'astro:transitions';
-import { fade } from 'astro:transitions';
-import Navbar from '../components/Navbar.astro';
-import '@fontsource/open-sans';
+import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
+import Navbar from "../components/Navbar.astro";
+import "@fontsource/open-sans";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body transition:animate={fade({ duration: '0.4s' })}>
-		{/* <ViewTransitions /> */}
-		<Navbar />
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body transition:animate={fade({ duration: "0.4s" })}>
+    {/* <ViewTransitions /> */}
+    <Navbar />
+    <slot />
+  </body>
 </html>
 
 <style>
-	body {
-		font-family: 'Open Sans';
-		line-height: 1.5; /* Adjust the value as needed */
-	}
+  body {
+    font-family: "Open Sans";
+    line-height: 1.5; /* Adjust the value as needed */
+  }
 </style>

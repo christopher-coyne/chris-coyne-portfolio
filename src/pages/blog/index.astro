@@ -1,55 +1,59 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro'
-import '../../styles/GlobalStyles.css'
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import "../../styles/GlobalStyles.css";
 
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const blogPosts = await getCollection('blog');
-import Navbar from '../../components/Navbar.astro';
-console.log('blog posts , ', blogPosts)
+const blogPosts = await getCollection("blog");
+import Navbar from "../../components/Navbar.astro";
+console.log("blog posts , ", blogPosts);
 ---
 
 <Layout title="Chris's Blog">
-	<main>
-		<div class="mainContainer">
-			<h1>Blog</h1>
-		<div>
-			<input></input>
-			<select id="sort by" name="sort by">
-				<option value="apple">Apple</option>
-				<option value="banana">Banana</option>
-				<option value="cherry">Cherry</option>
-				<option value="date">Date</option>
-				<option value="elderberry">Elderberry</option>
-			</select>
+  <main class="mainContainer">
+    <h1>Blog</h1>
+    <input type="text" placeholder="Search" />
+  </main>
+  <select id="sort by" name="sort by">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="cherry">Cherry</option>
+    <option value="date">Date</option>
+    <option value="elderberry">Elderberry</option>
+  </select>
 
-			<select id="filter by" name="filter by">
-				<option value="apple">Apple</option>
-				<option value="banana">Banana</option>
-				<option value="cherry">Cherry</option>
-				<option value="date">Date</option>
-				<option value="elderberry">Elderberry</option>
-			</select>
-		</div>
-
-		<section class="grid-container">
-			{blogPosts.map((post: any) => (
-				<Card title={post.data.title} body={post.data.summary} tags={post.data.tags} href={`/blog/${post.slug}`}/>
-			  ))}
-		</section>
-	</div>
-	</main>
+  <select id="filter by" name="filter by">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="cherry">Cherry</option>
+    <option value="date">Date</option>
+    <option value="elderberry">Elderberry</option>
+  </select>
 </Layout>
 
+<section class="grid-container">
+  {
+    blogPosts.map((post: any) => (
+      <Card
+        title={post.data.title}
+        body={post.data.summary}
+        tags={post.data.tags}
+        href={`/blog/${post.slug}`}
+        date={post.data.date}
+      />
+    ))
+  }
+</section>
+
 <style>
-	.mainContainer {
-		width: 55%;
-		margin: auto
-	}
-	.grid-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr; /* Creates 2 columns with equal width */
-		gap: 16px; /* Adjust the gap between grid items as needed */
-	}
+  .mainContainer {
+    width: 50%;
+    margin: auto;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates 2 columns with equal width */
+    gap: 16px; /* Adjust the gap between grid items as needed */
+  }
 </style>

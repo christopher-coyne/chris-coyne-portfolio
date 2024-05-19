@@ -30,6 +30,7 @@ li {
 
 [data-theme="dark"] {
   --primary-color: #0081d7;
+  --primary-color-2: #bee5ff;
   --background-color: #000549;
   --text-color: #ffffff;
 }

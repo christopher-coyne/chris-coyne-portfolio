@@ -1,117 +1,113 @@
 ---
-
-import '../styles/GlobalStyles.css'
+import "../styles/GlobalStyles.css";
 const { href } = Astro.props;
-import '@fontsource/poppins';
-import '@fontsource/open-sans/700.css';
-import { Icon } from 'astro-icon/components'
+import "@fontsource/poppins";
+import "@fontsource/open-sans/700.css";
+import { Icon } from "astro-icon/components";
 ---
 
 <nav>
-    <div class="titleContainer">
-    <a class="title" href="/">
-        Chris Coyne
-    </a>
-    </div>
-    <div class="rightContainer">
-        <button id="themeToggle">
-            <Icon name="mdi:white-balance-sunny" size={28}/>
-        </button>
-        <ul class="linkContainer">
-            <li><a href="/">About</a></li>
-            <li><a href="/art">Art</a></li>
-            <li><a href="/blog">Blog</a></li>
-        </ul>
-    </div>
+  <div class="titleContainer">
+    <a class="title" href="/"> Chris Coyne </a>
+  </div>
+  <div class="rightContainer">
+    <button id="themeToggle">
+      <Icon name="mdi:white-balance-sunny" size={28} />
+    </button>
+    <ul class="linkContainer">
+      <li><a href="/">About</a></li>
+      <li><a href="/art">Art</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </div>
 </nav>
 
 <script is:inline>
-    let theme = (() => {
-      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme');
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-        return 'light';
-    })();
-
-    console.log('is darkmode ', theme)
-    document.documentElement.setAttribute('data-theme', theme);
-  
-    const handleToggleClick = () => {
-        // Toggle dark mode state
-        const newTheme = theme === 'dark' ? 'light' : 'dark'
-
-        console.log('new theme ', newTheme)
-        console.log('old theme ', theme)
-        
-        // Update the theme
-        document.documentElement.setAttribute('data-theme', newTheme);
-        theme = newTheme
-        
-        // Save the new theme in localStorage
-        window.localStorage.setItem('theme', newTheme);
+  let theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
     }
-  
-    document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
-  </script>
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  console.log("is darkmode ", theme);
+  document.documentElement.setAttribute("data-theme", theme);
+
+  const handleToggleClick = () => {
+    // Toggle dark mode state
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    console.log("new theme ", newTheme);
+    console.log("old theme ", theme);
+
+    // Update the theme
+    document.documentElement.setAttribute("data-theme", newTheme);
+    theme = newTheme;
+
+    // Save the new theme in localStorage
+    window.localStorage.setItem("theme", newTheme);
+  };
+
+  document
+    .getElementById("themeToggle")
+    .addEventListener("click", handleToggleClick);
+</script>
 
 <style>
-    button {
-        border-radius: 50px;
-        padding: 0;
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        margin: 0px;
-    }
-    button:hover {
-        cursor: pointer;
-    }
-    nav {
-        width: 50%;
-        margin: 16px auto;
-        borderRadius: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 16px;
-        border: 1px solid black;
-        padding: 8px 16px;
-    }
-    a {
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        color: black;
-    }
-    a:hover {
-        background-color: aqua;
-    }
-    .linkContainer {
-        display: flex;
-        flex-direction: row;
-        font-weight: 'bold';
-        align-items: center;
-        gap: 12px;
-    }
-    .titleContainer {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-        font-weight: 700;
-    }
-    .rightContainer {
-        display: flex;
-        gap: 16px;
-        flex-direction: row;
-        align-items: center;
-    }
-
-
-
+  button {
+    border-radius: 50px;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin: 0px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+  nav {
+    width: 50%;
+    margin: 16px auto;
+    borderradius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+    border: 1px solid black;
+    padding: 8px 16px;
+  }
+  a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: black;
+  }
+  a:hover {
+    background-color: aqua;
+  }
+  .linkContainer {
+    display: flex;
+    flex-direction: row;
+    font-weight: "bold";
+    align-items: center;
+    gap: 12px;
+  }
+  .titleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    font-weight: 700;
+  }
+  .rightContainer {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    align-items: center;
+  }
 </style>
