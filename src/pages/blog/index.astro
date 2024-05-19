@@ -14,7 +14,6 @@ console.log("blog posts , ", blogPosts);
   <main class="mainContainer">
     <h1>Blog</h1>
     <input type="text" placeholder="Search" />
-  </main>
   <select id="sort by" name="sort by">
     <option value="apple">Apple</option>
     <option value="banana">Banana</option>
@@ -30,26 +29,27 @@ console.log("blog posts , ", blogPosts);
     <option value="date">Date</option>
     <option value="elderberry">Elderberry</option>
   </select>
+  <section class="grid-container">
+    {
+      blogPosts.map((post: any) => (
+        <Card
+          title={post.data.title}
+          body={post.data.summary}
+          tags={post.data.tags}
+          href={`/blog/${post.slug}`}
+          date={post.data.date}
+        />
+      ))
+    }
+  </section>
+  </main>
 </Layout>
-
-<section class="grid-container">
-  {
-    blogPosts.map((post: any) => (
-      <Card
-        title={post.data.title}
-        body={post.data.summary}
-        tags={post.data.tags}
-        href={`/blog/${post.slug}`}
-        date={post.data.date}
-      />
-    ))
-  }
-</section>
 
 <style>
   .mainContainer {
     width: 50%;
     margin: auto;
+    border: 2px solid red;
   }
   .grid-container {
     display: grid;

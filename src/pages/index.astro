@@ -2,14 +2,44 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/GlobalStyles.css";
 import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
+    <div class="header">
+      <div>
+
+        <img
+  src="/images/mypics/headshot.jpg"
+  alt="Description of image"
+  style={{ width: "250px", height: "250px", borderRadius: "50%" }}
+/>
     <h1>Christopher Coyne</h1>
-    <h2>Software Engineer and Creator</h2>
+    <p class="headerSubtitle">Software Engineer and Creator</p>
+    <ul class="iconList">
+      <li>
+        <a>
+    <Icon name="mdi:github" size={28} href="/"/>
+  </a>
+  </li>
+  <li>
+    <a>
+    <Icon name="mdi:email" size={28} href="/"/>
+  </a>
+  </li>
+  <li>
+    <a>
+    <Icon name="mdi:linkedin" size={28} href="/"/>
+  </a>
+  </li>
+  </ul>
+  </div>
+  </div>
     <section>
       <h3>About Me</h3>
+      <hr />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum
         venenatis sem, non placerat risus. Praesent viverra mauris sed lectus
@@ -22,22 +52,25 @@ import "@fontsource/poppins/600.css";
         You can check out my resume Here.
       </p>
       <h4>Some Tech I've been using recently</h4>
-      <ul>
-        <li>Languages: Javascript, Typescript, HTML/CSS, Java</li>
+      <ul class="skills">
+        <li>{'> '}Languages: Javascript, Typescript, HTML/CSS, Java</li>
         <li>
-          Frameworks and Libraries: React, Spring Boot, Express, Tailwind CSS
+          {'> '}Frameworks and Libraries: React, Spring Boot, Express, Tailwind CSS
         </li>
         <li>
-          Platforms and Tools: AWS, Docker, Github Actions, Shopify, Stripe
+          {'> '}Platforms and Tools: AWS, Docker, Github Actions, Shopify, Stripe
         </li>
       </ul>
     </section>
+    {/* 
     <section>
       <h3>Projects</h3>
     </section>
+  */}
     <section>
       <h3>Art and Computer Science</h3>
-      <p>"I have always imagined that paradise will be a kind of library"</p>
+      <hr />
+      <p class="quote">"I have always imagined that paradise will be a kind of library"</p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum
         venenatis sem, non placerat risus. Praesent viverra mauris sed lectus
@@ -47,6 +80,7 @@ import "@fontsource/poppins/600.css";
     </section>
     <section>
       <h3>Collab</h3>
+      <hr />
       <p>Always looking to collaborate and network</p>
     </section>
   </main>
@@ -55,12 +89,81 @@ import "@fontsource/poppins/600.css";
   main {
     width: 50%;
     margin: auto;
-    border: 1px solid black;
   }
   h1,
   h2 {
     font-family: "Poppins";
     font-weight: 600;
-    border: 1px solid black;
   }
+  .quote {
+    background-color: aquamarine;
+    padding: 24px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+  .header {
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+  .headerSubtitle {
+    text-align: center;
+    margin: 0px;
+  }
+  .iconList {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    margin: 8px;
+  }
+
+  .iconList a:hover {
+  cursor: pointer;
+  color: aqua
+}
+
+img {
+  padding: 28px;
+}
+
+  h1 {
+    margin: 0px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-top: 4px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-top: 4px;
+  }
+  hr {
+    height: 2px;
+    border: none;
+    background-color: black;
+    margin: 4px;
+  }
+  p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  section {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .skills {
+    li {
+      margin: 8px;
+    }
+  }
+
+
 </style>
