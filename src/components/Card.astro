@@ -15,29 +15,35 @@ console.log("title ", title);
 ---
 
 {/* card for blog posts */}
-<li class="link-card">
-  <a href={href}>
-	<h3>
-      {title}
-    </h3>
-    <div class="tagContainer">
-      {tags.map((tag) => <Tag title={tag} />)}
-      <p>{date}</p>
-    </div>
-    <p>
-      {body}
-    </p>
-  </a>
+<li class="link-card-container">
+  <div class="link-card">
+    <a href={href}>
+      <h3>
+        {title}
+      </h3>
+      <div class="tagContainer">
+        {tags.map((tag) => <Tag title={tag} />)}
+        <p>{date}</p>
+      </div>
+      <p>
+        {body}
+      </p>
+    </a>
+  </div>
 </li>
 <style>
+  .link-card-container:hover .link-card {
+    transform: translateY(-5px);
+  }
   .link-card {
     border-radius: 8px;
     box-shadow: 4px 4px 8px var(--shadow-color);
     background-color: var(--surface-color);
+    height: 100%;
   }
   a {
-    text-decoration: none; /* Removes the underline */
-    color: inherit; /* Makes the link color inherit from its parent */
+    text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
     padding: 16px;

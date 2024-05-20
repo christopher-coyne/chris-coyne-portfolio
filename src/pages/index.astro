@@ -10,33 +10,32 @@ import { Icon } from "astro-icon/components";
   <main>
     <div class="header">
       <div>
-
         <img
-  src="/images/mypics/headshot.jpg"
-  alt="Description of image"
-  style={{ width: "250px", height: "250px", borderRadius: "50%" }}
-/>
-    <h1>Christopher Coyne</h1>
-    <p class="headerSubtitle">Software Engineer and Creator</p>
-    <ul class="iconList">
-      <li>
-        <a>
-    <Icon name="mdi:github" size={28} href="/"/>
-  </a>
-  </li>
-  <li>
-    <a>
-    <Icon name="mdi:email" size={28} href="/"/>
-  </a>
-  </li>
-  <li>
-    <a>
-    <Icon name="mdi:linkedin" size={28} href="/"/>
-  </a>
-  </li>
-  </ul>
-  </div>
-  </div>
+          src="/images/mypics/headshot.jpg"
+          alt="Description of image"
+          style={{ width: "250px", height: "250px", borderRadius: "50%" }}
+        />
+        <h1>Christopher Coyne</h1>
+        <p class="headerSubtitle">Software Engineer and Creator</p>
+        <ul class="iconList">
+          <li>
+            <a>
+              <Icon name="mdi:github" size={28} href="/" />
+            </a>
+          </li>
+          <li>
+            <a>
+              <Icon name="mdi:email" size={28} href="/" />
+            </a>
+          </li>
+          <li>
+            <a>
+              <Icon name="mdi:linkedin" size={28} href="/" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <section>
       <h3>About Me</h3>
       <hr />
@@ -53,24 +52,30 @@ import { Icon } from "astro-icon/components";
       </p>
       <h4>Some Tech I've been using recently</h4>
       <ul class="skills">
-        <li>{'> '}Languages: Javascript, Typescript, HTML/CSS, Java</li>
+        <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
         <li>
-          {'> '}Frameworks and Libraries: React, Spring Boot, Express, Tailwind CSS
+          {"> "}Frameworks and Libraries: React, Spring Boot, Express, Tailwind
+          CSS
         </li>
         <li>
-          {'> '}Platforms and Tools: AWS, Docker, Github Actions, Shopify, Stripe
+          {"> "}Platforms and Tools: AWS, Docker, Github Actions, Shopify,
+          Stripe
         </li>
       </ul>
     </section>
-    {/* 
+    {
+      /* 
     <section>
       <h3>Projects</h3>
     </section>
-  */}
+  */
+    }
     <section>
       <h3>Art and Computer Science</h3>
       <hr />
-      <p class="quote">"I have always imagined that paradise will be a kind of library"</p>
+      <p class="quote">
+        "I have always imagined that paradise will be a kind of library"
+      </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum
         venenatis sem, non placerat risus. Praesent viverra mauris sed lectus
@@ -122,13 +127,13 @@ import { Icon } from "astro-icon/components";
   }
 
   .iconList a:hover {
-  cursor: pointer;
-  color: var(--primary-color);
-}
+    cursor: pointer;
+    color: var(--primary-color);
+  }
 
-img {
-  padding: 28px;
-}
+  img {
+    padding: 28px;
+  }
 
   h1 {
     margin: 0px;
@@ -164,6 +169,4 @@ img {
       margin: 8px;
     }
   }
-
-
 </style>
