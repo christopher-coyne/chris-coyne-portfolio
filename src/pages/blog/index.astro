@@ -13,7 +13,7 @@ const blogPosts = await getCollection("blog");
     <h1>Blog</h1>
 
     <div class="searchContainer">
-      <input type="text" placeholder="Search" class="searchbar" />
+      <input type="text" placeholder="Search" id="searchbar" />
       <div class="selectContainer">
         <select id="sort by" name="sort by">
           <option value="apple">Apple</option>
@@ -33,7 +33,7 @@ const blogPosts = await getCollection("blog");
       </div>
     </div>
     <section>
-      <ul class="grid-container">
+      <ul id="grid-container">
         {
           blogPosts.map((post: any) => (
             <Card
@@ -55,7 +55,7 @@ const blogPosts = await getCollection("blog");
     width: 50%;
     margin: auto;
   }
-  .grid-container {
+  #grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
@@ -65,7 +65,7 @@ const blogPosts = await getCollection("blog");
     display: flex;
     justify-content: space-between;
   }
-  .searchbar {
+  #searchbar {
     padding: 8px;
     font-size: 16px;
     color: #393939;
@@ -96,3 +96,28 @@ const blogPosts = await getCollection("blog");
     border-color: var(--primary-color);
   }
 </style>
+
+<script is:inline>
+  const searchBar = document.getElementById("searchbar");
+  const blogPostsContainer = document.getElementById("grid-container");
+  const blogPosts = blogPostsContainer.getElementsByClassName(
+    "link-card-container",
+  );
+
+  // Attach an event listener to the search bar
+  searchBar.addEventListener("input", (event) => {
+    const filter = event.target.value.toLowerCase();
+    Array.from(blogPosts).forEach((post) => {
+      const titleElement = post.querySelector("h3");
+      console.log("title element ", titleElement);
+      if (titleElement) {
+        const title = titleElement.textContent.toLowerCase();
+        if (title.includes(filter)) {
+          post.style.display = "";
+        } else {
+          post.style.display = "none";
+        }
+      }
+    });
+  });
+</script>
