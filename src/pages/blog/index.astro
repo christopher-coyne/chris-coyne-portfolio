@@ -15,20 +15,9 @@ const blogPosts = await getCollection("blog");
     <div class="searchContainer">
       <input type="text" placeholder="Search" id="searchbar" />
       <div class="selectContainer">
-        <select id="sort by" name="sort by">
-          <option value="apple">Apple</option>
-          <option value="banana">Banana</option>
-          <option value="cherry">Cherry</option>
-          <option value="date">Date</option>
-          <option value="elderberry">Elderberry</option>
-        </select>
-
         <select id="filter by" name="filter by">
-          <option value="apple">Apple</option>
-          <option value="banana">Banana</option>
-          <option value="cherry">Cherry</option>
-          <option value="date">Date</option>
-          <option value="elderberry">Elderberry</option>
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
         </select>
       </div>
     </div>
@@ -53,7 +42,7 @@ const blogPosts = await getCollection("blog");
 <style>
   .mainContainer {
     width: 50%;
-    margin: auto;
+    margin: 32px auto;
   }
   #grid-container {
     display: grid;
@@ -87,7 +76,7 @@ const blogPosts = await getCollection("blog");
     background-color: var(--surface-color);
     color: var(--text-color);
   }
-  input:focus {
+  #searchbar:focus {
     outline: none;
     border-color: var(--primary-color);
   }

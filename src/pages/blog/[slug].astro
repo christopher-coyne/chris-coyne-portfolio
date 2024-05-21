@@ -2,12 +2,9 @@
 import { getCollection, getEntryBySlug } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Tag from "../../components/Tag.astro";
-import Navbar from "../../components/Navbar.astro";
 import "../../styles/GlobalStyles.css";
 import "@fontsource/open-sans";
 import "@fontsource/poppins";
-
-const { frontmatter } = Astro.props;
 
 // Define getStaticPaths function
 export async function getStaticPaths() {
@@ -32,35 +29,48 @@ if (!post) {
 <Layout title="test">
   <div class="container">
     <h1>{title}</h1>
-    <p>{summary}</p>
+    <p class="subtitle">{summary}</p>
     <div class="subinfoContainer">
       <div>{date}</div>
       <div class="tagContainer">
         {tags && tags.map((tag: string) => <Tag title={tag} />)}
       </div>
     </div>
+    <section id="contentContainer">
     <Content />
+    </section>
   </div>
 </Layout>
 
 <style is:global>
   p {
     font-size: 18px;
-    margin-top: 18px;
   }
   .container {
     width: 50%;
     margin: auto;
+    padding: 32px 0px;
   }
   .subinfoContainer {
     display: flex;
     flex-direction: row;
     gap: 16px;
     align-items: center;
+    font-size: 14px;
+    padding: 8px 16px;
   }
   .tagContainer {
     display: flex;
     flex-direction: row;
     gap: 16px;
+  }
+  #contentContainer {
+    padding: 32px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .subtitle {
+    padding: 8px 0px
   }
 </style>
