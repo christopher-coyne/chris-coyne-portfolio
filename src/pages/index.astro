@@ -12,7 +12,7 @@ import Button from "../components/Button.astro";
     <section class="header">
       <div>
         <img
-          src="/images/mypics/headshot.jpg"
+          src="/images/mypics/headshot.webp"
           alt="Description of image"
           style={{ width: "250px", height: "250px", borderRadius: "50%" }}
         />
@@ -20,18 +20,18 @@ import Button from "../components/Button.astro";
         <p class="headerSubtitle">Software Engineer and Creator</p>
         <ul class="iconList">
           <li>
-            <a>
-              <Icon name="mdi:github" size={28} href="/" />
+            <a href="https://github.com/christopher-coyne" target="_blank" rel="noopener noreferrer">
+              <Icon name="mdi:github" size={28} />
             </a>
           </li>
           <li>
-            <a>
-              <Icon name="mdi:email" size={28} href="/" />
+            <a href="mailto:christcoyne@gmail.com">
+              <Icon name="mdi:email" size={28} />
             </a>
           </li>
           <li>
-            <a>
-              <Icon name="mdi:linkedin" size={28} href="/" />
+            <a href="https://www.linkedin.com/in/christopher-coyne/" target="_blank" rel="noopener noreferrer">
+              <Icon name="mdi:linkedin" size={28} />
             </a>
           </li>
         </ul>
@@ -39,7 +39,7 @@ import Button from "../components/Button.astro";
     </section>
     <section>
       <div>
-        <h3>About Me</h3>
+        <h2>About Me</h2>
         <hr />
       </div>
       <p>Hello All,</p>
@@ -76,7 +76,7 @@ import Button from "../components/Button.astro";
     }
     <section>
       <div>
-        <h3>Art and Computer Science</h3>
+        <h2>Art and Computer Science</h2>
         <hr />
       </div>
       <p class="quote">
@@ -91,19 +91,18 @@ import Button from "../components/Button.astro";
         Wilkins, and sought to recreate it using modern AI tools.
       </p>
       <p>
-        I have always been passionate about the visual arts, and have an array
-        of work you can check out here. In the future, I hope to create pieces
+        I have always been passionate about the visual arts. In the future, I hope to create pieces
         that combine art and computer science into something new.
       </p>
     </section>
     <section>
       <div>
-        <h3>Collab</h3>
+        <h2>Collab</h2>
         <hr />
       </div>
       <div class="contactContainer">
         <p>Always looking to collaborate and network</p>
-        <Button title="Contact" icon="xyz" href="christcoyne@gmail.com" />
+        <Button title="Contact" icon="xyz" href="mailto:christcoyne@gmail.com" />
       </div>
     </section>
   </main>
@@ -122,8 +121,7 @@ import Button from "../components/Button.astro";
     flex-direction: column;
     gap: 24px;
   }
-  h1,
-  h2 {
+  h1 {
     font-family: "Poppins";
     font-weight: 600;
   }
@@ -150,6 +148,8 @@ import Button from "../components/Button.astro";
     gap: 8px;
     justify-content: center;
     margin: 8px;
+  }
+  .iconList a {
     color: var(--text-color);
   }
   .contactContainer {
@@ -160,7 +160,7 @@ import Button from "../components/Button.astro";
 
   .iconList a:hover {
     cursor: pointer;
-    color: var(--primary-color);
+    color: var(--link-color)
   }
 
   img {
@@ -174,11 +174,6 @@ import Button from "../components/Button.astro";
   }
 
   h2 {
-    font-size: 24px;
-    margin-top: 4px;
-  }
-
-  h3 {
     font-size: 20px;
     margin-top: 4px;
   }

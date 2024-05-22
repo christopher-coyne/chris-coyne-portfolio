@@ -1,7 +1,5 @@
 ---
 import "../styles/GlobalStyles.css";
-const { href } = Astro.props;
-import "@fontsource/poppins";
 import "@fontsource/open-sans/700.css";
 import { Icon } from "astro-icon/components";
 ---
@@ -11,7 +9,7 @@ import { Icon } from "astro-icon/components";
     <a class="title" href="/"> Chris Coyne </a>
   </div>
   <div class="rightContainer">
-    <button id="themeToggle">
+    <button id="themeToggle" aria-label="toggle darkmode">
       <Icon name="mdi:white-balance-sunny" size={28} />
     </button>
     <ul class="linkContainer">
@@ -33,15 +31,15 @@ import { Icon } from "astro-icon/components";
     return "light";
   })();
 
-  console.log("is darkmode ", theme);
+  // console.log("is darkmode ", theme);
   document.documentElement.setAttribute("data-theme", theme);
 
   const handleToggleClick = () => {
     // Toggle dark mode state
     const newTheme = theme === "dark" ? "light" : "dark";
 
-    console.log("new theme ", newTheme);
-    console.log("old theme ", theme);
+    // console.log("new theme ", newTheme);
+    // console.log("old theme ", theme);
 
     // Update the theme
     document.documentElement.setAttribute("data-theme", newTheme);
@@ -93,7 +91,6 @@ import { Icon } from "astro-icon/components";
   .linkContainer {
     display: flex;
     flex-direction: row;
-    font-weight: "bold";
     align-items: center;
     gap: 12px;
   }
@@ -113,5 +110,8 @@ import { Icon } from "astro-icon/components";
   #themeToggle {
     color: var(--text-color);
     background-color: var(--background-color);
+  }
+  #themeToggle:hover {
+    color: var(--primary-color);
   }
 </style>
