@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  icon: string;
+  href: string;
+}
+
+const { title, icon, href } = Astro.props;
+import { Icon } from "astro-icon/components";
+---
+
+{/* for now - this will just be a link button */}
+<div class="container">
+  <a href={href}>{title} <Icon name="mdi:email" size={28} /></a>
+</div>
+
+<style>
+  a {
+    padding: 6px 16px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .container {
+    width: auto;
+    display: inline-block;
+    padding: 0px;
+  }
+</style>

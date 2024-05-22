@@ -1,7 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="test">
-  <div>hello world</div>
+  <section class="container">
+    <a href="/">Check me out on IG <Icon name="mdi:instagram" size={28} /></a>
+  </section>
 </Layout>
+
+<style>
+  .container {
+    width: 30%;
+    margin: 32px auto;
+    background-color: var(--surface-color);
+    padding: 32px;
+  }
+  a {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--link-color);
+  }
+</style>

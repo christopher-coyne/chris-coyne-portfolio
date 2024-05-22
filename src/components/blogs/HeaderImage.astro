@@ -1,16 +1,28 @@
 ---
 interface Props {
   src: string;
+  subtitle?: string;
 }
 
-const { src } = Astro.props;
+import "@fontsource/open-sans/400-italic.css";
+
+const { src, subtitle } = Astro.props;
 ---
 
-<img src={src} alt="Description of image" class="headerImage" />
+<div>
+  <img src={src} alt="Description of image" class="headerImage" />
+  {subtitle && <p class="imgSubtitle">{subtitle}</p>}
+</div>
+
 <style>
   .headerImage {
     width: 100%;
     height: auto;
-    borderRadius: 8px;
+    borderradius: 8px;
+  }
+  .imgSubtitle {
+    font-size: 14px;
+    padding-left: 8px;
+    font-style: italic;
   }
 </style>

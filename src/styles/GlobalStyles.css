@@ -49,6 +49,7 @@ h4 {
   --text-color: #eae8f5;
   --shadow-color: rgba(91, 87, 107, 0.5);
   --surface-color: #221f31;
+  --link-color: #82c5ff;
 }
 
 [data-theme="light"] {
@@ -59,4 +60,5 @@ h4 {
   --border-color: #000000;
   --shadow-color: rgba(140, 140, 140, 0.5);
   --surface-color: white;
+  --link-color: #1460b1;
 }

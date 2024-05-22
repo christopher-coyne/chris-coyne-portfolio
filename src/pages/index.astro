@@ -4,11 +4,12 @@ import "../styles/GlobalStyles.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import { Icon } from "astro-icon/components";
+import Button from "../components/Button.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <div class="header">
+    <section class="header">
       <div>
         <img
           src="/images/mypics/headshot.jpg"
@@ -20,36 +21,38 @@ import { Icon } from "astro-icon/components";
         <ul class="iconList">
           <li>
             <a>
-              <Icon name="mdi:github" size={28} href="/"/>
+              <Icon name="mdi:github" size={28} href="/" />
             </a>
           </li>
           <li>
             <a>
-              <Icon name="mdi:email" size={28} href="/"/>
+              <Icon name="mdi:email" size={28} href="/" />
             </a>
           </li>
           <li>
             <a>
-              <Icon name="mdi:linkedin" size={28} href="/"/>
+              <Icon name="mdi:linkedin" size={28} href="/" />
             </a>
           </li>
         </ul>
       </div>
-    </div>
+    </section>
     <section>
-      <h3>About Me</h3>
-      <hr />
+      <div>
+        <h3>About Me</h3>
+        <hr />
+      </div>
+      <p>Hello All,</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum
-        venenatis sem, non placerat risus. Praesent viverra mauris sed lectus
-        ullamcorper tristique. Etiam varius convallis ex, nec molestie tellus.
-        Fusce eu velit egestas, pulvinar lectus quis, convallis risus. Praesent
-        elementum metus eu felis lacinia pharetra. Vivamus eget arcu vel velit
-        fringilla ornare. In tempus turpis ac metus volutpat, id venenatis elit
-        volutpat. Cras placerat placerat risus, vel elementum massa tincidunt
-        et. Fusce nec aliquam neque. Quisque tincidunt ut turpis eu pulvinar.
-        You can check out my resume Here.
+        I am a software engineer currently working at Pyyne Digital, in NYC. My
+        expertise is primarily in full stack development, and I love to design
+        and build products from the ground up.
       </p>
+      <p>
+        I studied English as an undergraduate at Columbia University, where I
+        later obtained a masters degree in computer science.
+      </p>
+      <div>
       <h4>Some Tech I've been using recently</h4>
       <ul class="skills">
         <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
@@ -62,6 +65,7 @@ import { Icon } from "astro-icon/components";
           Stripe
         </li>
       </ul>
+    </div>
     </section>
     {
       /* 
@@ -71,22 +75,36 @@ import { Icon } from "astro-icon/components";
   */
     }
     <section>
-      <h3>Art and Computer Science</h3>
-      <hr />
+      <div>
+        <h3>Art and Computer Science</h3>
+        <hr />
+      </div>
       <p class="quote">
         "I have always imagined that paradise will be a kind of library"
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum
-        venenatis sem, non placerat risus. Praesent viverra mauris sed lectus
-        ullamcorper tristique. Etiam varius convallis ex, nec molestie tellus.
-        Fusce eu velit egestas, pulvinar lectus quis, convallis risus.
+        During my education, one of the most influential classes I took was
+        “Literature in the Age of AI” taught by professor Dennis Tenen. My eyes
+        were opened to the ways that computer science, philosophy, and art could
+        intermix and I wanted to contribute in my own way. My final project for
+        the class explored the universal language developed by philosopher John
+        Wilkins, and sought to recreate it using modern AI tools.
+      </p>
+      <p>
+        I have always been passionate about the visual arts, and have an array
+        of work you can check out here. In the future, I hope to create pieces
+        that combine art and computer science into something new.
       </p>
     </section>
     <section>
-      <h3>Collab</h3>
-      <hr />
-      <p>Always looking to collaborate and network</p>
+      <div>
+        <h3>Collab</h3>
+        <hr />
+      </div>
+      <div class="contactContainer">
+        <p>Always looking to collaborate and network</p>
+        <Button title="Contact" icon="xyz" href="christcoyne@gmail.com" />
+      </div>
     </section>
   </main>
 </Layout>
@@ -94,6 +112,15 @@ import { Icon } from "astro-icon/components";
   main {
     width: 50%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 64px;
+  }
+  main section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
   h1,
   h2 {
@@ -109,10 +136,9 @@ import { Icon } from "astro-icon/components";
   }
   .header {
     display: flex;
-    border: 1px solid black;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 60vh;
   }
   .headerSubtitle {
     text-align: center;
@@ -125,6 +151,11 @@ import { Icon } from "astro-icon/components";
     justify-content: center;
     margin: 8px;
     color: var(--text-color);
+  }
+  .contactContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .iconList a:hover {
@@ -156,14 +187,6 @@ import { Icon } from "astro-icon/components";
     border: none;
     background-color: var(--text-color);
     margin: 4px;
-  }
-  p {
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-  section {
-    margin-top: 32px;
-    margin-bottom: 32px;
   }
   .skills {
     li {
