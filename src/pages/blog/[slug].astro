@@ -26,8 +26,8 @@ if (!post) {
 }
 ---
 
-<Layout title="test">
-  <div class="container">
+<Layout title={title}>
+  <main class="container">
     <h1>{title}</h1>
     <p class="subtitle">{summary}</p>
     <div class="subinfoContainer">
@@ -39,7 +39,7 @@ if (!post) {
     <section id="contentContainer">
       <Content />
     </section>
-  </div>
+  </main>
 </Layout>
 
 <style is:global>

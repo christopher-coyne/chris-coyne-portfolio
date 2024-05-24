@@ -4,24 +4,31 @@ import Card from "../../components/Card.astro";
 import "../../styles/GlobalStyles.css";
 
 import { getCollection } from "astro:content";
+import ComeBackLater from "../../components/ComeBackLater.astro";
 
 const blogPosts = await getCollection("blog");
 ---
 
-<Layout title="Chris's Blog">
+<Layout title="Christopher Coyne's Blog">
   <main class="mainContainer">
     <h1>Blog</h1>
 
     <div class="searchContainer">
       <input type="text" placeholder="Search" id="searchbar" />
+      {/*
       <div class="selectContainer">
         <select id="filter by" name="filter by">
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
         </select>
       </div>
+    */}
     </div>
     <section>
+      <ComeBackLater>
+        <p>Blog articles coming in the future :)</p>
+      </ComeBackLater>
+      {/*
       <ul id="grid-container">
         {
           blogPosts.map((post: any) => (
@@ -35,6 +42,7 @@ const blogPosts = await getCollection("blog");
           ))
         }
       </ul>
+    */}
     </section>
   </main>
 </Layout>
@@ -51,7 +59,7 @@ const blogPosts = await getCollection("blog");
     gap: 24px;
   }
   .searchContainer {
-    padding: 16px;
+    padding: 16px 0px;
     display: flex;
     justify-content: space-between;
   }
@@ -59,7 +67,7 @@ const blogPosts = await getCollection("blog");
     padding: 8px;
     font-size: 16px;
     color: #393939;
-    width: 50%;
+    width: 75%;
     border-radius: 4px;
     border: 2px solid var(--border-color);
     background-color: var(--surface-color);

@@ -40,6 +40,16 @@ h4 {
   --font-size-base: 16px;
 }
 
+/*
+  cant use css variables for breakpoints, so just list them
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 750px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+  */
+
 [data-theme="dark"] {
   --primary-color: #6456b4;
   --primary-color-l1: #43397c; /* l1 is darker, since inverted color pallette */
