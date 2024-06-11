@@ -2,22 +2,37 @@
 import "../styles/GlobalStyles.css";
 import "@fontsource/open-sans/700.css";
 import { Icon } from "astro-icon/components";
+import Modal from "./Modal.astro";
 ---
 
 <nav>
-  <div class="titleContainer">
-    <a class="title" href="/"> Chris Coyne </a>
-  </div>
-  <div class="rightContainer">
-    <button id="themeToggle" aria-label="toggle darkmode">
-      <Icon name="mdi:white-balance-sunny" size={28} />
-    </button>
-    <ul class="linkContainer">
+  <div class="topContainer">
+    <div class="titleContainer">
+      <a class="title" href="/"> Chris Coyne </a>
+    </div>
+    <div class="rightContainer">
+      <button id="themeToggle" aria-label="toggle darkmode">
+        <Icon name="mdi:white-balance-sunny" size={28} />
+      </button>
+      <button id="hamburgerMenu" aria-label="open menu">
+        <Icon name="mdi:menu" size={28} class="test"/>
+      </button>
+      <ul class="linkContainer">
+        <li><a href="/">About</a></li>
+        <li><a href="/art">Art</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </div>
+</div>
+  <div id="bottomContainer">
+    <ul id="bottomLinkContainer">
       <li><a href="/">About</a></li>
-      <li><a href="/art">Art</a></li>
-      <li><a href="/blog">Blog</a></li>
+        <li><a href="/art">Art</a></li>
+        <li><a href="/blog">Blog</a></li>
     </ul>
   </div>
+</div>
+  
 </nav>
 
 <script is:inline>
@@ -31,15 +46,11 @@ import { Icon } from "astro-icon/components";
     return "light";
   })();
 
-  // console.log("is darkmode ", theme);
   document.documentElement.setAttribute("data-theme", theme);
 
   const handleToggleClick = () => {
     // Toggle dark mode state
     const newTheme = theme === "dark" ? "light" : "dark";
-
-    // console.log("new theme ", newTheme);
-    // console.log("old theme ", theme);
 
     // Update the theme
     document.documentElement.setAttribute("data-theme", newTheme);
@@ -52,32 +63,43 @@ import { Icon } from "astro-icon/components";
   document
     .getElementById("themeToggle")
     .addEventListener("click", handleToggleClick);
+
+  
+  const modal = document.getElementById("bottomContainer");
+  const modalToggle = document.getElementById("hamburgerMenu");
+
+  const handleResize = () => {
+    if (window.innerWidth > 1200) {
+      modal.style.display = "none";
+    }
+  };
+
+  modalToggle.addEventListener("click", () => {
+    const modalStyle = getComputedStyle(modal).display;
+    modal.style.display = modalStyle === "block" ? "none" : "block";
+  });
+
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("load", handleResize);
 </script>
 
 <style>
-  button {
-    border-radius: 50px;
-    padding: 0;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    margin: 0px;
-  }
-  button:hover {
-    cursor: pointer;
-  }
+
   nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     width: 50%;
     margin: 16px auto;
     border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-radius: 16px;
     border: 2px solid var(--border-color);
     padding: 8px 16px;
+  }
+  .topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   a {
     text-decoration: none;
@@ -107,16 +129,45 @@ import { Icon } from "astro-icon/components";
     flex-direction: row;
     align-items: center;
   }
+  .topContainer {
+
+  }
   #themeToggle {
     color: var(--text-color);
     background-color: var(--background-color);
+    padding: 0px 0px 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    margin: 0px;
   }
   #themeToggle:hover {
     color: var(--primary-color);
+    cursor: pointer;
   }
 
+  #modal {
+    display: none;
+  }
+  #hamburgerMenu {
+    display: none;
+    border: 1px solid red;
+    padding: 0px;
+  }
+  .test {
+    border: 2px solid green;
+    margin: 0px;
+  }
+  #bottomContainer {
+    display: none;
+  }
   /* breakpoints */
-  /*
+@media (min-width: 1200px) {
+  #bottomContainer {
+    display: none;
+  }
+}
   @media (max-width: 1200px) {
     nav {
     border: 2px solid green;
@@ -125,13 +176,26 @@ import { Icon } from "astro-icon/components";
   #themeToggle {
     color: green;
   }
+  .linkContainer {
+    display: none;
+  }
+  #hamburgerMenu {
+    display: block;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  #bottomLinkContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  }
+}
   @media (max-width: 1000px) {
     nav {
     border: 2px solid red;
     color: red;
-    width: 75%;
+    width: 90%;
   }
   
 }
-*/
 </style>
