@@ -10,11 +10,11 @@ import Button from "../components/Button.astro";
 <Layout title="Christopher Coyne's blog and portfolio">
   <main>
     <section class="header">
-      <div>
+      <div class="headerImgContainer">
         <img
           src="/images/mypics/headshot.webp"
           alt="Description of image"
-          style={{ width: "250px", height: "250px", borderRadius: "50%" }}
+          id="headshot"
         />
         <h1>Christopher Coyne</h1>
         <p class="headerSubtitle">Software Engineer and Creator</p>
@@ -115,7 +115,6 @@ import Button from "../components/Button.astro";
     flex-direction: column;
     gap: 32px;
     padding-bottom: 64px;
-    border: 1px solid red;
   }
   main section {
     display: flex;
@@ -125,6 +124,17 @@ import Button from "../components/Button.astro";
   h1 {
     font-family: "Poppins";
     font-weight: 600;
+  }
+  .headerImgContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+
+  #headshot {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
   }
   .quote {
     background-color: var(--primary-color-l1);
@@ -199,6 +209,11 @@ import Button from "../components/Button.astro";
 @media (max-width: 750px) {
     main {
     width: 90%;
+  }
+  #headshot {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
   }
 }
 </style>
