@@ -25,10 +25,11 @@ const blogPosts = await getCollection("blog");
     */}
     </div>
     <section>
+      {/*
       <ComeBackLater>
         <p>Blog articles coming in the future :)</p>
       </ComeBackLater>
-      {/*
+    */}
       <ul id="grid-container">
         {
           blogPosts.map((post: any) => (
@@ -42,7 +43,6 @@ const blogPosts = await getCollection("blog");
           ))
         }
       </ul>
-    */}
     </section>
   </main>
 </Layout>
