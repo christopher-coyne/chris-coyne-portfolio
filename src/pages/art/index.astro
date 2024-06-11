@@ -4,14 +4,14 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Christopher Coyne's art">
-  <main class="container">
+  <main>
     <a href="https://www.instagram.com/zahir_red/" target="_blank">Check me out on IG <Icon name="mdi:instagram" size={28} /></a>
   </main>
 </Layout>
 
 <style>
-  .container {
-    width: 30%;
+  main {
+    width: 350px;
     margin: 32px auto;
     background-color: var(--surface-color);
     padding: 32px;
@@ -28,4 +28,15 @@ import { Icon } from "astro-icon/components";
   a:hover {
     color: var(--link-color);
   }
+
+  @media (max-width: 500px) {
+    main {
+    width: 75%;
+    border: 1px solid red;
+    padding: 24px;
+  }
+  a {
+    font-size: 20px;
+  }
+}
 </style>

@@ -115,6 +115,7 @@ import Button from "../components/Button.astro";
     flex-direction: column;
     gap: 32px;
     padding-bottom: 64px;
+    border: 1px solid red;
   }
   main section {
     display: flex;
@@ -188,4 +189,16 @@ import Button from "../components/Button.astro";
       margin: 8px;
     }
   }
+
+  @media (max-width: 1000px) {
+    main {
+    width: 75%;
+  }
+}
+
+@media (max-width: 750px) {
+    main {
+    width: 90%;
+  }
+}
 </style>

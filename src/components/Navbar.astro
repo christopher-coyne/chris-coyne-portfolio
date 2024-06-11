@@ -2,7 +2,6 @@
 import "../styles/GlobalStyles.css";
 import "@fontsource/open-sans/700.css";
 import { Icon } from "astro-icon/components";
-import Modal from "./Modal.astro";
 ---
 
 <nav>
@@ -15,7 +14,7 @@ import Modal from "./Modal.astro";
         <Icon name="mdi:white-balance-sunny" size={28} />
       </button>
       <button id="hamburgerMenu" aria-label="open menu">
-        <Icon name="mdi:menu" size={28} class="test"/>
+        <Icon name="mdi:menu" size={28} class="hamburgerIcon"/>
       </button>
       <ul class="linkContainer">
         <li><a href="/">About</a></li>
@@ -129,9 +128,6 @@ import Modal from "./Modal.astro";
     flex-direction: row;
     align-items: center;
   }
-  .topContainer {
-
-  }
   #themeToggle {
     color: var(--text-color);
     background-color: var(--background-color);
@@ -139,25 +135,29 @@ import Modal from "./Modal.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
     margin: 0px;
+    border: none;
   }
   #themeToggle:hover {
     color: var(--primary-color);
     cursor: pointer;
   }
 
+  #hamburgerMenu:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  .hamburgerIcon {
+    margin-top: 3px;
+  }
   #modal {
     display: none;
   }
   #hamburgerMenu {
     display: none;
-    border: 1px solid red;
     padding: 0px;
-  }
-  .test {
-    border: 2px solid green;
-    margin: 0px;
+    border: none;
   }
   #bottomContainer {
     display: none;
@@ -169,13 +169,6 @@ import Modal from "./Modal.astro";
   }
 }
   @media (max-width: 1200px) {
-    nav {
-    border: 2px solid green;
-    color: red;
-  }
-  #themeToggle {
-    color: green;
-  }
   .linkContainer {
     display: none;
   }
@@ -192,7 +185,6 @@ import Modal from "./Modal.astro";
 }
   @media (max-width: 1000px) {
     nav {
-    border: 2px solid red;
     color: red;
     width: 90%;
   }
