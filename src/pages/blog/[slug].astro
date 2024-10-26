@@ -18,12 +18,13 @@ export async function getStaticPaths() {
 // Fetch the specific post data
 const { slug } = Astro.params;
 const post = await getEntryBySlug("blog", slug);
-const { title, summary, date, tags } = post.data;
-const { Content } = await post?.render();
 
 if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
+  const { title, summary, date, tags } = post.data;
+const { Content } = await post.render(); 
+
 ---
 
 <Layout title={title}>
