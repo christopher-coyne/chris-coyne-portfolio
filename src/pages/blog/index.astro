@@ -13,16 +13,18 @@ const blogPosts = await getCollection("blog");
   <main class="flex flex-col gap-4 m-auto max-w-[600px]">
     <h1 class="font-semibold text-xl">Blog</h1>
 
-    <div>
+    <div class="flex gap-4">
       <input type="text" placeholder="Search" id="searchbar" class="input input-bordered w-full"/>
-      {/*
-      <div class="selectContainer">
-        <select id="filter by" name="filter by">
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
+      <div>
+        <select class="select">
+          <option disabled selected>Sort by</option>
+          <option>Newest</option>
+          <option>Oldest</option>
         </select>
       </div>
-    */}
+    </div>
+    <div>
+
     </div>
     <section>
       {/*
@@ -57,22 +59,6 @@ const blogPosts = await getCollection("blog");
     padding: 16px 0px;
     display: flex;
     justify-content: space-between;
-  }
-  .selectContainer {
-    display: flex;
-    gap: 16px;
-    flex-direction: row;
-  }
-  select {
-    border-radius: 4px;
-    padding: 8px;
-    border: 2px solid var(--border-color);
-    background-color: var(--surface-color);
-    color: var(--text-color);
-  }
-  select:focus {
-    outline: none;
-    border-color: var(--primary-color);
   }
 
   @media (max-width: 1000px) {
