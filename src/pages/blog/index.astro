@@ -4,16 +4,17 @@ import Card from "../../components/Card.astro";
 import "../../styles/GlobalStyles.css";
 
 import { getCollection } from "astro:content";
+import CardNew from "../../components/CardNew.astro";
 
 const blogPosts = await getCollection("blog");
 ---
 
 <Layout title="Christopher Coyne's Blog">
-  <main class="mainContainer">
-    <h1>Blog</h1>
+  <main class="flex flex-col gap-4 m-auto max-w-[600px]">
+    <h1 class="font-semibold text-xl">Blog</h1>
 
-    <div class="searchContainer">
-      <input type="text" placeholder="Search" id="searchbar" />
+    <div>
+      <input type="text" placeholder="Search" id="searchbar" class="input input-bordered w-full"/>
       {/*
       <div class="selectContainer">
         <select id="filter by" name="filter by">
@@ -29,10 +30,11 @@ const blogPosts = await getCollection("blog");
         <p>Blog articles coming in the future :)</p>
       </ComeBackLater>
     */}
+    <div class="divider"></div>
       <ul id="grid-container">
         {
           blogPosts.map((post: any) => (
-            <Card
+            <CardNew
               title={post.data.title}
               body={post.data.summary}
               tags={post.data.tags}
@@ -51,26 +53,10 @@ const blogPosts = await getCollection("blog");
     width: 50%;
     margin: 32px auto;
   }
-  #grid-container {
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
   .searchContainer {
     padding: 16px 0px;
     display: flex;
     justify-content: space-between;
-  }
-  #searchbar {
-    padding: 8px;
-    font-size: 16px;
-    color: #393939;
-    width: 75%;
-    border-radius: 4px;
-    border: 2px solid var(--border-color);
-    background-color: var(--surface-color);
-    color: var(--text-color);
   }
   .selectContainer {
     display: flex;
@@ -84,10 +70,6 @@ const blogPosts = await getCollection("blog");
     background-color: var(--surface-color);
     color: var(--text-color);
   }
-  #searchbar:focus {
-    outline: none;
-    border-color: var(--primary-color);
-  }
   select:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -96,12 +78,6 @@ const blogPosts = await getCollection("blog");
   @media (max-width: 1000px) {
     .mainContainer {
     width: 90%;
-  }
-
-  @media (max-width: 500px) {
-  #grid-container {
-    grid-template-columns: 1fr
-  }
   }
   
 }

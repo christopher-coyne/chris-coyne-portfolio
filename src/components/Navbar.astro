@@ -4,34 +4,33 @@ import "@fontsource/open-sans/700.css";
 import { Icon } from "astro-icon/components";
 ---
 
-<nav>
-  <div class="topContainer">
-    <div class="titleContainer">
-      <a class="title" href="/"> Chris Coyne </a>
+<nav class="flex flex-row w-full py-4 mb-8">
+  <div class="flex justify-between items-center w-full m-auto max-w-[600px]">
+    <div class="flex justify-between items-center">
+      <a class="link link-primary link-hover font-semibold hover:text-primary" href="/"> Chris Coyne </a>
     </div>
-    <div class="rightContainer">
-      <button id="themeToggle" aria-label="toggle darkmode">
-        <Icon name="mdi:white-balance-sunny" size={28} />
+    <div class="flex items-center gap-4">
+      <button id="themeToggle" aria-label="toggle darkmode" class="btn btn-sm btn-outline btn-square">
+        <Icon name="mdi:white-balance-sunny" size={16} />
       </button>
-      <button id="hamburgerMenu" aria-label="open menu">
-        <Icon name="mdi:menu" size={28} class="hamburgerIcon"/>
+      <button id="hamburgerMenu" aria-label="open menu" class="btn inline-block md:hidden btn-square">
+        <Icon name="mdi:menu" size={20} class="hamburgerIcon"/>
       </button>
-      <ul class="linkContainer">
-        <li><a href="/">About</a></li>
-        <li><a href="/art">Art</a></li>
-        <li><a href="/blog">Blog</a></li>
+      <ul class="flex justify-between items-center gap-4">
+        <li><a href="/" class="link">About</a></li>
+        <li><a href="/art" class="link ">Art</a></li>
+        <li><a href="/blog" class="link ">Blog</a></li>
       </ul>
     </div>
 </div>
   <div id="bottomContainer">
     <ul id="bottomLinkContainer">
-      <li><a href="/">About</a></li>
-        <li><a href="/art">Art</a></li>
-        <li><a href="/blog">Blog</a></li>
+      <li><a href="/" class="link link-primary">About</a></li>
+        <li><a href="/art" class="link link-primary">Art</a></li>
+        <li><a href="/blog" class="link link-primary">Blog</a></li>
     </ul>
   </div>
 </div>
-  
 </nav>
 
 <script is:inline>
@@ -84,80 +83,11 @@ import { Icon } from "astro-icon/components";
 
 <style>
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 50%;
-    margin: 16px auto;
-    border-radius: 24px;
-    border-radius: 16px;
-    border: 2px solid var(--border-color);
-    padding: 8px 16px;
-  }
-  .topContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  a {
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    color: var(--text-color);
-  }
-  a:hover {
-    background-color: var(--primary-color-l1);
-  }
-  .linkContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-  }
-  .titleContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    font-weight: 700;
-  }
-  .rightContainer {
-    display: flex;
-    gap: 16px;
-    flex-direction: row;
-    align-items: center;
-  }
-  #themeToggle {
-    color: var(--text-color);
-    background-color: var(--background-color);
-    padding: 0px 0px 2px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0px;
-    border: none;
-  }
-  #themeToggle:hover {
-    color: var(--primary-color);
-    cursor: pointer;
-  }
-
-  #hamburgerMenu:hover {
-    color: var(--primary-color);
-    cursor: pointer;
-  }
-
   .hamburgerIcon {
     margin-top: 3px;
   }
   #modal {
     display: none;
-  }
-  #hamburgerMenu {
-    display: none;
-    padding: 0px;
-    border: none;
   }
   #bottomContainer {
     display: none;
@@ -171,11 +101,6 @@ import { Icon } from "astro-icon/components";
   @media (max-width: 1200px) {
   .linkContainer {
     display: none;
-  }
-  #hamburgerMenu {
-    display: block;
-    color: var(--text-color);
-    background-color: var(--background-color);
   }
   #bottomLinkContainer {
       display: flex;

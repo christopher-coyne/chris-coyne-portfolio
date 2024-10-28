@@ -24,18 +24,6 @@ li {
   list-style-type: none;
 }
 
-p,
-a,
-span {
-  line-height: 1.6;
-}
-h1,
-h2,
-h3,
-h4 {
-  line-height: 1.2;
-}
-
 :root {
   --font-size-base: 16px;
 }
@@ -54,7 +42,7 @@ h4 {
   --primary-color: #6456b4;
   --primary-color-l1: #43397c; /* l1 is darker, since inverted color pallette */
   --primary-color-l2: #1d1a31; /* l1 is darker, since inverted color pallette */
-  --background-color: #101523;
+  --background-color: #15171f;
   --border-color: #595570;
   --text-color: #eae8f5;
   --shadow-color: rgba(91, 87, 107, 0.5);

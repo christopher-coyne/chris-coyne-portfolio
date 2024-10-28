@@ -4,38 +4,9 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Christopher Coyne's art">
-  <main>
-    <a href="https://www.instagram.com/zahir_red/" target="_blank">Check me out on IG <Icon name="mdi:instagram" size={28} /></a>
+  <main class="h-[90vh]">
+    <a href="https://www.instagram.com/zahir_red/" target="_blank" class="flex items-center justify-center p-8 bg-primary/20 max-w-[400px] m-auto text-2xl rounded-sm">
+      <span class="flex gap-6 items-center">Check me out on IG <Icon name="mdi:instagram" size={28}/></span>
+    </a>
   </main>
 </Layout>
-
-<style>
-  main {
-    width: 350px;
-    margin: 32px auto;
-    background-color: var(--surface-color);
-    padding: 32px;
-  }
-  a {
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    font-size: 24px;
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--link-color);
-  }
-
-  @media (max-width: 500px) {
-    main {
-    width: 75%;
-    padding: 24px;
-  }
-  a {
-    font-size: 20px;
-  }
-}
-</style>

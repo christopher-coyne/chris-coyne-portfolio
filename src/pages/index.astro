@@ -5,44 +5,50 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import { Icon } from "astro-icon/components";
 import Button from "../components/Button.astro";
+import CardNew from "../components/CardNew.astro"
+
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog");
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main>
-    <section class="header">
-      <div class="headerImgContainer">
+  <main class="flex flex-col max-w-[600px] m-auto gap-16">
+    <section class="flex flex-col">
+      <div class="flex flex-col gap-4 items-center">
         <img
           src="/images/mypics/headshot.webp"
-          alt="Description of image"
+          alt="Chris's headshot"
           id="headshot"
+          class="w-[170px] h-[170px] rounded-full"
         />
-        <h1>Christopher Coyne</h1>
-        <p class="headerSubtitle">Software Engineer and Creator</p>
-        <ul class="iconList">
-          <li>
+        <div>
+          <h1 class="font-semibold text-2xl">Christopher Coyne</h1>
+          <p class="text-sm text-center">Software Engineer and Creator</p>
+        </div>
+        <ul class="flex flex-row gap-4">
+          <li class="link ">
             <a href="https://github.com/christopher-coyne" target="_blank" rel="noopener noreferrer">
-              <Icon name="mdi:github" size={28} />
+              <Icon name="mdi:github" size={24} />
             </a>
           </li>
-          <li>
+          <li class="link ">
             <a href="mailto:christcoyne@gmail.com">
-              <Icon name="mdi:email" size={28} />
+              <Icon name="mdi:email" size={24} />
             </a>
           </li>
-          <li>
+          <li class="link ">
             <a href="https://www.linkedin.com/in/christopher-coyne/" target="_blank" rel="noopener noreferrer">
-              <Icon name="mdi:linkedin" size={28} />
+              <Icon name="mdi:linkedin" size={24} />
             </a>
           </li>
         </ul>
       </div>
     </section>
-    <section>
+    <section class="flex flex-col gap-4">
       <div>
-        <h2>About Me</h2>
-        <hr />
+        <h2 class="font-semibold">About Me</h2>
       </div>
-      <p>Hello All,</p>
       <p>
         I am a software engineer currently working at Pyyne Digital, in NYC. My
         expertise is primarily in full stack development, and I love to design
@@ -54,7 +60,7 @@ import Button from "../components/Button.astro";
       </p>
       <div>
       <h4>Some Tech I've been using recently</h4>
-      <ul class="skills">
+      <ul class="flex flex-col gap-2 p-2 text-sm">
         <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
         <li>
           {"> "}Frameworks and Libraries: React, Spring Boot, Express, Tailwind
@@ -74,12 +80,12 @@ import Button from "../components/Button.astro";
     </section>
   */
     }
-    <section>
+    <section class="flex flex-col gap-4">
+      <div class="divider"></div>
       <div>
-        <h2>Art and Computer Science</h2>
-        <hr />
+        <h2 class="font-semibold">Art and Computer Science</h2>
       </div>
-      <p class="quote">
+      <p class="p-8 bg-primary/20 rounded-sm">
         "I have always imagined that paradise will be a kind of library"
       </p>
       <p>
@@ -95,125 +101,38 @@ import Button from "../components/Button.astro";
         that combine art and computer science into something new.
       </p>
     </section>
-    <section>
-      <div>
-        <h2>Collab</h2>
-        <hr />
+    <section class="flex flex-col gap-4">
+      <div class="flex justify-between">
+        <h2 class="font-semibold">Posts</h2>
+        <a href="#" class="link">All Posts</a>
       </div>
-      <div class="contactContainer">
+      <ul>
+        {
+          blogPosts.map((post: any) => (
+            <li>
+            <CardNew
+              title={post.data.title}
+              body={post.data.summary}
+              tags={post.data.tags}
+              href={`/blog/${post.slug}`}
+              date={post.data.date}
+            />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="pb-24 flex flex-col gap-4">
+      <div>
+        <h2 class="font-semibold">Collab</h2>
+      </div>
+      <div class="flex justify-between items-center">
         <p>Always looking to collaborate and network</p>
-        <Button title="Contact" icon="xyz" href="mailto:christcoyne@gmail.com" />
+        <button class="btn btn-outline btn-sm">
+          Contact
+          <Icon name="mdi:email" size={20} />
+          </button>
       </div>
     </section>
   </main>
 </Layout>
-<style>
-  main {
-    width: 50%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-bottom: 64px;
-  }
-  main section {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  h1 {
-    font-family: "Poppins";
-    font-weight: 600;
-  }
-  .headerImgContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center
-  }
-
-  #headshot {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-  }
-  .quote {
-    background-color: var(--primary-color-l1);
-    padding: 24px;
-    font-weight: 700;
-    display: inline-block;
-    margin-bottom: 0px;
-  }
-  .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
-  }
-  .headerSubtitle {
-    text-align: center;
-    margin: 0px;
-  }
-  .iconList {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    justify-content: center;
-    margin: 8px;
-  }
-  .iconList a {
-    color: var(--text-color);
-  }
-  .contactContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .iconList a:hover {
-    cursor: pointer;
-    color: var(--link-color)
-  }
-
-  img {
-    padding: 28px;
-  }
-
-  h1 {
-    margin: 0px;
-    font-size: 28px;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 20px;
-    margin-top: 4px;
-  }
-  hr {
-    height: 2px;
-    border: none;
-    background-color: var(--text-color);
-    margin: 4px;
-  }
-  .skills {
-    li {
-      margin: 8px;
-    }
-  }
-
-  @media (max-width: 1000px) {
-    main {
-    width: 75%;
-  }
-}
-
-@media (max-width: 750px) {
-    main {
-    width: 90%;
-  }
-  #headshot {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-  }
-}
-</style>

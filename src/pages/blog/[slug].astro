@@ -28,64 +28,17 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title}>
-  <main class="container">
-    <h1>{title}</h1>
-    <p class="subtitle">{summary}</p>
-    <div class="subinfoContainer">
-      <div>{date}</div>
-      <div class="tagContainer">
-        {tags && tags.map((tag: string) => <Tag title={tag} />)}
+  <main class="max-w-[600px] m-auto py-8">
+    <div class="flex flex-row items-center gap-4 text-sm mb-6">
+      <div class="flex flex-row gap-4">
+        {tags && tags.map((tag: string) => <div class="badge badge-primary">{tag}</div>)}
       </div>
+      <div>{date}</div>
     </div>
-    <section id="contentContainer">
+    <h1 class="text-4xl font-bold">{title}</h1>
+    <p>{summary}</p>
+    <section class="flex flex-col gap-6 my-8 leading-relaxed">
       <Content />
     </section>
   </main>
 </Layout>
-
-<style is:global>
-  p {
-    font-size: 18px;
-  }
-  .container {
-    width: 50%;
-    margin: auto;
-    padding: 32px 0px;
-  }
-  .subinfoContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    align-items: center;
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  .tagContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-  #contentContainer {
-    padding: 32px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .subtitle {
-    padding: 8px 0px;
-  }
-
-  @media (max-width: 1000px) {
-    .container {
-    width: 75%;
-  }
-}
-  @media (max-width: 750px) {
-    .container {
-    width: 90%;
-    }
-    p {
-      font-size: 16px;
-    }
-  }
-</style>

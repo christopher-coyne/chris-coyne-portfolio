@@ -11,19 +11,6 @@ const { src, subtitle } = Astro.props;
 ---
 
 <div>
-  <img src={src} alt="Description of image" class="headerImage" />
-  {subtitle && <p class="imgSubtitle">{subtitle}</p>}
+  <img src={src} alt="Description of image" class="w-full rounded-sm" />
+  {subtitle && <p class="text-sm pl-4 italic">{subtitle}</p>}
 </div>
-
-<style>
-  .headerImage {
-    width: 100%;
-    height: auto;
-    borderradius: 8px;
-  }
-  .imgSubtitle {
-    font-size: 14px;
-    padding-left: 8px;
-    font-style: italic;
-  }
-</style>
