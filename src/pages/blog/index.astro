@@ -9,10 +9,10 @@ const blogPosts = await getCollection("blog");
 ---
 
 <Layout title="Christopher Coyne's Blog">
-  <main class="flex flex-col gap-4 m-auto max-w-[600px] min-h-[90vh]">
-    <h1 class="font-semibold text-xl">Blog</h1>
+  <main class="flex flex-col gap-4 m-auto max-w-[600px] min-h-[90vh] w-[90%]">
+    <h1 class="font-semibold text-xl animate-fade-in-up">Blog</h1>
 
-    <div class="flex gap-4">
+    <div class="flex gap-4 animate-fade-in-up delay-100">
       <input type="text" placeholder="Search" id="searchbar" class="input input-bordered w-full"/>
       <div>
         <select class="select">
@@ -25,7 +25,7 @@ const blogPosts = await getCollection("blog");
     <div>
 
     </div>
-    <section>
+    <section class="animate-fade-in-up delay-200">
     <div class="divider"></div>
       <ul id="blog-container" class="flex flex-col gap-4">
         {

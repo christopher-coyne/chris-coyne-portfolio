@@ -5,6 +5,7 @@ import Tag from "../../components/Tag.astro";
 import "../../styles/GlobalStyles.css";
 import "@fontsource/open-sans";
 import "@fontsource/poppins";
+import { Icon } from "astro-icon/components";
 
 // Define getStaticPaths function
 export async function getStaticPaths() {
@@ -28,16 +29,30 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title}>
-  <main class="max-w-[600px] m-auto py-8">
-    <div class="flex flex-row items-center gap-4 text-sm mb-6">
-      <div class="flex flex-row gap-4">
-        {tags && tags.map((tag: string) => <div class="badge badge-primary">{tag}</div>)}
+  <main class="max-w-[600px] m-auto py-8 w-[90%]">
+    <div class="flex flex-row items-center gap-4 text-sm mb-6 animate-fade-in-up">
+      <div class="flex justify-between w-full items-center">
+        {/*
+          <a class="bg-slate-300 text-black py-1 px-4 rounded-sm text-base" href="/">
+            All Blogs
+          </a>
+          */}
+          <a href="/"><button class="btn btn-sm btn-outline">
+            <Icon
+            name="mdi:arrow-back"
+            size={20} />
+          All Blogs</button></a>
       </div>
-      <div>{date}</div>
     </div>
-    <h1 class="text-4xl font-bold pb-2">{title}</h1>
-    <p class="text-lg">{summary}</p>
-    <section class="flex flex-col gap-6 my-8 leading-relaxed">
+    <h1 class="text-4xl font-bold pb-2 animate-fade-in-up delay-100">{title}</h1>
+    <p class="text-lg animate-fade-in-up delay-100">{summary}</p>
+    <div class="flex gap-2 mt-8 text-sm w-full">
+    <div class="flex-shrink-0">{date}</div>
+    <ul class="flex flex-row gap-4">
+      {tags && tags.map((tag: string) => <li><div class="badge badge-primary">{tag}</div></li>)}
+    </ul>
+  </div>
+    <section class="flex flex-col gap-6 my-8 leading-relaxed animate-fade-in-up delay-200">
       <Content />
     </section>
   </main>

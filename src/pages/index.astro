@@ -14,7 +14,7 @@ const blogPosts = await getCollection("blog");
 
 <Layout title="Christopher Coyne's blog and portfolio">
   <main class="flex flex-col w-[90%] max-w-[600px] m-auto gap-16">
-    <section class="flex flex-col">
+    <section class="flex flex-col animate-fade-in-up">
       <div class="flex flex-col gap-4 items-center">
         <img
           src="/images/mypics/headshot.webp"
@@ -47,31 +47,31 @@ const blogPosts = await getCollection("blog");
     </section>
     <section class="flex flex-col gap-4">
       <div>
-        <h2 class="font-semibold">About Me</h2>
+        <h2 class="font-semibold animate-fade-in-up delay-100">About Me</h2>
       </div>
-      <p>
+      <p class="animate-fade-in-up delay-200">
         I am a software engineer currently working at Pyyne Digital, in NYC. My
         expertise is primarily in full stack development, and I love to design
         and build products from the ground up.
       </p>
-      <p>
+      <p class="animate-fade-in-up delay-300">
         I studied English as an undergraduate at Columbia University, where I
         later obtained a masters degree in computer science.
       </p>
-      <div>
-      <p>Some Tech I've been using recently</p>
-      <ul class="flex flex-col gap-2 p-2 text-sm">
-        <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
-        <li>
-          {"> "}Frameworks and Libraries: React, Spring Boot, Express, Tailwind
-          CSS
-        </li>
-        <li>
-          {"> "}Platforms and Tools: AWS, Docker, Github Actions, Shopify,
-          Stripe
-        </li>
-      </ul>
-    </div>
+      <div class="animate-fade-in-up delay-300">
+        <p>Some Tech I've been using recently</p>
+        <ul class="flex flex-col gap-2 p-2 text-sm">
+          <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
+          <li>
+            {"> "}Frameworks and Libraries: React, Spring Boot, Express, Tailwind
+            CSS
+          </li>
+          <li>
+            {"> "}Platforms and Tools: AWS, Docker, Github Actions, Shopify,
+            Stripe
+          </li>
+        </ul>
+      </div>
     </section>
     {
       /* 
