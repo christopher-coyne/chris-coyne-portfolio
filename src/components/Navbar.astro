@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <nav class="flex flex-row w-full py-4 mb-8">
-  <div class="flex justify-between items-center w-full m-auto max-w-[600px]">
+  <div class="flex justify-between items-center m-auto max-w-[600px] w-[90%]">
     <div class="flex justify-between items-center">
       <a class="link link-primary link-hover font-semibold hover:text-primary" href="/"> Chris Coyne </a>
     </div>
@@ -13,10 +13,10 @@ import { Icon } from "astro-icon/components";
       <button id="themeToggle" aria-label="toggle darkmode" class="btn btn-sm btn-outline btn-square">
         <Icon name="mdi:white-balance-sunny" size={16} />
       </button>
-      <button id="hamburgerMenu" aria-label="open menu" class="btn inline-block md:hidden btn-square">
+      <button id="hamburgerMenu" aria-label="open menu" class="btn md:hidden btn-sm btn-outline btn-square hidden">
         <Icon name="mdi:menu" size={20} class="hamburgerIcon"/>
       </button>
-      <ul class="flex justify-between items-center gap-4">
+      <ul class="flex justify-between items-center gap-2 md:gap-4 text-sm md:text-base">
         <li><a href="/" class="link">About</a></li>
         <li><a href="/art" class="link ">Art</a></li>
         <li><a href="/blog" class="link ">Blog</a></li>
@@ -30,7 +30,6 @@ import { Icon } from "astro-icon/components";
         <li><a href="/blog" class="link link-primary">Blog</a></li>
     </ul>
   </div>
-</div>
 </nav>
 
 <script is:inline>
@@ -82,13 +81,6 @@ import { Icon } from "astro-icon/components";
 </script>
 
 <style>
-
-  .hamburgerIcon {
-    margin-top: 3px;
-  }
-  #modal {
-    display: none;
-  }
   #bottomContainer {
     display: none;
   }
@@ -107,12 +99,5 @@ import { Icon } from "astro-icon/components";
       flex-direction: column;
       gap: 16px;
   }
-}
-  @media (max-width: 1000px) {
-    nav {
-    color: red;
-    width: 90%;
-  }
-  
 }
 </style>
