@@ -53,7 +53,7 @@ li {
 [data-theme="light"] {
   --primary-color: #5f4ebd;
   --primary-color-l1: #dfc6ff;
-  --background-color: rgb(240, 240, 240);
+  --background-color: rgb(237, 237, 237);
   --text-color: #000000;
   --border-color: #000000;
   --shadow-color: rgba(140, 140, 140, 0.5);

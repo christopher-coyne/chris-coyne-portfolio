@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Tag from "../../components/Tag.astro";
 import "../../styles/GlobalStyles.css";
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
 // Fetch the specific post data
 const { slug } = Astro.params;
-const post = await getEntryBySlug("blog", slug);
+const post = await getEntry("blog", slug);
 
 if (!post) {
   throw new Error(`Post not found: ${slug}`);

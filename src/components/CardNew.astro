@@ -8,19 +8,17 @@ interface Props {
 }
 
 import { Icon } from "astro-icon/components";
-import Tag from "./Tag.astro";
-
 const { href, title, body, date, tags } = Astro.props;
 
 console.log("title ", title);
 ---
 
 {/* card for blog posts */}
-<a href={href} class="flex flex-row justify-between rounded-sm group border-2 border-primary/30 hover:bg-primary/5">
+<a href={href} class="flex flex-row justify-between rounded-lg group border-2 border-primary/30 hover:bg-primary/5">
     <div class="flex flex-col gap-2 p-6">
-      <h3 class="font-semibold">
+      <div class="font-semibold title">
         {title}
-      </h3>
+      </div>
       <div class="flex flex-row gap-2 text-sm">
         <div class="flex flex-row gap-2">
             {tags.map((tag) => <div class="badge badge-primary">{tag}</div>)}

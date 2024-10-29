@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
 import "../../styles/GlobalStyles.css";
 
 import { getCollection } from "astro:content";
@@ -10,7 +9,7 @@ const blogPosts = await getCollection("blog");
 ---
 
 <Layout title="Christopher Coyne's Blog">
-  <main class="flex flex-col gap-4 m-auto max-w-[600px]">
+  <main class="flex flex-col gap-4 m-auto max-w-[600px] min-h-[90vh]">
     <h1 class="font-semibold text-xl">Blog</h1>
 
     <div class="flex gap-4">
@@ -27,22 +26,19 @@ const blogPosts = await getCollection("blog");
 
     </div>
     <section>
-      {/*
-      <ComeBackLater>
-        <p>Blog articles coming in the future :)</p>
-      </ComeBackLater>
-    */}
     <div class="divider"></div>
-      <ul id="grid-container">
+      <ul id="blog-container" class="flex flex-col gap-4">
         {
           blogPosts.map((post: any) => (
-            <CardNew
-              title={post.data.title}
-              body={post.data.summary}
-              tags={post.data.tags}
-              href={`/blog/${post.slug}`}
-              date={post.data.date}
-            />
+            <li>
+              <CardNew
+                title={post.data.title}
+                body={post.data.summary}
+                tags={post.data.tags}
+                href={`/blog/${post.slug}`}
+                date={post.data.date}
+              />
+            </li>
           ))
         }
       </ul>
@@ -50,38 +46,19 @@ const blogPosts = await getCollection("blog");
   </main>
 </Layout>
 
-<style>
-  .mainContainer {
-    width: 50%;
-    margin: 32px auto;
-  }
-  .searchContainer {
-    padding: 16px 0px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @media (max-width: 1000px) {
-    .mainContainer {
-    width: 90%;
-  }
-  
-}
-</style>
-
 <script is:inline>
   const searchBar = document.getElementById("searchbar");
-  const blogPostsContainer = document.getElementById("grid-container");
-  const blogPosts = blogPostsContainer.getElementsByClassName(
-    "link-card-container",
+  const blogPostsContainer = document.getElementById("blog-container");
+  const blogPosts = blogPostsContainer.getElementsByTagName(
+    "li",
   );
 
   // Attach an event listener to the search bar
   searchBar.addEventListener("input", (event) => {
     const filter = event.target.value.toLowerCase();
     Array.from(blogPosts).forEach((post) => {
-      const titleElement = post.querySelector("h3");
-      console.log("title element ", titleElement);
+      const titleElement = post.getElementsByClassName("title")[0];
+      console.log("title element ", titleElement.textContent);
       if (titleElement) {
         const title = titleElement.textContent.toLowerCase();
         if (title.includes(filter)) {
