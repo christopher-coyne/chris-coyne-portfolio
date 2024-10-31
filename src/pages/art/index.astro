@@ -5,8 +5,26 @@ import { Icon } from "astro-icon/components";
 
 <Layout title="Christopher Coyne's art">
   <main class="h-[90vh]">
+    {/*
     <a href="https://www.instagram.com/zahir_red/" target="_blank" class="flex items-center justify-center p-8 bg-primary/20 max-w-[400px] m-auto text-2xl rounded-lg animate-fade-in-up">
       <span class="flex gap-6 items-center">Check me out on IG <Icon name="mdi:instagram" size={28}/></span>
     </a>
+    */}
+    <div class="max-w-[600px] m-auto">
+    <section class="flex flex-col gap-4">
+      <div class="flex justify-between">
+        <h2 class="font-semibold text-xl">Artwork</h2>
+        <a href="/blog" class="link">Instagram</a>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="bg-blue-500">1</div>
+        <div class="bg-blue-500">2</div>
+        <div class="bg-blue-500">3</div>
+        <div class="bg-blue-500">4</div>
+        <div class="bg-blue-500">5</div>
+        <div class="bg-blue-500">6</div>
+      </div>
+    </section>
+  </div>
   </main>
 </Layout>

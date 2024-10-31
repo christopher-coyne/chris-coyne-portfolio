@@ -10,6 +10,9 @@ import CardNew from "../components/CardNew.astro"
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
+/*
+possible tags - programming, vidya, design, internet (culture), art, literature, music, personal
+*/
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
@@ -28,17 +31,17 @@ const blogPosts = await getCollection("blog");
         </div>
         <ul class="flex flex-row gap-4">
           <li class="link ">
-            <a href="https://github.com/christopher-coyne" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/christopher-coyne" target="_blank" rel="noopener noreferrer" aria-label="Github">
               <Icon name="mdi:github" size={24} />
             </a>
           </li>
-          <li class="link ">
-            <a href="mailto:christcoyne@gmail.com">
+          <li class="link">
+            <a href="mailto:christcoyne@gmail.com" aria-label="Email">
               <Icon name="mdi:email" size={24} />
             </a>
           </li>
           <li class="link ">
-            <a href="https://www.linkedin.com/in/christopher-coyne/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/christopher-coyne/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Icon name="mdi:linkedin" size={24} />
             </a>
           </li>
@@ -83,7 +86,7 @@ const blogPosts = await getCollection("blog");
     <section class="flex flex-col gap-4">
       <div class="flex justify-between">
         <h2 class="font-semibold">Art and Computer Science</h2>
-        <a href="#" class="link">Artwork</a>
+        <a href="/art" class="link">Artwork</a>
       </div>
       <p class="p-8 bg-primary/20 rounded-lg">
         "I have always imagined that paradise will be a kind of library"
@@ -103,8 +106,8 @@ const blogPosts = await getCollection("blog");
     </section>
     <section class="flex flex-col gap-4">
       <div class="flex justify-between">
-        <h2 class="font-semibold">Posts</h2>
-        <a href="#" class="link">All Posts</a>
+        <h2 class="font-semibold">Blog Posts</h2>
+        <a href="/blog" class="link">All Posts</a>
       </div>
       <ul class="flex flex-col gap-4">
         {
