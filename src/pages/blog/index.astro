@@ -47,12 +47,14 @@ const blogPosts = await getCollection("blog");
 </Layout>
 
 <script is:inline>
+  function init() {
   const searchBar = document.getElementById("searchbar");
   const blogPostsContainer = document.getElementById("blog-container");
   const blogPosts = blogPostsContainer.getElementsByTagName(
     "li",
   );
 
+  if (searchBar) {
   // Attach an event listener to the search bar
   searchBar.addEventListener("input", (event) => {
     const filter = event.target.value.toLowerCase();
@@ -69,4 +71,8 @@ const blogPosts = await getCollection("blog");
       }
     });
   });
+}
+}
+  // init()
+  document.addEventListener("astro:page-load", () => init());
 </script>

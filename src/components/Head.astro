@@ -1,39 +1,6 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
-import { fade } from "astro:transitions";
-import Navbar from "../components/Navbar.astro";
-import Footer from '../components/Footer.astro'
-import "@fontsource/open-sans";
-import Head from "../components/Head.astro";
-import "@fontsource/open-sans/700.css";
-import "@fontsource/open-sans";
-import "@fontsource/poppins";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/open-sans/400-italic.css";
+import { ViewTransitions } from "astro:transitions";
 ---
-
-<!doctype html>
-<html lang="en" transition:animate="none">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <Head />
-  </head>
-  <body transition:animate={fade({ duration: "0.4s" })}>
-    <Navbar />
-    <slot />
-    <Footer />
-  </body>
-</html>
 
 <script is:inline>
     function init() {
@@ -85,23 +52,6 @@ import "@fontsource/open-sans/400-italic.css";
     window.addEventListener("load", handleResize);
 }
 init()
-document.addEventListener("DOMContentLoaded", () => console.log('swapped 1'));
-  document.addEventListener("astro:after-swap", () => init());
-</script>
+  </script>
 
-
-<style>
-  body {
-    font-family: "Open Sans";
-    background-color: var(--background-color);
-  }
-  p {
-    line-height: 1.6;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1.2;
-  }
-</style>
+  <ViewTransitions />

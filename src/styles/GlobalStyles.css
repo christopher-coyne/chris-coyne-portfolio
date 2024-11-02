@@ -28,39 +28,6 @@ li {
   --font-size-base: 16px;
 }
 
-/*
-  cant use css variables for breakpoints, so just list them
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 575px;
-  --breakpoint-md: 750px;
-  --breakpoint-lg: 1000px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1400px;
-  */
-
-[data-theme="dark"] {
-  --primary-color: #6456b4;
-  --primary-color-l1: #43397c; /* l1 is darker, since inverted color pallette */
-  --primary-color-l2: #1d1a31; /* l1 is darker, since inverted color pallette */
-  --background-color: #15171f;
-  --border-color: #595570;
-  --text-color: #eae8f5;
-  --shadow-color: rgba(91, 87, 107, 0.5);
-  --surface-color: #221f31;
-  --link-color: #82c5ff;
-}
-
-[data-theme="light"] {
-  --primary-color: #5f4ebd;
-  --primary-color-l1: #dfc6ff;
-  --background-color: rgb(237, 237, 237);
-  --text-color: #000000;
-  --border-color: #000000;
-  --shadow-color: rgba(140, 140, 140, 0.5);
-  --surface-color: white;
-  --link-color: #0060c7;
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -72,9 +39,23 @@ li {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .animate-fade-in-up {
   opacity: 0;
   animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.1s ease-out forwards;
 }
 
 .delay-100 {

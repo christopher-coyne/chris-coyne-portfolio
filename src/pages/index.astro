@@ -1,10 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/GlobalStyles.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
 import { Icon } from "astro-icon/components";
-import Button from "../components/Button.astro";
 import CardNew from "../components/CardNew.astro"
 
 import { getCollection } from "astro:content";
@@ -16,8 +13,8 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main class="flex flex-col w-[90%] max-w-[600px] m-auto gap-16">
-    <section class="flex flex-col animate-fade-in-up">
+  <main class="flex flex-col w-[90%] max-w-[600px] m-auto gap-16 text-base-content">
+    <section class="flex flex-col">
       <div class="flex flex-col gap-4 items-center">
         <img
           src="/images/mypics/headshot.webp"
@@ -50,18 +47,18 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
     </section>
     <section class="flex flex-col gap-4">
       <div>
-        <h2 class="font-semibold animate-fade-in-up delay-100">About Me</h2>
+        <h2 class="font-semibold">About Me</h2>
       </div>
-      <p class="animate-fade-in-up delay-200">
+      <p>
         I am a software engineer currently working at Pyyne Digital, in NYC. My
         expertise is primarily in full stack development, and I love to design
         and build products from the ground up.
       </p>
-      <p class="animate-fade-in-up delay-300">
+      <p>
         I studied English as an undergraduate at Columbia University, where I
         later obtained a masters degree in computer science.
       </p>
-      <div class="animate-fade-in-up delay-300">
+      <div>
         <p>Some Tech I've been using recently</p>
         <ul class="flex flex-col gap-2 p-2 text-sm">
           <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
