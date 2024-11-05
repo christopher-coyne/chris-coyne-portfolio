@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 import CardNew from "../../components/CardNew.astro";
 
 const blogPosts = await getCollection("blog");
+let publishedPosts = blogPosts.filter(post => post.data.published)
 ---
 
 <Layout title="Christopher Coyne's Blog">
@@ -29,7 +30,7 @@ const blogPosts = await getCollection("blog");
     <div class="divider"></div>
       <ul id="blog-container" class="flex flex-col gap-4">
         {
-          blogPosts.map((post: any) => (
+          publishedPosts.map((post: any) => (
             <li>
               <CardNew
                 title={post.data.title}

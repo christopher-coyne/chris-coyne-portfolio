@@ -18,7 +18,7 @@ import "@fontsource/open-sans/400-italic.css";
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang="en" transition:animate="fade">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -28,26 +28,24 @@ import "@fontsource/open-sans/400-italic.css";
     <title>{title}</title>
     <Head />
   </head>
-  <body transition:animate={fade({ duration: "0.4s" })}>
+  <body>
     <Navbar />
     <slot />
     <Footer />
   </body>
 </html>
 
-<script is:inline>
+<script>
     function init() {
     console.log('running script!')
     let theme = (() => {
       if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
         return localStorage.getItem("theme");
       }
-      if (window.matchMedia("(prefers-color-scheme: night)").matches) {
-        return "night";
-      }
-      return "winter";
+      return "night";
     })();
   
+    console.log('THEME ', theme)
     document.documentElement.setAttribute("data-theme", theme);
   
     const handleToggleClick = () => {
@@ -55,6 +53,7 @@ import "@fontsource/open-sans/400-italic.css";
       const newTheme = theme === "night" ? "winter" : "night";
   
       // Update the theme
+      console.log('setting new theme ', newTheme)
       document.documentElement.setAttribute("data-theme", newTheme);
       theme = newTheme;
   
@@ -64,9 +63,14 @@ import "@fontsource/open-sans/400-italic.css";
   
     document
       .getElementById("themeToggle")
-      .addEventListener("click", handleToggleClick);
+      .addEventListener("click", () => {
+        console.log('CLICKING')
+        handleToggleClick()
+      }
+      );
   
     
+      /*
     const modal = document.getElementById("bottomContainer");
     const modalToggle = document.getElementById("hamburgerMenu");
   
@@ -83,10 +87,11 @@ import "@fontsource/open-sans/400-italic.css";
   
     window.addEventListener("resize", handleResize);
     window.addEventListener("load", handleResize);
+    */
 }
 init()
-document.addEventListener("DOMContentLoaded", () => console.log('swapped 1'));
   document.addEventListener("astro:after-swap", () => init());
+  document.addEventListener("astro:after-swap", () => console.log('astro after swap'))
 </script>
 
 
