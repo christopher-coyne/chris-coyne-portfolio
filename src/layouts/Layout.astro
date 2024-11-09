@@ -4,9 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import { fade } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
-import Footer from '../components/Footer.astro'
+import Footer from "../components/Footer.astro";
 import "@fontsource/open-sans";
 import Head from "../components/Head.astro";
 import "@fontsource/open-sans/700.css";
@@ -18,10 +17,10 @@ import "@fontsource/open-sans/400-italic.css";
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="fade">
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Chris Coyne's Personal Site" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -32,44 +31,42 @@ import "@fontsource/open-sans/400-italic.css";
     <Navbar />
     <slot />
     <Footer />
-  </body>
-</html>
-
-<script>
+  </body><script>
     function init() {
-    console.log('running script!')
-    let theme = (() => {
-      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-        return localStorage.getItem("theme");
+      console.log("running script!");
+      let theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+      })();
+
+      console.log("THEME ", theme);
+      document.documentElement.setAttribute("data-theme", theme ?? "night");
+
+      const handleToggleClick = () => {
+        // Toggle dark mode state
+        const newTheme = theme === "night" ? "winter" : "night";
+
+        // Update the theme
+        console.log("setting new theme ", newTheme);
+        document.documentElement.setAttribute("data-theme", newTheme);
+        theme = newTheme;
+
+        // Save the new theme in localStorage
+        window.localStorage.setItem("theme", newTheme);
+      };
+
+      const themeToggle = document.getElementById("themeToggle");
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          console.log("CLICKING");
+          handleToggleClick();
+        });
       }
-      return "night";
-    })();
-  
-    console.log('THEME ', theme)
-    document.documentElement.setAttribute("data-theme", theme);
-  
-    const handleToggleClick = () => {
-      // Toggle dark mode state
-      const newTheme = theme === "night" ? "winter" : "night";
-  
-      // Update the theme
-      console.log('setting new theme ', newTheme)
-      document.documentElement.setAttribute("data-theme", newTheme);
-      theme = newTheme;
-  
-      // Save the new theme in localStorage
-      window.localStorage.setItem("theme", newTheme);
-    };
-  
-    document
-      .getElementById("themeToggle")
-      .addEventListener("click", () => {
-        console.log('CLICKING')
-        handleToggleClick()
-      }
-      );
-  
-    
+
       /*
     const modal = document.getElementById("bottomContainer");
     const modalToggle = document.getElementById("hamburgerMenu");
@@ -88,25 +85,9 @@ import "@fontsource/open-sans/400-italic.css";
     window.addEventListener("resize", handleResize);
     window.addEventListener("load", handleResize);
     */
-}
-init()
-  document.addEventListener("astro:after-swap", () => init());
-  document.addEventListener("astro:after-swap", () => console.log('astro after swap'))
-</script>
-
-
-<style>
-  body {
-    font-family: "Open Sans";
-    background-color: var(--background-color);
-  }
-  p {
-    line-height: 1.6;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1.2;
-  }
-</style>
+    }
+    init();
+    //ok...
+    document.addEventListener("astro:after-swap", () => init());
+  </script>
+</html>

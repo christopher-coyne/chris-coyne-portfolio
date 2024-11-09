@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 import CardNew from "../../components/CardNew.astro";
 
 const blogPosts = await getCollection("blog");
-let publishedPosts = blogPosts.filter(post => post.data.published)
+let publishedPosts = blogPosts.filter((post) => post.data.published);
 ---
 
 <Layout title="Christopher Coyne's Blog">
@@ -14,7 +14,12 @@ let publishedPosts = blogPosts.filter(post => post.data.published)
     <h1 class="font-semibold text-xl animate-fade-in-up">Blog</h1>
 
     <div class="flex gap-4 animate-fade-in-up delay-100">
-      <input type="text" placeholder="Search" id="searchbar" class="input input-bordered w-full"/>
+      <input
+        type="text"
+        placeholder="Search"
+        id="searchbar"
+        class="input input-bordered w-full"
+      />
       <div>
         <select class="select">
           <option disabled selected>Sort by</option>
@@ -23,11 +28,9 @@ let publishedPosts = blogPosts.filter(post => post.data.published)
         </select>
       </div>
     </div>
-    <div>
-
-    </div>
+    <div></div>
     <section class="animate-fade-in-up delay-200">
-    <div class="divider"></div>
+      <div class="divider"></div>
       <ul id="blog-container" class="flex flex-col gap-4">
         {
           publishedPosts.map((post: any) => (
@@ -49,31 +52,29 @@ let publishedPosts = blogPosts.filter(post => post.data.published)
 
 <script is:inline>
   function init() {
-  const searchBar = document.getElementById("searchbar");
-  const blogPostsContainer = document.getElementById("blog-container");
-  const blogPosts = blogPostsContainer.getElementsByTagName(
-    "li",
-  );
+    const searchBar = document.getElementById("searchbar");
+    const blogPostsContainer = document.getElementById("blog-container");
+    const blogPosts = blogPostsContainer.getElementsByTagName("li");
 
-  if (searchBar) {
-  // Attach an event listener to the search bar
-  searchBar.addEventListener("input", (event) => {
-    const filter = event.target.value.toLowerCase();
-    Array.from(blogPosts).forEach((post) => {
-      const titleElement = post.getElementsByClassName("title")[0];
-      console.log("title element ", titleElement.textContent);
-      if (titleElement) {
-        const title = titleElement.textContent.toLowerCase();
-        if (title.includes(filter)) {
-          post.style.display = "";
-        } else {
-          post.style.display = "none";
-        }
-      }
-    });
-  });
-}
-}
+    if (searchBar) {
+      // Attach an event listener to the search bar
+      searchBar.addEventListener("input", (event) => {
+        const filter = event.target.value.toLowerCase();
+        Array.from(blogPosts).forEach((post) => {
+          const titleElement = post.getElementsByClassName("title")[0];
+          console.log("title element ", titleElement.textContent);
+          if (titleElement) {
+            const title = titleElement.textContent.toLowerCase();
+            if (title.includes(filter)) {
+              post.style.display = "";
+            } else {
+              post.style.display = "none";
+            }
+          }
+        });
+      });
+    }
+  }
   // init()
   document.addEventListener("astro:page-load", () => init());
 </script>

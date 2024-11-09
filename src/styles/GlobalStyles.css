@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    text-transform: none;
+  }
+}
+
 body {
   padding: 0px;
   margin: 0px;

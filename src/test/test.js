@@ -1,0 +1,3 @@
+const xyz = () => {
+  return true;
+};

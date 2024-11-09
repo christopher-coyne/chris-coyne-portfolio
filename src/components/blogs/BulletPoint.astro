@@ -1,9 +1,11 @@
 ---
 interface Props {
-    children: HTMLElement | HTMLElement[]
+  children: HTMLElement | HTMLElement[];
 }
 
 const { children } = Astro.props;
 ---
 
-<li class="flex gap-2"><div class="w-16 h-16 bg-white rounded-full" />{children}</li>
+<li class="flex gap-2">
+  <div class="w-16 h-16 bg-white rounded-full"></div>{children}
+</li>

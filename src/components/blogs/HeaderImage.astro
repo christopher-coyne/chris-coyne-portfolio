@@ -2,15 +2,19 @@
 interface Props {
   src: string;
   subtitle?: string;
-  reference?: string
+  reference?: string;
 }
 
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 const { src, subtitle } = Astro.props;
 ---
 
 <div>
-  <img src={src} alt="Description of image" class="w-full rounded-lg h-[300px]" />
+  <img
+    src={src}
+    alt="Description of image"
+    class="w-full rounded-lg h-[300px]"
+  />
   {subtitle && <p class="text-sm italic pt-2">{subtitle}</p>}
 </div>

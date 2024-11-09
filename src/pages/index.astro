@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/GlobalStyles.css";
 import { Icon } from "astro-icon/components";
-import CardNew from "../components/CardNew.astro"
+import CardNew from "../components/CardNew.astro";
 
 import { getCollection } from "astro:content";
 
@@ -13,7 +13,9 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main class="flex flex-col w-[90%] max-w-[600px] m-auto gap-16 text-base-content">
+  <main
+    class="flex flex-col w-[90%] max-w-[600px] m-auto gap-16 text-base-content"
+  >
     <section class="flex flex-col">
       <div class="flex flex-col gap-4 items-center">
         <img
@@ -27,8 +29,13 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
           <p class="text-sm text-center">Software Engineer and Creator</p>
         </div>
         <ul class="flex flex-row gap-4">
-          <li class="link ">
-            <a href="https://github.com/christopher-coyne" target="_blank" rel="noopener noreferrer" aria-label="Github">
+          <li class="link">
+            <a
+              href="https://github.com/christopher-coyne"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Github"
+            >
               <Icon name="mdi:github" size={24} />
             </a>
           </li>
@@ -37,8 +44,13 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
               <Icon name="mdi:email" size={24} />
             </a>
           </li>
-          <li class="link ">
-            <a href="https://www.linkedin.com/in/christopher-coyne/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <li class="link">
+            <a
+              href="https://www.linkedin.com/in/christopher-coyne/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <Icon name="mdi:linkedin" size={24} />
             </a>
           </li>
@@ -63,8 +75,8 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
         <ul class="flex flex-col gap-2 p-2 text-sm">
           <li>{"> "}Languages: Javascript, Typescript, HTML/CSS, Java</li>
           <li>
-            {"> "}Frameworks and Libraries: React, Spring Boot, Express, Tailwind
-            CSS
+            {"> "}Frameworks and Libraries: React, Spring Boot, Express,
+            Tailwind CSS
           </li>
           <li>
             {"> "}Platforms and Tools: AWS, Docker, Github Actions, Shopify,
@@ -97,8 +109,9 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
         Wilkins, and sought to recreate it using modern AI tools.
       </p>
       <p>
-        I have always been passionate about the visual arts. In the future, I hope to create pieces
-        that combine art and computer science into something new.
+        I have always been passionate about the visual arts. In the future, I
+        hope to create pieces that combine art and computer science into
+        something new.
       </p>
     </section>
     <section class="flex flex-col gap-4">
@@ -126,7 +139,9 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
       <div>
         <h2 class="font-semibold">Collab</h2>
       </div>
-      <div class="flex flex-col gap-2 items-start sm:flex-row sm:justify-between sm:items-center">
+      <div
+        class="flex flex-col gap-2 items-start sm:flex-row sm:justify-between sm:items-center"
+      >
         <p>Always looking to collaborate and network</p>
         <button class="btn btn-outline btn-sm">
           Contact
