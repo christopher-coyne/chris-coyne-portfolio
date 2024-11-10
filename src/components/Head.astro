@@ -4,7 +4,6 @@ import { ViewTransitions } from "astro:transitions";
 
 <script is:inline>
   function init() {
-    console.log("running script!");
     let theme = (() => {
       if (
         typeof localStorage !== "undefined" &&
@@ -12,45 +11,13 @@ import { ViewTransitions } from "astro:transitions";
       ) {
         return localStorage.getItem("theme");
       }
-      return "night";
     })();
-
-    document.documentElement.setAttribute("data-theme", theme);
-
-    const handleToggleClick = () => {
-      // Toggle dark mode state
-      const newTheme = theme === "night" ? "winter" : "night";
-
-      // Update the theme
-      document.documentElement.setAttribute("data-theme", newTheme);
-      theme = newTheme;
-
-      // Save the new theme in localStorage
-      window.localStorage.setItem("theme", newTheme);
-    };
-
-    document
-      .getElementById("themeToggle")
-      .addEventListener("click", handleToggleClick);
-
-    const modal = document.getElementById("bottomContainer");
-    const modalToggle = document.getElementById("hamburgerMenu");
-
-    const handleResize = () => {
-      if (window.innerWidth > 1200) {
-        modal.style.display = "none";
-      }
-    };
-
-    modalToggle.addEventListener("click", () => {
-      const modalStyle = getComputedStyle(modal).display;
-      modal.style.display = modalStyle === "block" ? "none" : "block";
-    });
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", handleResize);
+    document.documentElement.setAttribute("data-theme", theme ?? "night");
   }
   init();
+  document.addEventListener("astro:after-swap", () => {
+    init();
+  });
 </script>
 
 <ViewTransitions />

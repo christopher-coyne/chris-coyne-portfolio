@@ -2,13 +2,12 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
   "eslint.validate": [
+    "astro", // Enable .astro
     "javascript",
     "javascriptreact",
-    "astro", // Enable .astro
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx]
   ]

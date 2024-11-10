@@ -27,67 +27,10 @@ import "@fontsource/open-sans/400-italic.css";
     <title>{title}</title>
     <Head />
   </head>
+
   <body>
     <Navbar />
     <slot />
     <Footer />
-  </body><script>
-    function init() {
-      console.log("running script!");
-      let theme = (() => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-      })();
-
-      console.log("THEME ", theme);
-      document.documentElement.setAttribute("data-theme", theme ?? "night");
-
-      const handleToggleClick = () => {
-        // Toggle dark mode state
-        const newTheme = theme === "night" ? "winter" : "night";
-
-        // Update the theme
-        console.log("setting new theme ", newTheme);
-        document.documentElement.setAttribute("data-theme", newTheme);
-        theme = newTheme;
-
-        // Save the new theme in localStorage
-        window.localStorage.setItem("theme", newTheme);
-      };
-
-      const themeToggle = document.getElementById("themeToggle");
-      if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-          console.log("CLICKING");
-          handleToggleClick();
-        });
-      }
-
-      /*
-    const modal = document.getElementById("bottomContainer");
-    const modalToggle = document.getElementById("hamburgerMenu");
-  
-    const handleResize = () => {
-      if (window.innerWidth > 1200) {
-        modal.style.display = "none";
-      }
-    };
-  
-    modalToggle.addEventListener("click", () => {
-      const modalStyle = getComputedStyle(modal).display;
-      modal.style.display = modalStyle === "block" ? "none" : "block";
-    });
-  
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", handleResize);
-    */
-    }
-    init();
-    //ok...
-    document.addEventListener("astro:after-swap", () => init());
-  </script>
+  </body>
 </html>

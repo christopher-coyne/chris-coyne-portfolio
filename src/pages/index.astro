@@ -7,6 +7,7 @@ import CardNew from "../components/CardNew.astro";
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
+let publishedPosts = blogPosts.filter((post) => post.data.published);
 /*
 possible tags - programming, vidya, design, internet (culture), art, literature, music, personal
 */
@@ -121,7 +122,7 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
       </div>
       <ul class="flex flex-col gap-4">
         {
-          blogPosts.map((post: any) => (
+          publishedPosts.map((post: any) => (
             <li>
               <CardNew
                 title={post.data.title}

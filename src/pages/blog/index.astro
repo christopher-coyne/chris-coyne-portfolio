@@ -20,6 +20,8 @@ let publishedPosts = blogPosts.filter((post) => post.data.published);
         id="searchbar"
         class="input input-bordered w-full"
       />
+      {
+        /*
       <div>
         <select class="select">
           <option disabled selected>Sort by</option>
@@ -27,6 +29,8 @@ let publishedPosts = blogPosts.filter((post) => post.data.published);
           <option>Oldest</option>
         </select>
       </div>
+      */
+      }
     </div>
     <div></div>
     <section class="animate-fade-in-up delay-200">
@@ -50,20 +54,22 @@ let publishedPosts = blogPosts.filter((post) => post.data.published);
   </main>
 </Layout>
 
-<script is:inline>
+<script>
   function init() {
     const searchBar = document.getElementById("searchbar");
     const blogPostsContainer = document.getElementById("blog-container");
-    const blogPosts = blogPostsContainer.getElementsByTagName("li");
+    const blogPosts = blogPostsContainer
+      ? blogPostsContainer.getElementsByTagName("li")
+      : null;
 
-    if (searchBar) {
+    if (searchBar && blogPosts) {
       // Attach an event listener to the search bar
-      searchBar.addEventListener("input", (event) => {
-        const filter = event.target.value.toLowerCase();
+      searchBar.addEventListener("input", (event: Event) => {
+        const target = event.target as unknown as HTMLInputElement;
+        const filter = target.value.toLowerCase();
         Array.from(blogPosts).forEach((post) => {
           const titleElement = post.getElementsByClassName("title")[0];
-          console.log("title element ", titleElement.textContent);
-          if (titleElement) {
+          if (titleElement?.textContent) {
             const title = titleElement.textContent.toLowerCase();
             if (title.includes(filter)) {
               post.style.display = "";
@@ -75,6 +81,5 @@ let publishedPosts = blogPosts.filter((post) => post.data.published);
       });
     }
   }
-  // init()
   document.addEventListener("astro:page-load", () => init());
 </script>

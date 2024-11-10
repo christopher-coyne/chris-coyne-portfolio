@@ -69,3 +69,29 @@ import { Icon } from "astro-icon/components";
     }
   }
 </style>
+
+<script>
+  function init() {
+    const themeToggleButton = document.getElementById("themeToggle");
+
+    if (themeToggleButton) {
+      themeToggleButton.addEventListener("click", function handleToggleClick() {
+
+        let theme = localStorage.getItem("theme") || "winter";
+
+        // Toggle dark mode state
+        const newTheme = theme === "night" ? "winter" : "night";
+
+        // Update the theme
+        document.documentElement.setAttribute("data-theme", newTheme);
+
+        // Save the new theme in localStorage
+        localStorage.setItem("theme", newTheme);
+      });
+    }
+  }
+  init();
+  document.addEventListener("astro:after-swap", () => {
+    init();
+  });
+</script>
