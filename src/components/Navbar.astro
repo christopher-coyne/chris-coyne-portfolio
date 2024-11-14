@@ -77,7 +77,7 @@ import { Icon } from "astro-icon/components";
     if (themeToggleButton) {
       themeToggleButton.addEventListener("click", function handleToggleClick() {
 
-        let theme = localStorage.getItem("theme") || "winter";
+        let theme = localStorage.getItem("theme") || "night"; // night is default
 
         // Toggle dark mode state
         const newTheme = theme === "night" ? "winter" : "night";
