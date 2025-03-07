@@ -24,7 +24,7 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title}>
-  <main class="max-w-[600px] m-auto py-8 w-[90%]">
+  <main class="max-w-[700px] m-auto py-8 w-[90%] text-lg">
     <div class="flex flex-row items-center gap-4 text-sm mb-6">
       <div class="flex justify-between w-full items-center">
         <a href="/blog"
@@ -51,7 +51,8 @@ const { Content } = await post.render();
       <div class="flex-shrink-0">{date}</div>
     </div>
 
-    <section class="flex flex-col gap-6 my-8 leading-relaxed">
+    <section class="flex flex-col gap-6 md:gap-12 my-8 leading-relaxed text-base md:text-lg">
+      <div class="divider divider-primary w-[50%]"></div>
       <Content />
     </section>
   </main>

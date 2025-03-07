@@ -9,6 +9,7 @@ published: true
 import HeaderImage from "../../components/blogs/HeaderImage.astro";
 import ExternalHeaderLink from "../../components/blogs/ExternalHeaderLink.astro";
 import { Icon } from "astro-icon/components";
+import Section from "../../components/blogs/Section.astro";
 
 <div class="divider divider-primary w-[30%]"></div>
 
@@ -17,11 +18,13 @@ Recently, like a lot of developers, I decided to make a blog and portfolio site.
 In thinking about the design I wanted, I prioritized a design that was simple, lightweight, and quick to develop and iterate on. The following were great examples of this:
 
 <div class="divider"></div>
+<Section class="flex flex-col gap-4 md:gap-8">
 <ExternalHeaderLink title="Astro Nano and Astro Sphere" link="/" />
 
 These 2 designs by Mark Horn were my primary influences when creating my own portfolio. They are also great examples of how to use Astro, a static site generator, which I also used to build my own portfolio. What I like about them is how the simplicity is present not only in the designs, but in the code itself. Astro nano uses html and tailwind CSS, with no javascript frameworks. Making it perfect if you need a lightweight blog
 
 <div class="divider"></div>
+</Section>
 <ExternalHeaderLink title="Nono Ma" link="/" />
 
 In addition to having a wicked clean design, Nono has some great content as well. He is a creative technologist researcher, and hosts his podcast as well as many of his sketches on his personal site.
