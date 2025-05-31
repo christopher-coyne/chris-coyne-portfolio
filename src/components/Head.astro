@@ -12,7 +12,7 @@ import { ViewTransitions } from "astro:transitions";
         return localStorage.getItem("theme");
       }
     })();
-    document.documentElement.setAttribute("data-theme", theme ?? "night");
+    document.documentElement.setAttribute("data-theme", theme ?? "dark");
   }
   init();
   document.addEventListener("astro:after-swap", () => {
