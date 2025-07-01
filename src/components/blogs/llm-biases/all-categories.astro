@@ -1,0 +1,13 @@
+---
+// src/pages/index.astro
+import { getEntry } from "astro:content";
+import AllCategoriesList from "./AllCategoriesList.tsx";
+import biasesData from "../../../data/blogs/llm-biases/biases.json";
+
+// Use the imported JSON data directly
+const data = biasesData;
+---
+
+<div>
+  <AllCategoriesList data={data} client:load />
+</div>
