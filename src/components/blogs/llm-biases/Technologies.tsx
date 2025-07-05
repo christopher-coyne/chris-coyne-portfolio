@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import HostingComponent from "./HostingComponent";
 import DatabasesComponent from "./DatabasesComponent";
 import FrontendComponent from "./FrontendComponent";
 import BackendComponent from "./BackendComponent";
 
 const Technologies: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("hosting");
+  const [activeTab, setActiveTab] = useState<string>("frontend");
 
   useEffect(() => {
     console.log("Technologies component mounted!");
   }, []);
 
   const tabs = [
-    { id: "hosting", label: "Hosting" },
     { id: "databases", label: "Databases" },
     { id: "frontend", label: "Frontend" },
     { id: "backend", label: "Backend" },
@@ -48,7 +46,6 @@ const Technologies: React.FC = () => {
 
       {/* Active Component - Only render the selected one */}
       <div className="min-h-[200px]">
-        {activeTab === "hosting" && <HostingComponent />}
         {activeTab === "databases" && <DatabasesComponent />}
         {activeTab === "frontend" && <FrontendComponent />}
         {activeTab === "backend" && <BackendComponent />}
