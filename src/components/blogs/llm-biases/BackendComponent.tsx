@@ -31,8 +31,8 @@ const BackendComponent: React.FC = () => {
         name: "JavaScript/Node.js",
         quantity: 1174 + 85 + 1,
       },
-      { name: "Python", quantity: 127 + 46 + 33 + 4 + 46 + 1 + 1 + 1 }, // Combined Python + Django + FastAPI + Flask-RESTful + Flask + Flask-Blueprint + Flask-SocketIO + Flask-Migrate
-      { name: "Solidity", quantity: 3 + 2 }, // Combined Solidity + Hardhat
+      { name: "Python", quantity: 127 },
+      { name: "Solidity", quantity: 3 },
       { name: "C++", quantity: 1 },
     ].sort((a, b) => b.quantity - a.quantity),
     medium: [
