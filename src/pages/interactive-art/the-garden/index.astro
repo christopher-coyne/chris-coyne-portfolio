@@ -1,0 +1,10 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import TheGardenGallery from "../../../components/interactive-art/TheGardenGallery.tsx";
+---
+
+<Layout title="The Garden">
+  <main class="min-h-screen">
+    <TheGardenGallery client:load />
+  </main>
+</Layout>

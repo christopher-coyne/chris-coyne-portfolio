@@ -7,10 +7,6 @@ import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
 let publishedPosts = blogPosts.filter((post) => post.data.published);
-// Sort by most recent date first
-publishedPosts = publishedPosts.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-);
 /*
 possible tags - programming, vidya, design, internet (culture), art, literature, music, personal
 */
@@ -106,7 +102,7 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
       </p>
       <p>
         During my education, one of the most influential classes I took was
-        "Literature in the Age of AI" taught by professor Dennis Tenen. My eyes
+        “Literature in the Age of AI” taught by professor Dennis Tenen. My eyes
         were opened to the ways that computer science, philosophy, and art could
         intermix and I wanted to contribute in my own way. My final project for
         the class explored the universal language developed by philosopher John
