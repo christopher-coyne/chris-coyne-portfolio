@@ -4,6 +4,7 @@ export default [
   // js.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
   {
+    ignores: ["**/*.mdx"],
     rules: {
       // override/add rules settings here, such as:
       // "astro/no-set-html-directive": "error"

@@ -8,7 +8,6 @@ const FrontendComponent: React.FC = () => {
   const frontendFrameworks = [
     { name: "React", quantity: 4055 },
     { name: "Next.js", quantity: 1146 },
-    { name: "Angular", quantity: 0 },
     { name: "Svelte", quantity: 1 },
     { name: "SvelteKit", quantity: 3 },
     { name: "Astro", quantity: 5 },
@@ -18,7 +17,7 @@ const FrontendComponent: React.FC = () => {
     { name: "Jekyll", quantity: 1 },
     { name: "Django Templates", quantity: 3 },
     { name: "Jinja", quantity: 1 },
-  ];
+  ].sort((a, b) => b.quantity - a.quantity);
 
   const frontendStyleLibraries = [
     { name: "Tailwind CSS", quantity: 2074 + 13 + 24 + 1 + 8 + 1 + 5 + 1 }, // Combined Tailwind CSS + Shadcn UI + Tailwind CSS + Headless UI + Tailwind CSS + Components + DaisyUI + Tailwind CSS + Tailwind CSS + Headless UI + Tailwind CSS + Custom + Tailwind CSS + Tremor
@@ -76,10 +75,10 @@ const FrontendComponent: React.FC = () => {
 
   const difficultyAnalysisData = {
     easy: [
-      { name: "React", quantity: 1314 + 4 + 4 }, // Combined React + React.js + Create React App
+      { name: "React", quantity: 1314 },
       { name: "Next.js", quantity: 248 },
-      { name: "Vue.js", quantity: 12 + 1 + 1 }, // Combined Vue.js + Vue Router + Pinia
-      { name: "HTMX", quantity: 6 + 1 }, // Combined HTMX + HTMX/Alpine.js
+      { name: "Vue.js", quantity: 12 },
+      { name: "HTMX", quantity: 6 + 1 },
       { name: "Astro", quantity: 5 },
       { name: "Alpine.js", quantity: 4 },
       { name: "Hugo", quantity: 3 },
@@ -91,12 +90,12 @@ const FrontendComponent: React.FC = () => {
       { name: "Svelte", quantity: 1 },
     ].sort((a, b) => b.quantity - a.quantity),
     medium: [
-      { name: "React", quantity: 1399 + 3 + 4 + 7 + 1 }, // Combined React + React.js + Create React App + React Native + React Native Elements
+      { name: "React", quantity: 1399 },
       { name: "Next.js", quantity: 418 },
       { name: "Django Templates", quantity: 1 },
     ],
     hard: [
-      { name: "React", quantity: 1342 + 1 + 35 }, // Combined React + React.js + React Native
+      { name: "React", quantity: 1342 },
       { name: "Next.js", quantity: 480 },
       { name: "Electron", quantity: 3 },
       { name: "SvelteKit", quantity: 1 },
@@ -154,9 +153,13 @@ const FrontendComponent: React.FC = () => {
       <p>
         The very surprising part of this, however, is how infrequently other top
         frontend frameworks are recommended by these LLMs. Angular, the 4th most
-        commonly used web framework by professional developers, according to
-        this survey on stack overflow
-        https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe-prof
+        commonly used web framework by professional developers, according to{" "}
+        <a
+          className="text-blue-500 border-b border-blue-500"
+          href="https://survey.stackoverflow.co/2024/technology#most-popular-technologies-webframe-prof"
+        >
+          this survey on stack overflow
+        </a>{" "}
         does not make an appearance ONCE. Well that's actually not quite true.
         Despite never being recommended as a frontend framework, it is mentioned
         heavily in these recommendations, when the LLMs recommend NestJS, and

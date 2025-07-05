@@ -2,7 +2,7 @@
 title: "Biases in LLMs"
 date: "2025-07-05"
 summary: "Are we offloading a bit too much of our thinking?"
-tags: ["Vidya", "Art"]
+tags: ["Programming", "LLMs"]
 published: true
 ---
 
@@ -12,56 +12,44 @@ import Contents from "../../components/blogs/Contents.astro";
 import Section from "../../components/blogs/Section.astro";
 import AllCategories from "../../components/blogs/llm-biases/all-categories.astro";
 import Technologies from "../../components/blogs/llm-biases/technologies.astro";
+import SectionTitle from "../../components/blogs/SectionTitle.astro";
 
-<div class="flex flex-col gap-4">
-  <h1>Overview</h1>
-  <p>
-    Recently, I stumbled across a video on youtube by Maximillian Schwarzmuller,
-    about LLMs. For those of you who aren't familiar, Maximillian Schwarzmuller
-    is a pretty well known content creator specializing in web and mobile
-    development. I remember watching one of his udemy courses almost 5 years ago
-    in react, which gave me a foothold into learning web development, and gave
-    me skills to get my first job. It was unexpected to see him on youtube years
-    later, talking about the nascent LLMs, but that's what drew me to click on
-    his video. (link to it here)
-  </p>
-  <p>
-    In the video, he discusses the recent meteoric rise of LLMs in programming.
-    Although he admits they can lead to productivity gains and are useful as
-    learning resources, he brings up an interesting, and not commonly stated
-    side effect of using these tools for programming. Which is, that as a whole,
-    these LLMs overwhelmingly suggest to use certain technologies for web
-    development, in particular, NextJS, React, Tailwind, and Express. And as a
-    result, this could lead to stagnation in software dev. If everyone uses the
-    same technology, and blindly accepts what the LLM says, how will we get new
-    developments that improve the developer experience? How will any progress be
-    made?
-  </p>
-  <p>
-    I wanted to test this. In order to explore this, I decided to run an
-    experiment. If I came up with a list of project ideas for web development,
-    what would the LLMs recommend? Would they all give the same technology
-    suggestions like SchwarzMuller suggested? Or would they actually be more
-    diverse?
-  </p>
-</div>
+<Section>
+<SectionTitle class="font-bold text-2xl md:text-3xl p-0 m-0">Overview</SectionTitle>
+<>
+Recently, I stumbled across a video on youtube by Maximillian Schwarzmuller, about LLMs. For those of you who aren't familiar, Maximillian Schwarzmuller is a pretty well known content creator specializing in web and mobile development. I remember watching one of his udemy courses almost 5 years ago in react, which gave me a foothold into learning web development, and gave me skills to get my first job. It was unexpected to see him on youtube years later, talking about the nascent LLMs, but that's what drew me to click on his video. <Link href="https://www.youtube.com/watch?v=x3JbuuEz66I&ab_channel=MaximilianSchwarzm%C3%BCller">his video</Link>.
+</>
 
-<div class="flex flex-col gap-4">
-  <h1>All Project Ideas</h1>
-  <p>
-    To test this, I used LLMs, including Claude 3.7, Gemini 2.5, and ChatGPT 4o
-    in order to generate a list of project Ideas. To do so, I started with a
-    list of different domains (e.g. accounting, foreign languages, recipes,
+Although he admits they can lead to productivity gains and are useful as learning
+resources, he brings up an interesting, and not commonly stated side effect of using
+these tools for programming. Which is, that as a whole, these LLMs overwhelmingly
+suggest to use certain technologies for web development, in particular, NextJS, React,
+Tailwind, ShadCN, and Express. And as a result, this could lead to stagnation in software
+development. If everyone uses the same technology, and blindly accepts what the LLM says,
+how will we get new developments that improve the developer experience? How will
+any progress be made?
+
+I wanted to test this. In order to explore this, I decided to run an
+experiment. If I came up with a list of application applications, and asked LLMs for recommendations on the tech stack,
+what would they recommend? Would they all give the same suggestions? Or would they actually be more
+diverse?
+</Section>
+
+
+<Section>
+  <SectionTitle>All Project Ideas</SectionTitle>
+    To test this, I used LLMs, including Claude 3.7, Gemini 2.5, and ChatGPT 4o in order to generate a list of project Ideas. To do so, I started with a list of different domains (e.g. accounting, foreign languages, recipes,
     etc.), and used Gemini 2.5 to generate a list of 9 project ideas for each
     topic, 3 that were easy and approachable for beginners, 3 that were of
     medium complexity, and 3 advanced topic ideas. The entire list is below.
-  </p>
   <AllCategories />
-  <p>
+</Section>
+
+<Section>
+  <SectionTitle class="font-bold text-2xl md:text-3xl">All Project Ideas</SectionTitle>
     From there, I used LLMs to give me high level explanations on how to
     implement all of these project ideas. I extracted the tech stacks suggested
     by these different LLMs, and analyzed them to answer the question of just
     how homogenized the answers would be.
-  </p>
   <Technologies />
-</div>
+</Section>
