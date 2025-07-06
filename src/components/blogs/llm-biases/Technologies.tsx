@@ -24,9 +24,7 @@ const Technologies: React.FC = () => {
   };
 
   return (
-    <div className="p-4 border border-blue-300 rounded-md">
-      <h2 className="text-2xl font-bold mb-4">Technologies</h2>
-
+    <div>
       {/* Tabs */}
       <div className="flex flex-wrap gap-2 mb-4 border-b border-base-300 pb-2">
         {tabs.map((tab) => (

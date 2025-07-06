@@ -98,12 +98,13 @@ const ArtGallery: React.FC<ArtGalleryProps> = ({ artworks }) => {
               style={{ maxWidth: "95vw", maxHeight: "95vh" }}
             />
 
-            {/* Title overlay */}
-            <div className="absolute bottom-4 left-4 right-4 bg-black bg-opacity-50 text-white p-4 rounded-lg">
-              <h3 className="text-xl font-bold text-center">
+            {/*
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-90 text-white p-3 rounded-lg">
+              <h3 className="text-lg font-bold whitespace-nowrap">
                 {selectedArtwork.title}
               </h3>
             </div>
+            */}
           </div>
         </div>
       )}

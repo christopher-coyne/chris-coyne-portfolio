@@ -246,19 +246,25 @@ const DatabasesComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-2xl font-bold text-base-content">
-          Database Technologies
-        </h2>
-        <p className="text-base-content/70 max-w-2xl mx-auto">
-          Explore the popularity and capabilities of major database systems.
-          Each bar represents the relative adoption rate and feature
-          completeness in modern applications.
-        </p>
-      </div>
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        Databases
+      </h3>
 
       <div className="space-y-2">
         {databaseProviders.slice(0, 10).map((provider, index) => (
+          <HorizontalBar
+            key={index}
+            title={provider.name}
+            quantity={provider.quantity}
+          />
+        ))}
+      </div>
+
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        ORMs
+      </h3>
+      <div className="space-y-2">
+        {orms.slice(0, 10).map((provider, index) => (
           <HorizontalBar
             key={index}
             title={provider.name}
@@ -278,16 +284,6 @@ const DatabasesComponent: React.FC = () => {
         though, that postgresql does seem to be the main relational DB choice
         for new projects.
       </p>
-
-      <div className="space-y-2">
-        {orms.slice(0, 10).map((provider, index) => (
-          <HorizontalBar
-            key={index}
-            title={provider.name}
-            quantity={provider.quantity}
-          />
-        ))}
-      </div>
 
       <p>
         Given that Typescript and Python dominate the backend languages

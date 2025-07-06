@@ -74,16 +74,9 @@ const BackendComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-2xl font-bold text-base-content">
-          Backend Technologies
-        </h2>
-        <p className="text-base-content/70 max-w-2xl mx-auto">
-          Explore the popularity and capabilities of major backend frameworks
-          and languages. Each bar represents the relative adoption rate and
-          developer preference in server-side development.
-        </p>
-      </div>
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        Languages
+      </h3>
 
       <div className="space-y-4">
         {backendLanguages.map((language, index) => (
@@ -95,6 +88,9 @@ const BackendComponent: React.FC = () => {
         ))}
       </div>
 
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        Web Frameworks
+      </h3>
       <div className="space-y-2">
         {backendFrameworks.map((framework, index) => (
           <HorizontalBar

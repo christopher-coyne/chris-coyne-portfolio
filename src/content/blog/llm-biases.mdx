@@ -16,9 +16,11 @@ import SectionTitle from "../../components/blogs/SectionTitle.astro";
 
 <Section>
 <SectionTitle class="font-bold text-2xl md:text-3xl p-0 m-0">Overview</SectionTitle>
-<>
+
 Recently, I stumbled across a video on youtube by Maximillian Schwarzmuller, about LLMs. For those of you who aren't familiar, Maximillian Schwarzmuller is a pretty well known content creator specializing in web and mobile development. I remember watching one of his udemy courses almost 5 years ago in react, which gave me a foothold into learning web development, and gave me skills to get my first job. It was unexpected to see him on youtube years later, talking about the nascent LLMs, but that's what drew me to click on his video: <Link href="https://www.youtube.com/watch?v=x3JbuuEz66I&ab_channel=MaximilianSchwarzm%C3%BCller">Is AI Creating a Dev Monoculture?</Link>.
-</>
+</Section>
+
+<Section>
 
 Although he admits they can lead to productivity gains and are useful as learning
 resources, he brings up an interesting, and not commonly stated side effect of using
@@ -38,31 +40,30 @@ diverse?
 
 <Section>
   <SectionTitle>All Project Ideas</SectionTitle>
+
     To test this, I started with a list of different domains (e.g. accounting, foreign languages, recipes,
     etc.), and used Gemini 2.5 to generate a list of 9 project ideas for each
     topic, 3 that were easy and approachable for beginners, 3 that were of
     medium complexity, and 3 advanced topic ideas. The entire list is below.
+
   <AllCategories />
 </Section>
 
 <Section>
-  <SectionTitle class="font-bold text-2xl md:text-3xl">All Project Ideas</SectionTitle>
+  <SectionTitle class="font-bold text-2xl md:text-3xl">Technologies</SectionTitle>
+
     From there, I used LLMs to give me high level explanations on how to implement these project ideas. In particular, I used ChatGPT 4o, Gemini 2.5, and Claude 3.5 Sonnet. In my prompts, I emphasized I wanted a high level overview, but it was also crucial for them to suggest an opinionated tech stack. I wanted to best mimic the way an actual developer would be using these LLMs for brainstorming, while also ensuring that I got back enough of a tech stack to be able to note any biases.  I extracted the tech stacks suggested by these different LLMs, and analyzed them to answer the question of just how homogenized the answers would be.
   <Technologies />
 </Section>
 
 <Section>
-  <SectionTitle class="font-bold text-2xl md:text-3xl">Technologies</SectionTitle>
-  <Technologies />
-</Section>
+<SectionTitle>In Conclusion</SectionTitle>
 
-<Section>
-  <SectionTitle>In Conclusion</SectionTitle>
-    It seems like Max's original prediction did hold. The LLMs were overwhelmingly biased towards the same technologies, namely, React, Next.js, Tailwind, and Express. However, there was a bit more diversity in the database options presented, and ShadCN was actually less recommended than I anticipated, especially due to its meteoric rise in popularity over the last couple of years.
+It seems like Max's original prediction did hold. The LLMs were overwhelmingly biased towards the same technologies, namely, React, Next.js, Tailwind, and Express. However, there was a bit more diversity in the database options presented, and ShadCN was actually less recommended than I anticipated, especially due to its meteoric rise in popularity over the last couple of years.
 
-  Surprisingly, Angular was never recommended (despite its prominence in the enterprise world), and on the backend, PHP, Ruby, and C# Were either never recommended or recommended only a handful of times.
+Surprisingly, Angular was never recommended (despite its prominence in the enterprise world), and on the backend, PHP, Ruby, and C# Were either never recommended or recommended only a handful of times.
 
-   I agree with Max, this is troubling. Although these LLMs aren't necessarily going to lead new developers down the wrong path, it is going to exacerbate an existing problem. Already React and tailwind seem like the defacto choice for new projects, but are they? Do we need a SPA for every project? On the backend, is node.js really the best choice over a language like Go, Elixir, or C#? And is express the best choice when NestJS is more opinionated, and Fastify has better typescript support?
+I agree with Max, this is troubling. Although these LLMs aren't necessarily going to lead new developers down the wrong path, it is going to exacerbate an existing problem. Already React and tailwind seem like the defacto choice for new projects, but are they? Do we need a SPA for every project? On the backend, is node.js really the best choice over a language like Go, Elixir, or C#? And is express the best choice when NestJS is more opinionated, and Fastify has better typescript support?
 
-   At the end of the day, it's hard to know. But I hope we can all keep in mind the systemic biases that these LLMs hold, and scrutinize them a bit more, when we go to them for guidance.
+At the end of the day, it's hard to know. But I hope we can all keep in mind the systemic biases that these LLMs hold, and scrutinize them a bit more, when we go to them for guidance.
 </Section>

@@ -107,20 +107,10 @@ const FrontendComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-2xl font-bold text-base-content">
-          Frontend Technologies
-        </h2>
-        <p className="text-base-content/70 max-w-2xl mx-auto">
-          Explore the popularity and capabilities of major frontend frameworks.
-          Each bar represents the relative market share and developer
-          satisfaction in modern web development.
-        </p>
-      </div>
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        Frontend Frameworks
+      </h3>
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-base-content text-center">
-          Frontend Frameworks
-        </h3>
         {frontendFrameworks.map((framework, index) => (
           <HorizontalBar
             key={index}
@@ -129,10 +119,11 @@ const FrontendComponent: React.FC = () => {
           />
         ))}
       </div>
+
+      <h3 className="text-lg font-semibold text-base-content text-center">
+        Styling Solutions
+      </h3>
       <div className="mt-8 space-y-2">
-        <h3 className="text-lg font-semibold text-base-content text-center">
-          Frontend Style Libraries
-        </h3>
         {frontendStyleLibraries.map((library, index) => (
           <HorizontalBar
             key={index}
