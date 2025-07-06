@@ -164,8 +164,8 @@ const TheGardenGallery: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
       {/* Current Node Display */}
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="relative">
+      <div className="flex-1 flex flex-col items-center justify-center border-2 border-gray-300 rounded-lg p-4">
+        <div className="relative border-2 border-gray-300 rounded-lg p-4">
           <img
             src={currentImage.src}
             alt={currentImage.alt}
@@ -190,29 +190,14 @@ const TheGardenGallery: React.FC = () => {
               {images[nodeIndex].title}
             </button>
           ))}
-
-          {/* Node Title */}
-          <div className="mt-4 text-center">
-            <h2 className="text-2xl font-bold text-gray-800">
-              {currentImage.title}
-            </h2>
+          {/* Node Description */}
+          <div className="text-center bg-black rounded-lg p-4">
+            <p className="text-white leading-relaxed">
+              {currentImage.description}
+            </p>
           </div>
         </div>
-
-        {/* Node Description */}
-        <div className="mt-6 max-w-3xl text-center">
-          <p className="text-gray-700 leading-relaxed">
-            {currentImage.description}
-          </p>
-        </div>
       </div>
-
-      {/* Show message if no connections */}
-      {connectedNodes.length === 0 && (
-        <div className="mt-8 text-center">
-          <p className="text-gray-500">This node has no connections</p>
-        </div>
-      )}
     </div>
   );
 };
