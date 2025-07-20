@@ -35,14 +35,20 @@ const DifficultyAnalysis: React.FC<DifficultyAnalysisProps> = ({
     {
       name: "Easy",
       topTechs: getTop3Technologies(easy),
+      bgColor: "bg-green-500/20",
+      borderColor: "border-green-500",
     },
     {
       name: "Medium",
       topTechs: getTop3Technologies(medium),
+      bgColor: "bg-orange-500/20",
+      borderColor: "border-orange-500",
     },
     {
       name: "Hard",
       topTechs: getTop3Technologies(hard),
+      bgColor: "bg-red-500/20",
+      borderColor: "border-red-500",
     },
   ];
 
@@ -58,9 +64,11 @@ const DifficultyAnalysis: React.FC<DifficultyAnalysisProps> = ({
         {difficultySections.map((difficulty) => (
           <div
             key={difficulty.name}
-            className={`flex-1 rounded-lg p-6 border border-black`}
+            className="flex-1 rounded-lg p-6 border border-gray-300"
           >
-            <h4 className="text-lg font-medium text-base-content mb-4 text-center">
+            <h4
+              className={`text-lg font-medium text-white mb-4 text-center rounded-lg py-2 px-4 ${difficulty.bgColor.replace("/20", "")} ${difficulty.borderColor}`}
+            >
               {difficulty.name}
             </h4>
             <div className="space-y-3">
