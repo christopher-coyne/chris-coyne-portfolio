@@ -6,14 +6,7 @@ tags: ["Vidya", "Art"]
 published: true
 ---
 
-import HeaderImage from "../../components/blogs/HeaderImage.astro";
-import Link from "../../components/blogs/Link.astro";
-import Contents from "../../components/blogs/Contents.astro";
-import Section from "../../components/blogs/Section.astro";
-import SectionTitle from "../../components/blogs/SectionTitle.astro";
-
-<Section class="flex flex-col gap-4 md:gap-8">
-<SectionTitle class="font-bold text-2xl md:text-3xl">The Game</SectionTitle>
+## The Game
 
 I'm not much of a gamer. In fact, until pretty recently my Steam library only had 2 games. Bioshock Infinite, which I tossed to the side after getting frustrated with the game mechanics, and Uberstrike, a free FPS that I toyed around with in high school. What I never enjoyed about games was the pressure. Even with easy games, it always felt as though there was a sense of urgency. To kill an enemy, deliver item A to point B... whatever it was, there was always something to do, an objective to complete.
 
@@ -23,54 +16,43 @@ But for the first time in years, I downloaded Steam again, reset my password, an
 
 Babbdi.
 
-My interest was first piqued after watching Jacob Geller's incredible video essay - <Link href="https://www.youtube.com/watch?v=Q85l1Fenc5w">Games that Don't fake the space</Link>. Babbdi, as well as all of the games he covered, were like these miniature, intriguing universes - places of introspection, awe, and even a bit of discomfort. The focus of his essay was not the actual game play or mechanics of these games, but how the use of space, and the player's transition from one area to another, created little capsules of introspection between the gameplay. It was during this video that Babbdi caught my eye. The art style was downright grotesque, and the desolate city seemed like a great place to explore for its own sake. I barely even knew the plot of the game itself, the only impressions I had were from the limited gameplay on Jacob's video. But that was enough to hook me in.
+My interest was first piqued after watching Jacob Geller's incredible video essay - [Games that Don't fake the space](https://www.youtube.com/watch?v=Q85l1Fenc5w). Babbdi, as well as all of the games he covered, were like these miniature, intriguing universes - places of introspection, awe, and even a bit of discomfort. The focus of his essay was not the actual game play or mechanics of these games, but how the use of space, and the player's transition from one area to another, created little capsules of introspection between the gameplay. It was during this video that Babbdi caught my eye. The art style was downright grotesque, and the desolate city seemed like a great place to explore for its own sake. I barely even knew the plot of the game itself, the only impressions I had were from the limited gameplay on Jacob's video. But that was enough to hook me in.
 
-<HeaderImage
-  src="/images/blog/1/character_1.png"
-  subtitle="yeah the art style is kinda weird, huh?"
-/>
+![Character from Babbdi - yeah the art style is kinda weird, huh?](/images/blog/babbdi/character_1.png)
 
 For those of you who have not played this game, Babbdi has a straightforward plot. You spawn in the middle of this concrete mess of a city, and your mission is to find a train ticket, go to the train station, and leave town. Sounds simple, and it is - beating this game will probably take you less than an hour. Simply getting a ticket and going to the station does sound easy, but your adventure through the city is impeded by a labyrinth of buildings, random staircases, stagnant brown water, and meandering streets and overlooks. As well as a general lack of hints - the map is confusing, the NPCs arent of much help, and the instructions that are given by the NPCs are vague and leave you without direction. And maybe thats the point - the goal of the game is to explore the city, not beat it as quickly as possible.
 
 From the screenshots, it's quite clear this is a weird game. And I am certainly not the only one to think that. The comments I have read from other players range from horror, to confusion, to discomfort at the visuals. I mean, look at these characters, something is definitely not right in the city of Babbdi.
 
-<HeaderImage src="/images/blog/1/babbdi_weird.png" />
+![Weird characters from Babbdi](/images/blog/babbdi/babbdi_weird.png)
 
 And yeah, the obvious thing to point to when trying to say that "Babbdi is a weird game" is the ghoulish NPCs, and the brutalist, confusing architecture of the city. But there is also a more complex reason behind why Babbdi is so offputting to people who play it. One that has to do with a rather topical theme - AI generated media.
 
-<div class="divider"></div>
-</Section>
+---
 
-<Section class="flex flex-col gap-8">
-<SectionTitle class="font-bold text-3xl">Images and Artifical Intelligence</SectionTitle>
+## Images and Artificial Intelligence
 
 Babbdi heavily utilizes AI generated media in its environment. Some of these instances are plain to see, take a look at this sign near the train station. You can kind of make out the intention of the text, it seems like it's imitating the phrase "train station" - but it's clearly missing the mark.
 
-<HeaderImage src="/images/blog/1/train-station-sign.png" />
+![Train station sign with AI-generated text](/images/blog/babbdi/train-station-sign.png)
 
 Same with the text telling you how to get to the travel agent. Even the game's menu itself, what does "plame" even mean? It looks exactly like AI generated text - it resembles a real word (combination of "play" and "game", I imagine), but a human would never make such a bizarre typo. Just browsing some images of midjourney renders though, we can notice similar AI generated text:
 
-<HeaderImage
-  src="/images/blog/1/ai_text.png"
-  subtitle="AI trying to draw 'cooking'"
-/>
+![AI trying to draw 'cooking'](/images/blog/babbdi/ai_text.png)
 
 There are instances of AI generated images in the game itself. A TV nestled in one of the concrete buildings displays photos of Macron eating peas. On the edge of the map, only accessible if you get a special propeller item, you can see framed pictures of AI artwork.
 
-<HeaderImage
-  src="/images/blog/1/out_of_bounds_ship.png"
-  subtitle="These framed photos are certainly AI generated"
-/>
+![These framed photos are certainly AI generated](/images/blog/babbdi/out_of_bounds_ship.png)
 
 And this shouldn't be a shock - its not just these examples. The whole vibe of the city seems AI generated.
 
 Part of the reason something seems to be AI generated is the confusion of form with function. Back in the early days of AI generated images (over 2 years ago), this was much more apparent. But the most famous and referenced example is with hands. The AI understands the "form" of hands. It knows there are fingers, palms, and joints, and nails, but it doesn't really understand "what" a hand is, and as a result, you get these monstrosities.
 
-<HeaderImage src="/images/blog/1/ai_hands.webp" />
+![AI-generated hands showing the uncanny valley effect](/images/blog/babbdi/ai_hands.webp)
 
 It understands the hand as a collection of shapes and colors. It doesn't understand the physics of joints, how fingers can be manipulated, and the purpose of hands in relation to humans. When AI generated images were more primitive, this was exemplified in the meme "name one object in this photo".
 
-<HeaderImage src="/images/blog/1/name_one_object.jpg" />
+![Name one object in this photo - AI-generated image that looks familiar but makes no sense](/images/blog/babbdi/name_one_object.jpg)
 
 It almost breaks my brain to look at this. These shapes and colors and textures are familiar, and LOOK real, but what kind of function do they have here? This is an intelligence that understands HOW things look, but not WHY things are the way they are.
 
@@ -80,11 +62,9 @@ This strange familiarity and "uncanny valley" effect runs deep. Take a look at t
 
 This is present in the title itself. The strange title/city name, "Babbdi" sounds a lot like "babble". Well, what is babble? It's children imitating human speech, without understanding the deeper meaning behind it. Anyone can do this, but it's most obvious in AI generated artwork, and the strange cityscape and gameplay of Babbdi itself. The whole city and quest you are on has this perplexing familiarity to it. Like the entire game was constructed by an intelligence mimicking human actions, without understanding the complex reasons behind them.
 
-<div class="divider"></div>
-</Section>
+---
 
-<Section class="flex flex-col gap-8">
-<SectionTitle class="font-bold text-3xl">The Implications</SectionTitle>
+## The Implications
 
 So, what does this mean for the game?
 
@@ -114,27 +94,11 @@ Maybe there is a more subtle explanation. That for the inhabitants, there simply
 
 And who are you, in the game? Do we ever get an explanation? Maybe you are someone who does not belong in this world that seems so strange and eerie and haunting to the player. You are not threatened in this city, you are just sensitive to how very different it is from your own; Babbdi is a city and population with a completely different form of thinking. And you are quite aware that you don't belong.
 
-<div class="divider"></div>
-</Section>
-<div class="flex flex-col gap-4">
-<h1 class="font-semibold">Links:</h1>
-<div class="flex flex-col gap-2">
-<Link href="https://www.youtube.com/watch?v=OF8dxxqSectionTitlef8&ab_channel=TheLibrarian">
-The Librarian's Babbdi Gameplay
+---
 
-   </Link>
-<Link href="https://www.reddit.com/r/midjourney/comments/10f6a1d/is_there_a_way_for_midjourney_to_make_a_text/#lightbox">
-     AI Generated Text
-   </Link>
+## Links:
 
-{" "}
-
-<Link href="https://www.youtube.com/watch?v=XmOr-YFPRoM&ab_channel=SpookyandComfy">
-  Spooky and Comfy's Babbdi Gameplay
-</Link>
-
-<Link href="https://www.youtube.com/watch?v=iwjPpvNSHvY&ab_channel=Vinesauce%3ATheFullSauce">
-  Vinesauce's Babbdi Gameplay
-</Link>
-</div>
-</div>
+- [The Librarian's Babbdi Gameplay](https://www.youtube.com/watch?v=OF8dxxqSectionTitlef8&ab_channel=TheLibrarian)
+- [AI Generated Text](https://www.reddit.com/r/midjourney/comments/10f6a1d/is_there_a_way_for_midjourney_to_make_a_text/#lightbox)
+- [Spooky and Comfy's Babbdi Gameplay](https://www.youtube.com/watch?v=XmOr-YFPRoM&ab_channel=SpookyandComfy)
+- [Vinesauce's Babbdi Gameplay](https://www.youtube.com/watch?v=iwjPpvNSHvY&ab_channel=Vinesauce%3ATheFullSauce)

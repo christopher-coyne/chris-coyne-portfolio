@@ -61,14 +61,39 @@ const artworks = [
   { src: "/images/art/node-j.png", title: "Node J", alt: "Node J artwork" },
   { src: "/images/art/node-k.png", title: "Node K", alt: "Node K artwork" },
 ];
+
+// Get initial 6 artworks
+const initialArtworks = artworks.slice(0, 4);
 ---
 
 <Layout title="Christopher Coyne's art">
   <main class="flex flex-col w-[90%] max-w-[700px] m-auto">
-    <div class="container mx-auto px-4">
-      <div class="mb-8 flex items-center justify-between">
-        <h2 class="text-2xl font-bold">Traditional Art</h2>
+    <div class="container mx-auto">
+      <!-- <div class="mb-16">
+        <h2 class="text-2xl font-bold mb-6">Interactive Art</h2>
+        <a
+          href="/interactive-art/the-garden"
+          class="block border-2 border-primary/30 rounded-lg p-6 hover:bg-primary/5 transition-colors"
+        >
+          <h3 class="text-xl font-semibold mb-2">The Garden</h3>
+          <p class="text-base-content/80">
+            Point-and-click. Inspired by Andrew Marvell's 'The Garden'.
+          </p>
+        </a>
+      </div> -->
 
+      <div
+        class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0"
+      >
+        <h2 class="text-2xl font-bold">Traditional Art</h2>
+      </div>
+
+      <ArtGallery artworks={artworks} client:load />
+    </div>
+  </main>
+</Layout>
+
+<!--
         <a
           href="https://www.instagram.com/zahir_red/"
           target="_blank"
@@ -78,9 +103,4 @@ const artworks = [
             Check me out on IG <Icon name="mdi:instagram" size={24} />
           </span>
         </a>
-      </div>
-
-      <ArtGallery artworks={artworks} client:load />
-    </div>
-  </main>
-</Layout>
+-->
