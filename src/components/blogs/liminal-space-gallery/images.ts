@@ -235,5 +235,41 @@ const redditImages: LiminalImage[] = [
   },
 ];
 
-export const images: LiminalImage[] = [...redditImages, ...discordImages];
-// an-office-cube-at-the-end-of-the-meadow-v0-tedw3tv0diud1
+const pinterestImages: LiminalImage[] = [
+  {
+    src: "/images/blog/liminal-space-gallery/pinterest/4c36bc5ba89027db712432f894f09548.jpg",
+    alt: "Liminal image",
+    link: "https://www.pinterest.com/pin/630926229071263501/",
+    origin: "pinterest",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/pinterest/ab60b107786a1c315e56703f71f2e255.jpg",
+    alt: "Liminal image",
+    link: "https://www.pinterest.com/pin/630926229077579435/",
+    origin: "pinterest",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/pinterest/a5d3e947840fa5569949d0cef0ed9662.jpg",
+    alt: "Liminal image",
+    link: "https://www.pinterest.com/pin/630926229052070498/",
+    origin: "pinterest",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/pinterest/d5204044fc4f915161a4c1dbce17f44c.jpg",
+    alt: "Liminal image",
+    link: "https://www.pinterest.com/pin/3940718419682547/",
+    origin: "pinterest",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/pinterest/9f8de14e7855e0e18294f547db7bb481.jpg",
+    alt: "Liminal image",
+    link: "https://www.pinterest.com/pin/630926229056073293/",
+    origin: "pinterest",
+  },
+];
+
+export const images: LiminalImage[] = [
+  ...redditImages,
+  ...discordImages,
+  ...pinterestImages,
+];
