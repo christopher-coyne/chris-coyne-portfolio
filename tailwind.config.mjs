@@ -10,7 +10,7 @@ export default {
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
-    themes: ["light", "dark", "night", "winter"], // night and winter
+    themes: ["night", "winter"], // night and winter, night is default
   },
 };
 
