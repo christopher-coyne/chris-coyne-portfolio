@@ -18,7 +18,7 @@ function formatDate(dateStr: string) {
 ---
 
 <Layout title="Christopher Coyne's Blog">
-  <main class="max-w-[620px] w-[90%] m-auto min-h-[90vh] pb-32">
+  <main class="max-w-[720px] w-[90%] m-auto min-h-[90vh] pb-32">
 
     <header class="mb-12">
       <h1 class="page-title">Blog</h1>
@@ -48,12 +48,12 @@ function formatDate(dateStr: string) {
               <a
                 href={`/blog/${post.slug}`}
                 class:list={[
-                  "group flex items-baseline justify-between py-4 transition-colors duration-200 hover:text-foreground-muted",
+                  "group flex items-baseline justify-between py-4",
                   i < publishedPosts.length - 1 && "border-b border-border/50"
                 ]}
               >
                 <div class="min-w-0">
-                  <span class="text-[16px] leading-snug title">{post.data.title}</span>
+                  <span class="text-[16px] leading-snug title group-hover:underline">{post.data.title}</span>
                   {post.data.summary && (
                     <span class="text-[14px] text-foreground-muted block mt-1">{post.data.summary}</span>
                   )}
@@ -140,8 +140,8 @@ function formatDate(dateStr: string) {
     font-weight: 500;
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
-    background: var(--color-border);
-    color: #d946ef;
+    background: #f0abfc;
+    color: #000;
   }
 </style>
 

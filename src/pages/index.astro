@@ -21,11 +21,13 @@ const recentArt = [
   { src: "/images/art/Falling-Through.jpg", title: "Falling Through", alt: "Falling Through artwork" },
   { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes", alt: "Birds And Fishes artwork" },
   { src: "/images/art/Creation.jpg", title: "Creation", alt: "Creation artwork" },
+  { src: "/images/art/Palms.jpg", title: "Palms", alt: "Palms artwork" },
+  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light", alt: "Remain In Light artwork" },
 ];
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main class="max-w-[620px] w-[90%] m-auto text-foreground pb-32">
+  <main class="max-w-[720px] w-[90%] m-auto text-foreground pb-32">
 
     <!-- Hero -->
     <section class="mb-20 relative pl-8">
@@ -41,7 +43,7 @@ const recentArt = [
           <p class="text-foreground text-[16px] mt-1">Programmer & Creator</p>
         </div>
       </div>
-      <p class="text-[18px] leading-[1.7] max-w-[520px]">
+      <p class="text-[18px] leading-[1.7]">
         I'm a software engineer at Pyyne Digital in NYC.
         I love designing and building products from the ground up —
         mostly with TypeScript, React, and Node. In my free time, I write articles about tech and internet culture, and make art.
@@ -105,7 +107,7 @@ const recentArt = [
         <h2 class="section-heading">Art</h2>
         <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground transition-colors duration-200">See all &rarr;</a>
       </div>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-3 gap-4">
         {recentArt.map((artwork) => (
           <a href="/art" class="group">
             <div class="aspect-square overflow-hidden">
