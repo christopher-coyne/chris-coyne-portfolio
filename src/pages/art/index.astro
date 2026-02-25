@@ -1,54 +1,19 @@
 ---
-import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
-import ArtGallery from "../../components/art/ArtGallery.tsx";
 
-// List of all artwork in the public/images/art folder
 const artworks = [
   { src: "/images/art/Bull.jpg", title: "Bull", alt: "Bull artwork" },
-  {
-    src: "/images/art/Falling-Through.jpg",
-    title: "Falling Through",
-    alt: "Falling Through artwork",
-  },
-  {
-    src: "/images/art/Birds-And-Fishes.jpg",
-    title: "Birds And Fishes",
-    alt: "Birds And Fishes artwork",
-  },
-  {
-    src: "/images/art/Creation.jpg",
-    title: "Creation",
-    alt: "Creation artwork",
-  },
+  { src: "/images/art/Falling-Through.jpg", title: "Falling Through", alt: "Falling Through artwork" },
+  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes", alt: "Birds And Fishes artwork" },
+  { src: "/images/art/Creation.jpg", title: "Creation", alt: "Creation artwork" },
   { src: "/images/art/Palms.jpg", title: "Palms", alt: "Palms artwork" },
-  {
-    src: "/images/art/Remain-In-Light.jpg",
-    title: "Remain In Light",
-    alt: "Remain In Light artwork",
-  },
-  {
-    src: "/images/art/Prospero.jpg",
-    title: "Prospero",
-    alt: "Prospero artwork",
-  },
+  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light", alt: "Remain In Light artwork" },
+  { src: "/images/art/Prospero.jpg", title: "Prospero", alt: "Prospero artwork" },
   { src: "/images/art/Memory.jpg", title: "Memory", alt: "Memory artwork" },
-  {
-    src: "/images/art/The-Angel.jpg",
-    title: "The Angel",
-    alt: "The Angel artwork",
-  },
-  {
-    src: "/images/art/bull-distort1.png",
-    title: "Bull Distort 1",
-    alt: "Bull Distort 1 artwork",
-  },
+  { src: "/images/art/The-Angel.jpg", title: "The Angel", alt: "The Angel artwork" },
+  { src: "/images/art/bull-distort1.png", title: "Bull Distort 1", alt: "Bull Distort 1 artwork" },
   { src: "/images/art/bull-1.png", title: "Bull 1", alt: "Bull 1 artwork" },
-  {
-    src: "/images/art/bull-mutated.png",
-    title: "Bull Mutated",
-    alt: "Bull Mutated artwork",
-  },
+  { src: "/images/art/bull-mutated.png", title: "Bull Mutated", alt: "Bull Mutated artwork" },
   { src: "/images/art/node-a.png", title: "Node A", alt: "Node A artwork" },
   { src: "/images/art/node-b.png", title: "Node B", alt: "Node B artwork" },
   { src: "/images/art/node-c.png", title: "Node C", alt: "Node C artwork" },
@@ -61,46 +26,135 @@ const artworks = [
   { src: "/images/art/node-j.png", title: "Node J", alt: "Node J artwork" },
   { src: "/images/art/node-k.png", title: "Node K", alt: "Node K artwork" },
 ];
-
-// Get initial 6 artworks
-const initialArtworks = artworks.slice(0, 4);
 ---
 
 <Layout title="Christopher Coyne's art">
-  <main class="flex flex-col w-[90%] max-w-[700px] m-auto">
-    <div class="container mx-auto">
-      <!-- <div class="mb-16">
-        <h2 class="text-2xl font-bold mb-6">Interactive Art</h2>
-        <a
-          href="/interactive-art/the-garden"
-          class="block border-2 border-primary/30 rounded-lg p-6 hover:bg-primary/5 transition-colors"
+  <main class="max-w-[620px] w-[90%] m-auto pb-32">
+
+    <header class="mb-12">
+      <h1 class="page-title">Art</h1>
+      <p class="text-foreground-muted text-[16px] mt-2">Traditional and digital work.</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {artworks.map((artwork) => (
+        <div
+          class="art-item cursor-pointer"
+          data-src={artwork.src}
+          data-alt={artwork.alt}
         >
-          <h3 class="text-xl font-semibold mb-2">The Garden</h3>
-          <p class="text-foreground-muted">
-            Point-and-click. Inspired by Andrew Marvell's 'The Garden'.
-          </p>
-        </a>
-      </div> -->
-
-      <div
-        class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0"
-      >
-        <h2 class="text-2xl font-bold">Traditional Art</h2>
-      </div>
-
-      <ArtGallery artworks={artworks} client:load />
+          <div class="aspect-square overflow-hidden">
+            <img
+              src={artwork.src}
+              alt={artwork.alt}
+              class="w-full h-full object-cover art-img"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-sm text-foreground-muted mt-2">{artwork.title}</p>
+        </div>
+      ))}
     </div>
+
+    <!-- Modal -->
+    <div id="artModal" class="art-modal">
+      <button id="closeModal" class="modal-close" aria-label="Close modal">&times;</button>
+      <img id="modalImg" src="" alt="" class="modal-img" />
+    </div>
+
   </main>
 </Layout>
 
-<!--
-        <a
-          href="https://www.instagram.com/zahir_red/"
-          target="_blank"
-          class="text-foreground underline hover:text-foreground-muted transition-colors"
-        >
-          <span class="flex gap-3 items-center">
-            Check me out on IG <Icon name="mdi:instagram" size={24} />
-          </span>
-        </a>
--->
+<style>
+  .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .art-img {
+    transition: opacity 0.3s ease;
+  }
+
+  .art-item:hover .art-img {
+    opacity: 0.8;
+  }
+
+  .art-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .art-modal.open {
+    display: flex;
+  }
+
+  .modal-img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 51;
+    line-height: 1;
+  }
+
+  .modal-close:hover {
+    color: white;
+  }
+</style>
+
+<script>
+  function init() {
+    const modal = document.getElementById("artModal");
+    const modalImg = document.getElementById("modalImg") as HTMLImageElement;
+    const closeBtn = document.getElementById("closeModal");
+    const items = document.querySelectorAll(".art-item");
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-src") || "";
+        const alt = item.getAttribute("data-alt") || "";
+        if (modalImg && modal) {
+          modalImg.src = src;
+          modalImg.alt = alt;
+          modal.classList.add("open");
+        }
+      });
+    });
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener("click", () => modal.classList.remove("open"));
+    }
+
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("open");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") modal.classList.remove("open");
+      });
+    }
+  }
+
+  init();
+  document.addEventListener("astro:after-swap", () => init());
+</script>

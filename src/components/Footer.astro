@@ -1,29 +1,46 @@
-<div
-  class="flex flex-row w-full py-8 mt-8 text-sm text-foreground-muted border-t border-border"
->
-  <div class="max-w-[700px] w-[90%] sm:w-full flex justify-between m-auto">
-    <div>© 2024 | Christopher Coyne</div>
-    <div>
-      <ul class="flex gap-4 flex-col sm:flex-row">
-        <li>
-          <a
-            href="https://github.com/christopher-coyne"
-            target="_blank"
-            rel="noopener noreferrer">Github</a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/christopher-coyne/"
-            target="_blank"
-            rel="noopener noreferrer">LinkedIn</a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/zahir_red/"
-            target="_blank"
-            rel="noopener noreferrer">Instagram</a>
-        </li>
-      </ul>
-    </div>
+<footer class="w-full mt-8">
+  <div class="max-w-[620px] w-[90%] m-auto py-8 flex justify-between items-center footer-content">
+    <span>&copy; 2024 Christopher Coyne</span>
+    <ul class="flex gap-5">
+      <li>
+        <a
+          href="https://github.com/christopher-coyne"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link">Github</a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/christopher-coyne/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link">LinkedIn</a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/zahir_red/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link">Instagram</a>
+      </li>
+    </ul>
   </div>
-</div>
+</footer>
+
+<style>
+  .footer-content {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--color-text);
+  }
+</style>

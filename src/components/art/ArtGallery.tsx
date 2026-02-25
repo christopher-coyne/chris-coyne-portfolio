@@ -35,43 +35,41 @@ const ArtGallery: React.FC<ArtGalleryProps> = ({ artworks }) => {
 
   return (
     <>
-      {/* Art Gallery Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {artworks.map((artwork, index) => (
           <div
             key={index}
-            className="group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-white"
+            className="group cursor-pointer overflow-hidden"
             onClick={() => openModal(artwork)}
           >
-            <div className="aspect-square bg-gray-100 overflow-hidden">
+            <div className="aspect-square overflow-hidden">
               <img
                 src={artwork.src}
                 alt={artwork.alt}
-                className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                className="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
                 loading="lazy"
               />
             </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-lg text-gray-800 truncate">
-                {artwork.title}
-              </h3>
-            </div>
+            <p
+              className="text-sm mt-2"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {artwork.title}
+            </p>
           </div>
         ))}
       </div>
 
-      {/* Modal */}
       {selectedArtwork && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           onClick={handleModalClick}
           onKeyDown={handleKeyDown}
           tabIndex={0}
         >
           <div className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center">
-            {/* Close button */}
             <button
-              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-3 z-10 transition-all duration-200"
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors duration-200"
               onClick={closeModal}
               aria-label="Close modal"
             >
@@ -90,21 +88,12 @@ const ArtGallery: React.FC<ArtGalleryProps> = ({ artworks }) => {
               </svg>
             </button>
 
-            {/* Full-size image */}
             <img
               src={selectedArtwork.src}
               alt={selectedArtwork.alt}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              className="max-w-full max-h-full object-contain"
               style={{ maxWidth: "95vw", maxHeight: "95vh" }}
             />
-
-            {/*
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-90 text-white p-3 rounded-lg">
-              <h3 className="text-lg font-bold whitespace-nowrap">
-                {selectedArtwork.title}
-              </h3>
-            </div>
-            */}
           </div>
         </div>
       )}

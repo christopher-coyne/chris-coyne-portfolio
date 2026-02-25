@@ -13,32 +13,53 @@ function formatDate(dateStr: string) {
   const d = new Date(dateStr);
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
+
+const recentPosts = publishedPosts.slice(0, 4);
+
+const recentArt = [
+  { src: "/images/art/Bull.jpg", title: "Bull", alt: "Bull artwork" },
+  { src: "/images/art/Falling-Through.jpg", title: "Falling Through", alt: "Falling Through artwork" },
+  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes", alt: "Birds And Fishes artwork" },
+  { src: "/images/art/Creation.jpg", title: "Creation", alt: "Creation artwork" },
+];
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main
-    class="flex flex-col w-[90%] max-w-[700px] m-auto text-foreground animate-fade-in-up"
-  >
-    <section class="pt-8 pb-12">
-      <img
-        src="/images/mypics/headshot.webp"
-        alt="Chris's headshot"
-        class="w-16 h-16 rounded-full mb-4"
-      />
-      <h1 class="text-3xl font-bold tracking-tight">Christopher Coyne</h1>
-      <p class="text-foreground-muted mt-1">Software Engineer and Creator</p>
-      <div class="flex items-center gap-4 mt-4">
+  <main class="max-w-[620px] w-[90%] m-auto text-foreground pb-32">
+
+    <!-- Hero -->
+    <section class="mb-20 relative pl-8">
+      <div class="absolute left-0 top-0 bottom-0 w-2 rounded-full hero-gradient-bar"></div>
+      <div class="flex items-center gap-5 mb-8">
+        <img
+          src="/images/mypics/headshot.webp"
+          alt="Chris's headshot"
+          class="w-16 h-16 rounded-full"
+        />
+        <div>
+          <h1 class="hero-name">Christopher Coyne</h1>
+          <p class="text-foreground-muted text-[16px] mt-1">Programmer & Creator</p>
+        </div>
+      </div>
+      <p class="text-[18px] leading-[1.7] max-w-[520px]">
+        I'm a software engineer at Pyyne Digital in NYC.
+        I love designing and building products from the ground up —
+        mostly with TypeScript, React, and Node. In my free time, I write articles about tech and internet culture, and make art.
+      </p>
+      <div class="flex items-center gap-5 mt-6">
         <a
           href="https://github.com/christopher-coyne"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground-muted hover:text-foreground transition-colors"
+          class="text-foreground-muted hover:text-foreground transition-colors duration-200"
+          aria-label="Github"
         >
           <Icon name="mdi:github" size={20} />
         </a>
         <a
           href="mailto:christcoyne@gmail.com"
-          class="text-foreground-muted hover:text-foreground transition-colors"
+          class="text-foreground-muted hover:text-foreground transition-colors duration-200"
+          aria-label="Email"
         >
           <Icon name="mdi:email" size={20} />
         </a>
@@ -46,52 +67,101 @@ function formatDate(dateStr: string) {
           href="https://www.linkedin.com/in/christopher-coyne/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground-muted hover:text-foreground transition-colors"
+          class="text-foreground-muted hover:text-foreground transition-colors duration-200"
+          aria-label="LinkedIn"
         >
           <Icon name="mdi:linkedin" size={20} />
         </a>
       </div>
     </section>
 
-    <section class="py-8 border-t border-border">
-      <h2 class="text-sm font-medium uppercase tracking-widest text-foreground-muted mb-4">About</h2>
-      <p class="text-base leading-relaxed">
-        Software engineer at Pyyne Digital in NYC. I love designing and building
-        products from the ground up.
-      </p>
-      <p class="text-sm text-foreground-muted mt-3">
-        JS · TS · React · NestJS · Express · Tailwind · AWS · Docker · Stripe
-      </p>
-    </section>
-
-    <section class="py-8 border-t border-border">
-      <div class="flex justify-between items-baseline mb-6">
-        <h2 class="text-sm font-medium uppercase tracking-widest text-foreground-muted">Writing</h2>
-        <a href="/blog" class="text-sm text-foreground-muted hover:text-foreground transition-colors">All posts &rarr;</a>
+    <!-- Writing -->
+    <section class="mb-20">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="section-heading">Writing</h2>
+        <a href="/blog" class="text-[14px] text-foreground-muted hover:text-foreground transition-colors duration-200">See all &rarr;</a>
       </div>
-      <ul class="flex flex-col">
-        {
-          publishedPosts.map((post: any) => (
-            <li>
-              <a
-                href={`/blog/${post.slug}`}
-                class="flex justify-between items-baseline py-3 group hover:text-foreground-muted transition-colors"
-              >
-                <span class="text-base">{post.data.title}</span>
-                <span class="text-sm text-foreground-muted ml-4 shrink-0">
-                  {formatDate(post.data.date)}
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        recentPosts.map((post: any, i: number) => (
+          <a
+            href={`/blog/${post.slug}`}
+            class:list={[
+              "group flex items-baseline justify-between py-4 transition-colors duration-200 hover:text-foreground-muted",
+              i < recentPosts.length - 1 && "border-b border-border/50"
+            ]}
+          >
+            <span class="text-[16px] leading-snug">{post.data.title}</span>
+            <span class="text-[14px] text-foreground-muted ml-6 shrink-0 tabular-nums">
+              {formatDate(post.data.date)}
+            </span>
+          </a>
+        ))
+      }
     </section>
 
-    <section class="py-8 border-t border-border pb-24">
-      <p class="text-foreground-muted text-sm">
-        Always looking to collaborate · <a href="mailto:christcoyne@gmail.com" class="text-foreground hover:text-foreground-muted transition-colors underline">christcoyne@gmail.com</a>
+    <!-- Art -->
+    <section class="mb-20">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="section-heading">Art</h2>
+        <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground transition-colors duration-200">See all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        {recentArt.map((artwork) => (
+          <a href="/art" class="group">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={artwork.src}
+                alt={artwork.alt}
+                class="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
+                loading="lazy"
+              />
+            </div>
+            <p class="text-[14px] text-foreground-muted mt-2">{artwork.title}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section>
+      <h2 class="section-heading mb-4">Get in touch</h2>
+      <p class="text-[16px] text-foreground-muted">
+        Always open to collaborating — <a href="mailto:christcoyne@gmail.com" class="text-foreground border-b border-foreground/30 hover:border-foreground transition-colors duration-200 pb-[1px]">christcoyne@gmail.com</a>
       </p>
     </section>
+
   </main>
 </Layout>
+
+<style>
+  .hero-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .section-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  a[href^="mailto"] {
+    text-decoration: none;
+  }
+
+  .hero-gradient-bar {
+    background: linear-gradient(180deg, #d946ef, #f43f5e, #9333ea, #d946ef);
+    background-size: 100% 300%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+</style>

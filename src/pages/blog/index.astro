@@ -2,53 +2,75 @@
 import Layout from "../../layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
-import CardNew from "../../components/CardNew.astro";
 
 const blogPosts = await getCollection("blog");
 let publishedPosts = blogPosts.filter((post) => post.data.published);
-// Sort by most recent date first
 publishedPosts = publishedPosts.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
+
+const allTags = [...new Set(publishedPosts.flatMap((p) => p.data.tags || []))].sort();
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
 ---
 
 <Layout title="Christopher Coyne's Blog">
-  <main class="flex flex-col gap-4 m-auto max-w-[700px] min-h-[90vh] w-[90%]">
-    <h1 class="font-semibold text-2xl animate-fade-in-up">Blog Posts</h1>
+  <main class="max-w-[620px] w-[90%] m-auto min-h-[90vh] pb-32">
 
-    <div class="flex gap-4 animate-fade-in-up delay-100">
+    <header class="mb-12">
+      <h1 class="page-title">Blog</h1>
+      <p class="text-foreground-muted text-[16px] mt-2">Thoughts on engineering, design, and other things.</p>
+    </header>
+
+    <div class="flex gap-4 items-end mb-10">
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search posts..."
         id="searchbar"
-        class="w-full px-3 py-2 rounded border border-border bg-background text-foreground placeholder:text-foreground-muted focus:outline-none focus:border-primary"
+        class="search-input"
       />
-      {
-        /*
-      <div>
-        <select class="select">
-          <option disabled selected>Sort by</option>
-          <option>Newest</option>
-          <option>Oldest</option>
-        </select>
-      </div>
-      */
-      }
+      <select id="tagFilter" class="tag-filter">
+        <option value="">All tags</option>
+        {allTags.map((tag) => (
+          <option value={tag}>{tag}</option>
+        ))}
+      </select>
     </div>
-    <div></div>
-    <section class="animate-fade-in-up delay-200">
-      <div class="border-t border-border my-4"></div>
-      <ul id="blog-container" class="flex flex-col gap-4">
+
+    <section>
+      <ul id="blog-container" class="flex flex-col">
         {
-          publishedPosts.map((post: any) => (
-            <li>
-              <CardNew
-                title={post.data.title}
-                body={post.data.summary}
-                tags={post.data.tags}
+          publishedPosts.map((post: any, i: number) => (
+            <li data-tags={JSON.stringify(post.data.tags || [])}>
+              <a
                 href={`/blog/${post.slug}`}
-                date={post.data.date}
-              />
+                class:list={[
+                  "group flex items-baseline justify-between py-4 transition-colors duration-200 hover:text-foreground-muted",
+                  i < publishedPosts.length - 1 && "border-b border-border/50"
+                ]}
+              >
+                <div class="min-w-0">
+                  <span class="text-[16px] leading-snug title">{post.data.title}</span>
+                  {post.data.summary && (
+                    <span class="text-[14px] text-foreground-muted block mt-1">{post.data.summary}</span>
+                  )}
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <span class="flex gap-2 mt-2">
+                      {post.data.tags.map((tag: string) => (
+                        <span class="tag-pill">
+                          {tag}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </div>
+                <span class="text-[14px] text-foreground-muted ml-6 shrink-0 tabular-nums">
+                  {formatDate(post.data.date)}
+                </span>
+              </a>
             </li>
           ))
         }
@@ -57,32 +79,99 @@ publishedPosts = publishedPosts.sort(
   </main>
 </Layout>
 
+<style>
+  .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 0.6rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .search-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .search-input:focus {
+    border-bottom-color: var(--color-text);
+  }
+
+  .tag-filter {
+    padding: 0.6rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+  }
+
+  .tag-filter:focus {
+    border-bottom-color: var(--color-text);
+  }
+
+  .tag-filter option {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .tag-pill {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    background: var(--color-border);
+    color: #d946ef;
+  }
+</style>
+
 <script>
   function init() {
-    const searchBar = document.getElementById("searchbar");
+    const searchBar = document.getElementById("searchbar") as HTMLInputElement;
+    const tagFilter = document.getElementById("tagFilter") as HTMLSelectElement;
     const blogPostsContainer = document.getElementById("blog-container");
     const blogPosts = blogPostsContainer
-      ? blogPostsContainer.getElementsByTagName("li")
-      : null;
+      ? Array.from(blogPostsContainer.getElementsByTagName("li"))
+      : [];
 
-    if (searchBar && blogPosts) {
-      // Attach an event listener to the search bar
-      searchBar.addEventListener("input", (event: Event) => {
-        const target = event.target as unknown as HTMLInputElement;
-        const filter = target.value.toLowerCase();
-        Array.from(blogPosts).forEach((post) => {
-          const titleElement = post.getElementsByClassName("title")[0];
-          if (titleElement?.textContent) {
-            const title = titleElement.textContent.toLowerCase();
-            if (title.includes(filter)) {
-              post.style.display = "";
-            } else {
-              post.style.display = "none";
-            }
-          }
-        });
+    function filterPosts() {
+      const searchText = searchBar?.value.toLowerCase() || "";
+      const selectedTag = tagFilter?.value || "";
+
+      blogPosts.forEach((post) => {
+        const titleElement = post.getElementsByClassName("title")[0];
+        const title = titleElement?.textContent?.toLowerCase() || "";
+        const tags: string[] = JSON.parse(post.getAttribute("data-tags") || "[]");
+
+        const matchesSearch = title.includes(searchText);
+        const matchesTag = !selectedTag || tags.includes(selectedTag);
+
+        post.style.display = matchesSearch && matchesTag ? "" : "none";
       });
     }
+
+    if (searchBar) searchBar.addEventListener("input", filterPosts);
+    if (tagFilter) tagFilter.addEventListener("change", filterPosts);
   }
   document.addEventListener("astro:page-load", () => init());
 </script>

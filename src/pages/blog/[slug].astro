@@ -1,9 +1,7 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
 
-// Define getStaticPaths function
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post: any) => ({
@@ -12,7 +10,6 @@ export async function getStaticPaths() {
   }));
 }
 
-// Fetch the specific post data
 const { slug } = Astro.params;
 const post = await getEntry("blog", slug);
 
@@ -24,34 +21,57 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title}>
-  <main class="max-w-[700px] m-auto py-8 w-[90%] text-lg">
-    <div class="flex flex-row items-center gap-4 text-sm mb-6">
-      <div class="flex justify-between w-full items-center">
-        <a href="/blog" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded border border-border text-foreground hover:bg-foreground/10 transition-colors">
-            <Icon name="mdi:arrow-back" size={20} />
-            All Blogs
-        </a>
-      </div>
-    </div>
-    <h1 class="text-4xl font-bold pb-2">{title}</h1>
-    <p class="text-lg">{summary}</p>
-    <div class="flex gap-4 mt-6 text-sm w-full">
-      <ul class="flex flex-row gap-2">
-        {
-          tags &&
-            tags.map((tag: string) => (
-              <li>
-                <div class="text-xs px-2 py-1 rounded border border-border text-foreground-muted">{tag}</div>
-              </li>
-            ))
-        }
-      </ul>
-      <div class="flex-shrink-0">{date}</div>
-    </div>
+  <main class="max-w-[620px] m-auto py-8 w-[90%]">
 
-    <div class="border-t border-border w-[50%] my-6"></div>
-    <section class="prose max-w-none my-8">
+    <a href="/blog" class="back-link">&larr; Back</a>
+
+    <header class="mt-8 mb-10">
+      <h1 class="post-title">{title}</h1>
+      {summary && <p class="text-foreground-muted text-[18px] mt-3 leading-relaxed">{summary}</p>}
+      <div class="flex items-center gap-3 mt-5 text-[14px] text-foreground-muted">
+        <time>{date}</time>
+        {tags && tags.length > 0 && (
+          <>
+            <span class="opacity-40">·</span>
+            {tags.map((tag: string, i: number) => (
+              <span>{tag}{i < tags.length - 1 ? ", " : ""}</span>
+            ))}
+          </>
+        )}
+      </div>
+    </header>
+
+    <div class="post-divider"></div>
+
+    <section class="prose max-w-none my-10 text-base leading-[1.8]">
       <Content />
     </section>
   </main>
 </Layout>
+
+<style>
+  .back-link {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .post-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .post-divider {
+    width: 3rem;
+    height: 2px;
+    background: linear-gradient(to right, #d946ef, #f43f5e, #9333ea);
+    border-radius: 2px;
+  }
+</style>

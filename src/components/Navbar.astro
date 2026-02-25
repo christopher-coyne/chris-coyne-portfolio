@@ -2,63 +2,125 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<nav class="flex flex-col w-full py-6 mb-8 text-lg relative">
-  <div
-    class="flex justify-between items-center m-auto max-w-[700px] w-[90%] animate-fade-in"
-  >
-    <div class="flex justify-between items-center">
-      <a
-        class="font-semibold text-foreground hover:text-foreground-muted transition-colors"
-        href="/"
-      >
-        Chris Coyne
-      </a>
-    </div>
-    <div class="flex items-center gap-2 sm:gap-6">
+<nav class="w-full py-6 mb-8 relative">
+  <div class="flex justify-between items-center m-auto max-w-[620px] w-[90%]">
+    <a href="/" class="nav-logo">Chris Coyne</a>
+
+    <div class="flex items-center gap-6">
+      <ul id="desktopMenu" class="hidden sm:flex items-center gap-6">
+        <li><a href="/" class="nav-link">About</a></li>
+        <li><a href="/art" class="nav-link">Art</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+      </ul>
+
       <button
         id="themeToggle"
         aria-label="toggle darkmode"
-        class="inline-flex items-center justify-center w-8 h-8 rounded border border-border text-foreground hover:bg-foreground/10 transition-colors text-sm"
+        class="nav-icon-btn"
       >
         <Icon name="mdi:white-balance-sunny" size={16} />
       </button>
+
       <button
         id="hamburgerMenu"
         aria-label="open menu"
-        class="sm:hidden inline-flex items-center justify-center w-8 h-8 rounded border border-border text-foreground hover:bg-foreground/10 transition-colors text-sm"
+        class="nav-icon-btn hamburger-btn"
       >
-        <Icon name="mdi:menu" size={20} class="hamburgerIcon" />
+        <Icon name="mdi:menu" size={18} class="hamburgerIcon" />
       </button>
-      <ul
-        id="desktopMenu"
-        class="hidden sm:flex justify-between items-center gap-4 md:gap-6 text-sm md:text-base"
-      >
-        <li><a href="/" class="text-foreground hover:text-foreground-muted transition-colors">About</a></li>
-        <li><a href="/art" class="text-foreground hover:text-foreground-muted transition-colors">Art</a></li>
-        <li><a href="/blog" class="text-foreground hover:text-foreground-muted transition-colors">Blog</a></li>
-      </ul>
     </div>
   </div>
 
-  <!-- Mobile Menu Dropdown -->
-  <div id="mobileMenu" class="hidden sm:hidden w-full bg-background-secondary shadow-lg">
-    <div class="m-auto max-w-[700px] w-[90%] py-4">
-      <ul class="flex flex-col gap-4 text-base">
-        <li><a href="/" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">About</a></li>
-        <li><a href="/art" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">Art</a></li>
-        <li><a href="/blog" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">Blog</a></li>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <div class="m-auto max-w-[620px] w-[90%] py-6">
+      <ul class="flex flex-col gap-1">
+        <li><a href="/" class="mobile-link">About</a></li>
+        <li><a href="/art" class="mobile-link">Art</a></li>
+        <li><a href="/blog" class="mobile-link">Blog</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <style>
-  #mobileMenu {
-    transition: all 0.3s ease-in-out;
+  .nav-logo {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
-  #mobileMenu.show {
+  .nav-logo:hover {
+    color: var(--color-text-muted);
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .nav-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .nav-icon-btn:hover {
+    color: var(--color-text);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 50;
+  }
+
+  .mobile-menu.show {
     display: block;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.625rem 0;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-link:hover {
+    color: var(--color-text);
+  }
+
+  .hamburger-btn {
+    display: inline-flex;
+  }
+
+  @media (min-width: 640px) {
+    .hamburger-btn {
+      display: none;
+    }
   }
 
   .hamburgerIcon {
@@ -80,11 +142,8 @@ import { Icon } from "astro-icon/components";
     if (themeToggleButton) {
       themeToggleButton.addEventListener("click", function handleToggleClick() {
         let theme = localStorage.getItem("theme") || "dark";
-
         const newTheme = theme === "dark" ? "light" : "dark";
-
         document.documentElement.setAttribute("data-theme", newTheme);
-
         localStorage.setItem("theme", newTheme);
       });
     }
@@ -92,7 +151,6 @@ import { Icon } from "astro-icon/components";
     if (hamburgerMenu && mobileMenu && hamburgerIcon) {
       hamburgerMenu.addEventListener("click", function () {
         const isOpen = mobileMenu.classList.contains("show");
-
         if (isOpen) {
           mobileMenu.classList.remove("show");
           hamburgerIcon.classList.remove("rotate");
@@ -102,7 +160,6 @@ import { Icon } from "astro-icon/components";
         }
       });
 
-      // Close mobile menu when clicking on a link
       const mobileLinks = mobileMenu.querySelectorAll("a");
       mobileLinks.forEach((link) => {
         link.addEventListener("click", function () {
@@ -111,7 +168,6 @@ import { Icon } from "astro-icon/components";
         });
       });
 
-      // Close mobile menu when clicking outside
       document.addEventListener("click", function (event) {
         const target = event.target as Node;
         if (!hamburgerMenu.contains(target) && !mobileMenu.contains(target)) {
