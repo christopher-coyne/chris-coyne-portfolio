@@ -1,6 +1,174 @@
 ---
-// Gallery.astro - Astro wrapper for the React Gallery component
-import GalleryComponent from "./Gallery.tsx";
+import { images } from "./images";
 ---
 
-<GalleryComponent client:load />
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 not-prose">
+  {images.map((image, index) => (
+    <div
+      class="liminal-item cursor-pointer overflow-hidden aspect-square"
+      data-src={image.src}
+      data-alt={image.alt}
+      data-origin={image.origin}
+      data-link={image.link || ""}
+      data-description={image.description || ""}
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        class="w-full h-full object-cover liminal-img"
+        loading="lazy"
+      />
+    </div>
+  ))}
+</div>
+
+<!-- Modal -->
+<div id="liminalModal" class="liminal-modal">
+  <button id="closeLiminalModal" class="liminal-modal-close" aria-label="Close">&times;</button>
+  <div class="liminal-modal-content" id="liminalModalContent">
+    <img id="liminalModalImg" src="" alt="" class="liminal-modal-img" />
+    <div id="liminalModalInfo" class="liminal-modal-info">
+      <span id="liminalModalOrigin" class="liminal-origin-badge"></span>
+      <a id="liminalModalLink" href="" target="_blank" rel="noopener noreferrer" class="liminal-view-link">View Original</a>
+    </div>
+    <p id="liminalModalDesc" class="liminal-modal-desc"></p>
+  </div>
+</div>
+
+<style>
+  .liminal-img {
+    transition: opacity 0.3s ease;
+  }
+
+  .liminal-item:hover .liminal-img {
+    opacity: 0.8;
+  }
+
+  .liminal-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .liminal-modal.open {
+    display: flex;
+  }
+
+  .liminal-modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .liminal-modal-img {
+    max-width: 90vw;
+    max-height: 75vh;
+    object-fit: contain;
+  }
+
+  .liminal-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 51;
+    line-height: 1;
+  }
+
+  .liminal-modal-close:hover {
+    color: white;
+  }
+
+  .liminal-modal-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .liminal-origin-badge {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+  }
+
+  .liminal-view-link {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .liminal-view-link:hover {
+    color: white;
+  }
+
+  .liminal-modal-desc {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 32rem;
+    text-align: center;
+  }
+</style>
+
+<script>
+  function initLiminalGallery() {
+    const modal = document.getElementById("liminalModal");
+    const modalImg = document.getElementById("liminalModalImg") as HTMLImageElement;
+    const modalOrigin = document.getElementById("liminalModalOrigin");
+    const modalLink = document.getElementById("liminalModalLink") as HTMLAnchorElement;
+    const modalDesc = document.getElementById("liminalModalDesc");
+    const modalInfo = document.getElementById("liminalModalInfo");
+    const closeBtn = document.getElementById("closeLiminalModal");
+    const items = document.querySelectorAll(".liminal-item");
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-src") || "";
+        const alt = item.getAttribute("data-alt") || "";
+        const origin = item.getAttribute("data-origin") || "";
+        const link = item.getAttribute("data-link") || "";
+        const description = item.getAttribute("data-description") || "";
+
+        if (modalImg) { modalImg.src = src; modalImg.alt = alt; }
+        if (modalOrigin) { modalOrigin.textContent = origin; }
+        if (modalLink) {
+          if (link) { modalLink.href = link; modalLink.style.display = ""; }
+          else { modalLink.style.display = "none"; }
+        }
+        if (modalDesc) {
+          if (description) { modalDesc.textContent = description; modalDesc.style.display = ""; }
+          else { modalDesc.style.display = "none"; }
+        }
+        if (modal) { modal.classList.add("open"); document.body.style.overflow = "hidden"; }
+      });
+    });
+
+    function close() {
+      if (modal) { modal.classList.remove("open"); document.body.style.overflow = ""; }
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  }
+
+  initLiminalGallery();
+  document.addEventListener("astro:after-swap", () => initLiminalGallery());
+</script>
