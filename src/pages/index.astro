@@ -1,154 +1,97 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import CardNew from "../components/CardNew.astro";
 
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
-let publishedPosts = blogPosts.filter((post) => post.data.published);
-/*
-possible tags - programming, vidya, design, internet (culture), art, literature, music, personal
-*/
+let publishedPosts = blogPosts
+  .filter((post) => post.data.published)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
   <main
-    class="flex flex-col w-[90%] max-w-[700px] m-auto gap-16 text-foreground text-lg"
+    class="flex flex-col w-[90%] max-w-[700px] m-auto text-foreground animate-fade-in-up"
   >
-    <section class="flex flex-col">
-      <div class="flex flex-col gap-6 items-center">
-        <img
-          src="/images/mypics/headshot.webp"
-          alt="Chris's headshot"
-          id="headshot"
-          class="w-[100px] h-[100px] sm:w-[170px] sm:h-[170px] rounded-full"
-        />
-        <div class="flex flex-col items-center gap-2">
-          <h1 class="font-bold text-3xl">Christopher Coyne</h1>
-          <p class="text-center">Software Engineer and Creator</p>
-        </div>
-        <ul class="flex flex-row gap-4">
-          <li>
-            <a
-              href="https://github.com/christopher-coyne"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Github"
-              class="text-foreground hover:text-foreground-muted transition-colors"
-            >
-              <Icon name="mdi:github" size={32} />
-            </a>
-          </li>
-          <li>
-            <a href="mailto:christcoyne@gmail.com" aria-label="Email" class="text-foreground hover:text-foreground-muted transition-colors">
-              <Icon name="mdi:email" size={32} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/christopher-coyne/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              class="text-foreground hover:text-foreground-muted transition-colors"
-            >
-              <Icon name="mdi:linkedin" size={32} />
-            </a>
-          </li>
-        </ul>
+    <section class="pt-8 pb-12">
+      <img
+        src="/images/mypics/headshot.webp"
+        alt="Chris's headshot"
+        class="w-16 h-16 rounded-full mb-4"
+      />
+      <h1 class="text-3xl font-bold tracking-tight">Christopher Coyne</h1>
+      <p class="text-foreground-muted mt-1">Software Engineer and Creator</p>
+      <div class="flex items-center gap-4 mt-4">
+        <a
+          href="https://github.com/christopher-coyne"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-foreground-muted hover:text-foreground transition-colors"
+        >
+          <Icon name="mdi:github" size={20} />
+        </a>
+        <a
+          href="mailto:christcoyne@gmail.com"
+          class="text-foreground-muted hover:text-foreground transition-colors"
+        >
+          <Icon name="mdi:email" size={20} />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/christopher-coyne/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-foreground-muted hover:text-foreground transition-colors"
+        >
+          <Icon name="mdi:linkedin" size={20} />
+        </a>
       </div>
     </section>
-    <section class="flex flex-col gap-6">
-      <div>
-        <h2 class="font-semibold text-2xl">About Me</h2>
-      </div>
-      <p>
-        I am a software engineer currently working at Pyyne Digital, in NYC. My
-        expertise is primarily in full stack development, and I love to design
-        and build products from the ground up.
+
+    <section class="py-8 border-t border-border">
+      <h2 class="text-sm font-medium uppercase tracking-widest text-foreground-muted mb-4">About</h2>
+      <p class="text-base leading-relaxed">
+        Software engineer at Pyyne Digital in NYC. I love designing and building
+        products from the ground up.
       </p>
-      <div>
-        <p>Some Tech I've been using recently</p>
-        <ul class="flex flex-col gap-2 p-2">
-          <li>{"> "}Languages: Javascript, Typescript, HTML/CSS</li>
-          <li>
-            {"> "}Frameworks and Libraries: React, NestJS, Express, Tailwind CSS
-          </li>
-          <li>
-            {"> "}Platforms and Tools: AWS, Digital Ocean, Docker, Shopify,
-            Stripe
-          </li>
-        </ul>
-      </div>
-    </section>
-    {
-      /* 
-    <section>
-      <h3>Projects</h3>
-    </section>
-  */
-    }
-    {
-      /*
-    <section class="flex flex-col gap-6">
-      <div class="flex justify-between">
-        <h2 class="font-semibold text-2xl">Art and Computer Science</h2>
-        <a href="/art" class="link">Artwork</a>
-      </div>
-      <p class="p-8 bg-primary/20 rounded-lg">
-        "I have always imagined that paradise will be a kind of library"
-      </p>
-      <p>
-        During my education, one of the most influential classes I took was
-        “Literature in the Age of AI” taught by professor Dennis Tenen. My eyes
-        were opened to the ways that computer science, philosophy, and art could
-        intermix and I wanted to contribute in my own way. My final project for
-        the class explored the universal language developed by philosopher John
-        Wilkins, and sought to recreate it using modern AI tools.
-      </p>
-      <p>
-        I have always been passionate about the visual arts. In the future, I
-        hope to create pieces that combine art and computer science into
-        something new.
+      <p class="text-sm text-foreground-muted mt-3">
+        JS · TS · React · NestJS · Express · Tailwind · AWS · Docker · Stripe
       </p>
     </section>
-    */
-    }
-    <section class="flex flex-col gap-6">
-      <div class="flex justify-between">
-        <h2 class="font-semibold text-2xl">Blog Posts</h2>
-        <a href="/blog" class="text-foreground underline hover:text-foreground-muted transition-colors">All Posts</a>
+
+    <section class="py-8 border-t border-border">
+      <div class="flex justify-between items-baseline mb-6">
+        <h2 class="text-sm font-medium uppercase tracking-widest text-foreground-muted">Writing</h2>
+        <a href="/blog" class="text-sm text-foreground-muted hover:text-foreground transition-colors">All posts &rarr;</a>
       </div>
-      <ul class="flex flex-col gap-4">
+      <ul class="flex flex-col">
         {
           publishedPosts.map((post: any) => (
             <li>
-              <CardNew
-                title={post.data.title}
-                body={post.data.summary}
-                tags={post.data.tags}
+              <a
                 href={`/blog/${post.slug}`}
-                date={post.data.date}
-              />
+                class="flex justify-between items-baseline py-3 group hover:text-foreground-muted transition-colors"
+              >
+                <span class="text-base">{post.data.title}</span>
+                <span class="text-sm text-foreground-muted ml-4 shrink-0">
+                  {formatDate(post.data.date)}
+                </span>
+              </a>
             </li>
           ))
         }
       </ul>
     </section>
-    <section class="pb-24 flex flex-col gap-6">
-      <div>
-        <h2 class="font-semibold text-2xl">Collab</h2>
-      </div>
-      <div
-        class="flex flex-col gap-2 items-start sm:flex-row sm:justify-between sm:items-center"
-      >
-        <p>Always looking to collaborate and network</p>
-        <a href="mailto:christcoyne@gmail.com" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded border border-border text-foreground hover:bg-foreground/10 transition-colors">
-          Contact
-          <Icon name="mdi:email" size={20} />
-        </a>
-      </div>
+
+    <section class="py-8 border-t border-border pb-24">
+      <p class="text-foreground-muted text-sm">
+        Always looking to collaborate · <a href="mailto:christcoyne@gmail.com" class="text-foreground hover:text-foreground-muted transition-colors underline">christcoyne@gmail.com</a>
+      </p>
     </section>
   </main>
 </Layout>
