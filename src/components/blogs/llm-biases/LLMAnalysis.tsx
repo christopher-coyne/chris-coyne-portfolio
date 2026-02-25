@@ -44,7 +44,7 @@ const LLMAnalysis: React.FC<LLMAnalysisProps> = ({
   return (
     <div className="w-full space-y-6">
       <div className="text-center">
-        <h3 className="text-xl font-semibold text-base-content mb-6">
+        <h3 className="text-xl font-semibold text-foreground mb-6">
           {title}
         </h3>
       </div>
@@ -53,16 +53,16 @@ const LLMAnalysis: React.FC<LLMAnalysisProps> = ({
         {llmSections.map((llm) => (
           <div
             key={llm.name}
-            className={`flex-1 rounded-lg p-6 ${llm.color} border border-base-300`}
+            className={`flex-1 rounded-lg p-6 ${llm.color} border border-border`}
           >
-            <h4 className="text-lg font-medium text-base-content mb-3 text-center">
+            <h4 className="text-lg font-medium text-foreground mb-3 text-center">
               {llm.name}
             </h4>
             <div className="text-center">
-              <div className="text-base font-semibold text-base-content">
+              <div className="text-base font-semibold text-foreground">
                 {llm.topTech.technology}
               </div>
-              <div className="text-sm text-base-content/70 mt-1">
+              <div className="text-sm text-foreground/70 mt-1">
                 {llm.topTech.percentage}%
               </div>
             </div>
@@ -71,7 +71,7 @@ const LLMAnalysis: React.FC<LLMAnalysisProps> = ({
       </div>
 
       <div className="text-center">
-        <p className="text-base-content/70 text-sm max-w-3xl mx-auto">
+        <p className="text-foreground/70 text-sm max-w-3xl mx-auto">
           {explanation}
         </p>
       </div>

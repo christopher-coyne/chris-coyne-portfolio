@@ -12,9 +12,9 @@ const HorizontalBar: React.FC<HorizontalBarProps> = ({ title, quantity }) => {
 
   return (
     <div
-      className="relative w-full rounded-lg p-3 border border-base-300 overflow-hidden transition-all duration-300 hover:shadow-sm text-black"
+      className="relative w-full rounded-lg p-3 border border-border overflow-hidden transition-all duration-300 hover:shadow-sm text-black"
       style={{
-        background: `linear-gradient(to right, rgb(191 219 254) ${clampedPercentage}%, bg-base-100 ${clampedPercentage}%)`,
+        background: `linear-gradient(to right, rgb(191 219 254) ${clampedPercentage}%, var(--color-bg) ${clampedPercentage}%)`,
       }}
     >
       <div className="relative z-10 flex justify-between items-center">

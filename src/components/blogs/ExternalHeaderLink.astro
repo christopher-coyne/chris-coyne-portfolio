@@ -10,7 +10,7 @@ const { title, link } = Astro.props;
 
 <a
   href={link}
-  class="flex gap-2 items-center link link-primary link-hover group"
+  class="flex gap-2 items-center text-foreground underline hover:text-foreground-muted transition-colors group"
 >
   <h2 class="font-semibold text-xl">{title}</h2>
   <Icon

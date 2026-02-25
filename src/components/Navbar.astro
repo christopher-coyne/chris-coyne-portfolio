@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
   >
     <div class="flex justify-between items-center">
       <a
-        class="link link-primary link-hover font-semibold hover:text-primary"
+        class="font-semibold text-foreground hover:text-foreground-muted transition-colors"
         href="/"
       >
         Chris Coyne
@@ -18,14 +18,14 @@ import { Icon } from "astro-icon/components";
       <button
         id="themeToggle"
         aria-label="toggle darkmode"
-        class="btn btn-sm btn-outline btn-square"
+        class="inline-flex items-center justify-center w-8 h-8 rounded border border-border text-foreground hover:bg-foreground/10 transition-colors text-sm"
       >
         <Icon name="mdi:white-balance-sunny" size={16} />
       </button>
       <button
         id="hamburgerMenu"
         aria-label="open menu"
-        class="btn sm:hidden btn-sm btn-outline btn-square"
+        class="sm:hidden inline-flex items-center justify-center w-8 h-8 rounded border border-border text-foreground hover:bg-foreground/10 transition-colors text-sm"
       >
         <Icon name="mdi:menu" size={20} class="hamburgerIcon" />
       </button>
@@ -33,20 +33,20 @@ import { Icon } from "astro-icon/components";
         id="desktopMenu"
         class="hidden sm:flex justify-between items-center gap-4 md:gap-6 text-sm md:text-base"
       >
-        <li><a href="/" class="link">About</a></li>
-        <li><a href="/art" class="link">Art</a></li>
-        <li><a href="/blog" class="link">Blog</a></li>
+        <li><a href="/" class="text-foreground hover:text-foreground-muted transition-colors">About</a></li>
+        <li><a href="/art" class="text-foreground hover:text-foreground-muted transition-colors">Art</a></li>
+        <li><a href="/blog" class="text-foreground hover:text-foreground-muted transition-colors">Blog</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Mobile Menu Dropdown -->
-  <div id="mobileMenu" class="hidden sm:hidden w-full bg-base-200 shadow-lg">
+  <div id="mobileMenu" class="hidden sm:hidden w-full bg-background-secondary shadow-lg">
     <div class="m-auto max-w-[700px] w-[90%] py-4">
       <ul class="flex flex-col gap-4 text-base">
-        <li><a href="/" class="link link-primary block py-2">About</a></li>
-        <li><a href="/art" class="link link-primary block py-2">Art</a></li>
-        <li><a href="/blog" class="link link-primary block py-2">Blog</a></li>
+        <li><a href="/" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">About</a></li>
+        <li><a href="/art" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">Art</a></li>
+        <li><a href="/blog" class="text-foreground hover:text-foreground-muted block py-2 transition-colors">Blog</a></li>
       </ul>
     </div>
   </div>
@@ -79,15 +79,12 @@ import { Icon } from "astro-icon/components";
 
     if (themeToggleButton) {
       themeToggleButton.addEventListener("click", function handleToggleClick() {
-        let theme = localStorage.getItem("theme") || "night"; // night is default
+        let theme = localStorage.getItem("theme") || "dark";
 
-        // Toggle dark mode state
-        const newTheme = theme === "night" ? "winter" : "night";
+        const newTheme = theme === "dark" ? "light" : "dark";
 
-        // Update the theme
         document.documentElement.setAttribute("data-theme", newTheme);
 
-        // Save the new theme in localStorage
         localStorage.setItem("theme", newTheme);
       });
     }

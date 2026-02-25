@@ -7,5 +7,5 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), icon(), tailwind(), react()]
+  integrations: [mdx(), icon(), tailwind({ applyBaseStyles: false }), react()]
 });

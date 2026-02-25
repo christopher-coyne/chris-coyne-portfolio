@@ -74,7 +74,7 @@ const BackendComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         Languages
       </h3>
 
@@ -88,7 +88,7 @@ const BackendComponent: React.FC = () => {
         ))}
       </div>
 
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         Web Frameworks
       </h3>
       <div className="space-y-2">
@@ -119,7 +119,7 @@ const BackendComponent: React.FC = () => {
         management, or the functional programming involved in elixir?
       </p>
 
-      <div className="border-t border-base-300 pt-8">
+      <div className="border-t border-border pt-8">
         <DifficultyAnalysis
           title="Backend Technology Difficulty Analysis"
           easy={difficultyAnalysisData.easy}

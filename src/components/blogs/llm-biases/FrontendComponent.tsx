@@ -107,7 +107,7 @@ const FrontendComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         Frontend Frameworks
       </h3>
       <div className="space-y-2">
@@ -120,7 +120,7 @@ const FrontendComponent: React.FC = () => {
         ))}
       </div>
 
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         Styling Solutions
       </h3>
       <div className="mt-8 space-y-2">
@@ -177,7 +177,7 @@ const FrontendComponent: React.FC = () => {
         have changed...
       </p>
       {/*
-      <div className="border-t border-base-300 pt-8">
+      <div className="border-t border-border pt-8">
         <LLMAnalysis
           title="Frontend Framework Choice By LLM"
           claude={llmAnalysisData.claude}
@@ -187,7 +187,7 @@ const FrontendComponent: React.FC = () => {
         />
       </div>
       */}
-      <div className="border-t border-base-300 pt-8">
+      <div className="border-t border-border pt-8">
         <DifficultyAnalysis
           title="Difficulty Analysis"
           easy={difficultyAnalysisData.easy}

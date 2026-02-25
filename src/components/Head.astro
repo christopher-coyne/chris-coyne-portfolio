@@ -9,9 +9,13 @@ import { ViewTransitions } from "astro:transitions";
         typeof localStorage !== "undefined" &&
         localStorage.getItem("theme")
       ) {
-        return localStorage.getItem("theme");
+        var stored = localStorage.getItem("theme");
+        if (stored === "night") return "dark";
+        if (stored === "winter") return "light";
+        return stored;
       }
     })();
+    if (theme) localStorage.setItem("theme", theme);
     document.documentElement.setAttribute("data-theme", theme ?? "dark");
   }
   init();

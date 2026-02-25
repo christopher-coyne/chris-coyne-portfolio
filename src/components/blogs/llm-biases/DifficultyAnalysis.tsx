@@ -55,7 +55,7 @@ const DifficultyAnalysis: React.FC<DifficultyAnalysisProps> = ({
   return (
     <div className="w-full space-y-6">
       <div className="text-center">
-        <h3 className="text-xl font-semibold text-base-content mb-6">
+        <h3 className="text-xl font-semibold text-foreground mb-6">
           {title}
         </h3>
       </div>
@@ -74,10 +74,10 @@ const DifficultyAnalysis: React.FC<DifficultyAnalysisProps> = ({
             <div className="space-y-3">
               {difficulty.topTechs.map((tech, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-sm font-semibold text-base-content">
+                  <div className="text-sm font-semibold text-foreground">
                     {tech.name}
                   </div>
-                  <div className="text-xs text-base-content/70">
+                  <div className="text-xs text-foreground/70">
                     {calculatePercentage(tech.quantity).toFixed(1)}% (
                     {tech.quantity})
                   </div>
@@ -89,7 +89,7 @@ const DifficultyAnalysis: React.FC<DifficultyAnalysisProps> = ({
       </div>
 
       <div className="text-center">
-        <p className="text-base-content/70 text-sm max-w-3xl mx-auto">
+        <p className="text-foreground/70 text-sm max-w-3xl mx-auto">
           {explanation}
         </p>
       </div>

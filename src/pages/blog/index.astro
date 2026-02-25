@@ -21,7 +21,7 @@ publishedPosts = publishedPosts.sort(
         type="text"
         placeholder="Search"
         id="searchbar"
-        class="input input-bordered w-full"
+        class="w-full px-3 py-2 rounded border border-border bg-background text-foreground placeholder:text-foreground-muted focus:outline-none focus:border-primary"
       />
       {
         /*
@@ -37,7 +37,7 @@ publishedPosts = publishedPosts.sort(
     </div>
     <div></div>
     <section class="animate-fade-in-up delay-200">
-      <div class="divider"></div>
+      <div class="border-t border-border my-4"></div>
       <ul id="blog-container" class="flex flex-col gap-4">
         {
           publishedPosts.map((post: any) => (

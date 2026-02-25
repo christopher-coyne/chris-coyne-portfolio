@@ -15,18 +15,18 @@ const { href, title, body, date, tags } = Astro.props;
 {/* card for blog posts */}
 <a
   href={href}
-  class="flex flex-row justify-between rounded-lg group border-2 border-primary/30 hover:bg-primary/5"
+  class="flex flex-row justify-between rounded-lg group border border-border hover:bg-foreground/5 transition-colors"
 >
   <div class="flex flex-col gap-2 p-4">
     <div class="font-semibold text-xl title">
       {title}
     </div>
-    <p class="text-base">
+    <p class="text-base text-foreground-muted">
       {body}
     </p>
     <div class="flex flex-row gap-2 pt-4">
       <div class="flex flex-row gap-2">
-        {tags.map((tag) => <div class="badge badge-primary">{tag}</div>)}
+        {tags.map((tag) => <div class="text-xs px-2 py-1 rounded border border-border text-foreground-muted">{tag}</div>)}
       </div>
     </div>
   </div>

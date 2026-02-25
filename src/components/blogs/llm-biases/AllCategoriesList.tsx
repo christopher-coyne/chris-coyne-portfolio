@@ -45,30 +45,30 @@ const AllCategoriesList: React.FC<AllCategoriesListProps> = ({ data }) => {
       {/* Modal */}
       {selectedCategory && (
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10 rounded-md">
-          <div className="bg-base-100 rounded-lg max-w-full max-h-[90%] w-full mx-4 overflow-hidden shadow-lg">
-            <div className="flex justify-between items-center p-4 border-b border-base-300">
-              <h3 className="text-xl font-bold text-base-content">
+          <div className="bg-background rounded-lg max-w-full max-h-[90%] w-full mx-4 overflow-hidden shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b border-border">
+              <h3 className="text-xl font-bold text-foreground">
                 {selectedCategory}
               </h3>
               <button
                 onClick={handleCloseModal}
-                className="text-base-content/70 hover:text-base-content text-xl font-bold"
+                className="text-foreground/70 hover:text-foreground text-xl font-bold"
               >
                 ×
               </button>
             </div>
-            <div className="p-4 overflow-y-auto max-h-[400px] bg-base-100">
+            <div className="p-4 overflow-y-auto max-h-[400px] bg-background">
               <div className="space-y-3">
                 {data.all_project_ideas[selectedCategory].map(
                   (project, index) => (
                     <div
                       key={index}
-                      className="bg-base-200 border border-base-300 rounded-lg p-3"
+                      className="bg-background-secondary border border-border rounded-lg p-3"
                     >
-                      <h4 className="text-lg font-semibold mb-2 text-base-content">
+                      <h4 className="text-lg font-semibold mb-2 text-foreground">
                         {project.title}
                       </h4>
-                      <p className="text-base-content/80 mb-2 text-sm">
+                      <p className="text-foreground/80 mb-2 text-sm">
                         {project.description}
                       </p>
                       <span

@@ -26,7 +26,7 @@ const Technologies: React.FC = () => {
   return (
     <div>
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 mb-4 border-b border-base-300 pb-2">
+      <div className="flex flex-wrap gap-2 mb-4 border-b border-border pb-2">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -34,7 +34,7 @@ const Technologies: React.FC = () => {
             className={`px-4 py-2 rounded-t-lg text-sm font-medium transition-colors border-b-2 ${
               activeTab === tab.id
                 ? "bg-blue-500 text-white border-blue-500"
-                : "bg-base-200 text-base-content hover:bg-base-300 border-transparent"
+                : "bg-background-secondary text-foreground hover:bg-foreground/10 border-transparent"
             }`}
           >
             {tab.label}

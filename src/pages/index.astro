@@ -14,7 +14,7 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
 
 <Layout title="Christopher Coyne's blog and portfolio">
   <main
-    class="flex flex-col w-[90%] max-w-[700px] m-auto gap-16 text-base-content text-lg"
+    class="flex flex-col w-[90%] max-w-[700px] m-auto gap-16 text-foreground text-lg"
   >
     <section class="flex flex-col">
       <div class="flex flex-col gap-6 items-center">
@@ -29,27 +29,29 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
           <p class="text-center">Software Engineer and Creator</p>
         </div>
         <ul class="flex flex-row gap-4">
-          <li class="link">
+          <li>
             <a
               href="https://github.com/christopher-coyne"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Github"
+              class="text-foreground hover:text-foreground-muted transition-colors"
             >
               <Icon name="mdi:github" size={32} />
             </a>
           </li>
-          <li class="link">
-            <a href="mailto:christcoyne@gmail.com" aria-label="Email">
+          <li>
+            <a href="mailto:christcoyne@gmail.com" aria-label="Email" class="text-foreground hover:text-foreground-muted transition-colors">
               <Icon name="mdi:email" size={32} />
             </a>
           </li>
-          <li class="link">
+          <li>
             <a
               href="https://www.linkedin.com/in/christopher-coyne/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              class="text-foreground hover:text-foreground-muted transition-colors"
             >
               <Icon name="mdi:linkedin" size={32} />
             </a>
@@ -116,7 +118,7 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
     <section class="flex flex-col gap-6">
       <div class="flex justify-between">
         <h2 class="font-semibold text-2xl">Blog Posts</h2>
-        <a href="/blog" class="link">All Posts</a>
+        <a href="/blog" class="text-foreground underline hover:text-foreground-muted transition-colors">All Posts</a>
       </div>
       <ul class="flex flex-col gap-4">
         {
@@ -142,7 +144,7 @@ possible tags - programming, vidya, design, internet (culture), art, literature,
         class="flex flex-col gap-2 items-start sm:flex-row sm:justify-between sm:items-center"
       >
         <p>Always looking to collaborate and network</p>
-        <a href="mailto:christcoyne@gmail.com" class="btn btn-outline btn-sm">
+        <a href="mailto:christcoyne@gmail.com" class="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded border border-border text-foreground hover:bg-foreground/10 transition-colors">
           Contact
           <Icon name="mdi:email" size={20} />
         </a>

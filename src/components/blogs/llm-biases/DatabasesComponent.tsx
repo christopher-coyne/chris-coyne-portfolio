@@ -246,7 +246,7 @@ const DatabasesComponent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         Databases
       </h3>
 
@@ -260,7 +260,7 @@ const DatabasesComponent: React.FC = () => {
         ))}
       </div>
 
-      <h3 className="text-lg font-semibold text-base-content text-center">
+      <h3 className="text-lg font-semibold text-foreground text-center">
         ORMs
       </h3>
       <div className="space-y-2">
@@ -296,7 +296,7 @@ const DatabasesComponent: React.FC = () => {
         successor kysely would have been better choices, in my opinion.
       </p>
 
-      <div className="border-t border-base-300 pt-8">
+      <div className="border-t border-border pt-8">
         <DifficultyAnalysis
           title="Database Technology Difficulty Analysis"
           easy={difficultyAnalysisData.easy}
