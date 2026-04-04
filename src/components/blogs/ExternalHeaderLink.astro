@@ -10,12 +10,12 @@ const { title, link } = Astro.props;
 
 <a
   href={link}
-  class="flex gap-2 items-center text-foreground underline hover:text-foreground-muted transition-colors group"
+  class="flex gap-2 items-center text-foreground underline hover:text-foreground-muted group"
 >
   <h2 class="font-semibold text-xl">{title}</h2>
   <Icon
     name="mdi:arrow-top-right"
     size={20}
-    class="transform transition-transform duration-300 group-hover:translate-x-1"
+    class="transform group-hover:translate-x-1"
   />
 </a>

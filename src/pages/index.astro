@@ -31,7 +31,7 @@ const recentArt = [
 
     <!-- Hero -->
     <section class="mb-20 relative pl-8">
-      <div class="absolute left-0 top-0 bottom-0 w-2 rounded-full hero-gradient-bar"></div>
+      <div class="absolute left-0 top-0 bottom-0 w-3 rounded-full hero-gradient-bar"></div>
       <div class="flex items-center gap-5 mb-8">
         <img
           src="/images/mypics/headshot.webp"
@@ -53,14 +53,14 @@ const recentArt = [
           href="https://github.com/christopher-coyne"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground hover:text-foreground-muted transition-colors duration-200"
+          class="text-foreground hover:opacity-60"
           aria-label="Github"
         >
           <Icon name="mdi:github" size={20} />
         </a>
         <a
           href="mailto:christcoyne@gmail.com"
-          class="text-foreground hover:text-foreground-muted transition-colors duration-200"
+          class="text-foreground hover:opacity-60"
           aria-label="Email"
         >
           <Icon name="mdi:email" size={20} />
@@ -69,14 +69,14 @@ const recentArt = [
           href="https://www.linkedin.com/in/christopher-coyne/"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-foreground hover:text-foreground-muted transition-colors duration-200"
+          class="text-foreground hover:opacity-60"
           aria-label="LinkedIn"
         >
           <Icon name="mdi:linkedin" size={20} />
         </a>
       </div>
       <p class="text-[14px] text-foreground-muted mt-4">
-        I also write on my tech blog, <a href="https://www.surrealcoding.com" target="_blank" rel="noopener noreferrer" class="text-foreground border-b border-foreground/30 hover:border-foreground transition-colors duration-200 pb-[1px]">Surreal Coding</a>.
+        I also write on my tech blog, <a href="https://www.surrealcoding.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Surreal Coding</a>.
       </p>
     </section>
 
@@ -84,18 +84,18 @@ const recentArt = [
     <section class="mb-20">
       <div class="flex items-baseline justify-between mb-8">
         <h2 class="section-heading">Writing</h2>
-        <a href="/blog" class="text-[14px] text-foreground-muted hover:text-foreground transition-colors duration-200">See all &rarr;</a>
+        <a href="/blog" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
       </div>
       {
         recentPosts.map((post: any, i: number) => (
           <a
             href={`/blog/${post.slug}`}
             class:list={[
-              "group flex items-baseline justify-between py-4 transition-colors duration-200 hover:text-foreground-muted",
+              "group flex items-baseline justify-between py-4",
               i < recentPosts.length - 1 && "border-b border-border/50"
             ]}
           >
-            <span class="text-[16px] leading-snug">{post.data.title}</span>
+            <span class="text-[16px] leading-snug group-hover:underline">{post.data.title}</span>
             <span class="text-[14px] text-foreground-muted ml-6 shrink-0 tabular-nums">
               {formatDate(post.data.date)}
             </span>
@@ -108,16 +108,16 @@ const recentArt = [
     <section class="mb-20">
       <div class="flex items-baseline justify-between mb-8">
         <h2 class="section-heading">Art</h2>
-        <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground transition-colors duration-200">See all &rarr;</a>
+        <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
       </div>
       <div class="grid grid-cols-3 gap-4">
         {recentArt.map((artwork) => (
-          <a href="/art" class="group">
-            <div class="aspect-square overflow-hidden">
+          <a href="/art" class="group relative block">
+            <div class="aspect-square overflow-hidden relative">
               <img
                 src={artwork.src}
                 alt={artwork.alt}
-                class="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-300"
+                class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -131,7 +131,7 @@ const recentArt = [
     <section>
       <h2 class="section-heading mb-4">Get in touch</h2>
       <p class="text-[16px] text-foreground-muted">
-        Always open to collaborating — <a href="mailto:christcoyne@gmail.com" class="text-foreground border-b border-foreground/30 hover:border-foreground transition-colors duration-200 pb-[1px]">christcoyne@gmail.com</a>
+        Always open to collaborating — <a href="mailto:christcoyne@gmail.com" class="text-foreground underline">christcoyne@gmail.com</a>
       </p>
     </section>
 
@@ -159,7 +159,7 @@ const recentArt = [
   }
 
   .hero-gradient-bar {
-    background: linear-gradient(180deg, #d946ef, #f43f5e, #9333ea, #d946ef);
+    background: linear-gradient(180deg, #22c55e, #10b981, #06b6d4, #22c55e);
     background-size: 100% 300%;
     animation: gradient-shift 3s ease infinite;
   }

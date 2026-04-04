@@ -39,15 +39,15 @@ const artworks = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {artworks.map((artwork) => (
         <div
-          class="art-item cursor-pointer"
+          class="art-item cursor-pointer group"
           data-src={artwork.src}
           data-alt={artwork.alt}
         >
-          <div class="aspect-square overflow-hidden">
+          <div class="aspect-square overflow-hidden relative">
             <img
               src={artwork.src}
               alt={artwork.alt}
-              class="w-full h-full object-cover art-img"
+              class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
               loading="lazy"
             />
           </div>
@@ -73,13 +73,6 @@ const artworks = [
     line-height: 1.1;
   }
 
-  .art-img {
-    transition: opacity 0.3s ease;
-  }
-
-  .art-item:hover .art-img {
-    opacity: 0.8;
-  }
 
   .art-modal {
     display: none;
@@ -111,7 +104,6 @@ const artworks = [
     color: rgba(255, 255, 255, 0.7);
     font-size: 2rem;
     cursor: pointer;
-    transition: color 0.2s ease;
     z-index: 51;
     line-height: 1;
   }
