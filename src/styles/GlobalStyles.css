@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
 [data-theme="dark"] {
-  --color-bg: #000000;
-  --color-bg-secondary: #111111;
+  --color-bg: #121212;
+  --color-bg-secondary: #1c1c1c;
   --color-text: #ffffff;
   --color-text-muted: #c0c0c0;
   --color-border: #333333;
