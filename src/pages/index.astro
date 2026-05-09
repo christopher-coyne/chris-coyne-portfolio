@@ -27,12 +27,12 @@ const recentArt = [
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main class="max-w-[720px] w-[90%] m-auto text-foreground pb-32">
+  <main class="max-w-[720px] w-[90%] m-auto text-foreground pb-20">
 
     <!-- Hero -->
-    <section class="mb-20 relative pl-8">
+    <section class="mb-12 relative pl-8">
       <div class="absolute left-0 top-0 bottom-0 w-3 rounded-full hero-gradient-bar"></div>
-      <div class="flex items-center gap-5 mb-8">
+      <div class="flex items-center gap-5 mb-5">
         <img
           src="/images/mypics/headshot.webp"
           alt="Chris's headshot"
@@ -43,12 +43,12 @@ const recentArt = [
           <p class="text-foreground text-[16px] mt-1">Programmer & Creator</p>
         </div>
       </div>
-      <p class="text-[18px] leading-[1.7]">
+      <p class="text-[17px] leading-[1.6]">
         I'm a software engineer at Pyyne Digital in NYC.
         I love designing and building products from the ground up —
         mostly with TypeScript, React, and Node. In my free time, I write articles about tech and internet culture, and make art.
       </p>
-      <div class="flex items-center gap-5 mt-6">
+      <div class="flex items-center gap-5 mt-4">
         <a
           href="https://github.com/christopher-coyne"
           target="_blank"
@@ -75,14 +75,14 @@ const recentArt = [
           <Icon name="mdi:linkedin" size={20} />
         </a>
       </div>
-      <p class="text-[14px] text-foreground-muted mt-4">
+      <p class="text-[14px] text-foreground-muted mt-3">
         I also write on my tech blog, <a href="https://www.surrealcoding.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Surreal Coding</a>.
       </p>
     </section>
 
     <!-- Writing -->
-    <section class="mb-20">
-      <div class="flex items-baseline justify-between mb-8">
+    <section class="mb-12">
+      <div class="flex items-baseline justify-between mb-4">
         <h2 class="section-heading">Writing</h2>
         <a href="/blog" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
       </div>
@@ -91,7 +91,7 @@ const recentArt = [
           <a
             href={`/blog/${post.slug}`}
             class:list={[
-              "group flex items-baseline justify-between py-4",
+              "group flex items-baseline justify-between py-3",
               i < recentPosts.length - 1 && "border-b border-border/50"
             ]}
           >
@@ -105,12 +105,12 @@ const recentArt = [
     </section>
 
     <!-- Art -->
-    <section class="mb-20">
-      <div class="flex items-baseline justify-between mb-8">
+    <section class="mb-12">
+      <div class="flex items-baseline justify-between mb-4">
         <h2 class="section-heading">Art</h2>
         <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
       </div>
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-3 gap-3">
         {recentArt.map((artwork) => (
           <a href="/art" class="group relative block">
             <div class="aspect-square overflow-hidden relative">
@@ -129,7 +129,7 @@ const recentArt = [
 
     <!-- Contact -->
     <section>
-      <h2 class="section-heading mb-4">Get in touch</h2>
+      <h2 class="section-heading mb-3">Get in touch</h2>
       <p class="text-[16px] text-foreground-muted">
         Always open to collaborating — <a href="mailto:christcoyne@gmail.com" class="text-foreground underline">christcoyne@gmail.com</a>
       </p>
