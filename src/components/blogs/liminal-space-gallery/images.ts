@@ -276,6 +276,36 @@ const redditImages: LiminalImage[] = [
     origin: "reddit",
   },
   {
+    src: "/images/blog/liminal-space-gallery/reddit/exit-hxvqlre75n4h1.webp",
+    alt: "Exit",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1ttn47o/exit/",
+    origin: "reddit",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/some-uncanny-feelings-in-my-photography-v0-c530xydt735h1.webp",
+    alt: "Some uncanny feelings in my photography",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1tvt2fd/some_uncanny_feelings_in_my_photography/",
+    origin: "reddit",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/some-uncanny-feelings-in-my-photography-v0-h5mw6rdt735h1.webp",
+    alt: "Some uncanny feelings in my photography",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1tvt2fd/some_uncanny_feelings_in_my_photography/",
+    origin: "reddit",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/some-uncanny-feelings-in-my-photography-v0-0bbwnidt735h1.webp",
+    alt: "Some uncanny feelings in my photography",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1tvt2fd/some_uncanny_feelings_in_my_photography/",
+    origin: "reddit",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/some-uncanny-feelings-in-my-photography-v0-8kmwpidt735h1.webp",
+    alt: "Some uncanny feelings in my photography",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1tvt2fd/some_uncanny_feelings_in_my_photography/",
+    origin: "reddit",
+  },
+  {
     src: "/images/blog/liminal-space-gallery/reddit/snowy-scene.jpeg",
     alt: "Snowy scene",
     link: "https://www.reddit.com/r/beirutband/comments/1fy9sr4/what_beirut_song_would_you_listen_to_if_you_sat/#:~:text=What%20Beirut*%20song%20would%20you%20listen%20to,you%20sat%20on%20this%20bench?%20:%20r/beirutband.",
