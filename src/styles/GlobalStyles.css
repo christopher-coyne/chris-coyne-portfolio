@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
-
 [data-theme="dark"] {
   --color-bg: #121212;
   --color-bg-secondary: #1c1c1c;
