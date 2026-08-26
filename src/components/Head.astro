@@ -16,7 +16,7 @@ import { ViewTransitions } from "astro:transitions";
       }
     })();
     if (theme) localStorage.setItem("theme", theme);
-    document.documentElement.setAttribute("data-theme", theme ?? "dark");
+    document.documentElement.setAttribute("data-theme", theme ?? "light");
   }
   init();
   document.addEventListener("astro:after-swap", () => {
@@ -24,4 +24,4 @@ import { ViewTransitions } from "astro:transitions";
   });
 </script>
 
-<ViewTransitions fallback="none"/>
+<ViewTransitions fallback="none" />

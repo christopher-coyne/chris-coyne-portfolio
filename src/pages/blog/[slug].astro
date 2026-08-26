@@ -16,58 +16,116 @@ const post = await getEntry("blog", slug);
 if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
-const { title, summary, date, tags } = post.data;
+const { title, date } = post.data;
 const { Content } = await post.render();
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  month: "short",
+  day: "2-digit",
+  year: "numeric",
+});
 ---
 
 <Layout title={title}>
-  <main class="max-w-[720px] m-auto w-[90%] py-8">
+  <article class="page post">
+    <a href="/blog" class="post-back">← All posts</a>
+    <h2 class="page-title">{title}</h2>
+    <time class="post-date" datetime={date}>
+      {formattedDate}
+    </time>
 
-    <a href="/blog" class="back-link">&larr; Back</a>
-
-    <h1 class="post-title">{title}</h1>
-    <p class="post-meta">{date}{tags && tags.length > 0 && ` · ${tags.join(", ")}`}</p>
-
-    <div class="post-divider"></div>
-
-    <section class="prose max-w-none mt-8 mb-16 text-base leading-[1.8]">
+    <div id="post-body" class="post-body prose max-w-none">
       <Content />
-    </section>
-  </main>
+    </div>
+  </article>
 </Layout>
 
 <style>
-  .back-link {
+  .post-back {
     display: inline-block;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    font-size: 13.5px;
+    color: var(--ink-faint);
     text-decoration: none;
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
   }
-
-  .back-link:hover {
-    color: var(--color-text);
-    text-decoration: underline;
+  .post-back:hover,
+  .post-back:focus-visible {
+    color: var(--accent);
   }
-
-  .post-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+  .post h2.page-title {
+    font-size: clamp(25px, 3vw, 30px);
+    margin-bottom: 8px;
   }
-
-  .post-meta {
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .post-divider {
-    width: 2.5rem;
-    height: 3px;
-    background: #22c55e;
-    border-radius: 3px;
+  .post-date {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-faint);
   }
 </style>
+
+<script>
+  function init() {
+    const tocGroup = document.getElementById("toc-group");
+    const tocList = document.getElementById("toc-list");
+    const body = document.getElementById("post-body");
+    if (!tocGroup || !tocList || !body) return;
+
+    const headings = Array.from(body.querySelectorAll<HTMLElement>("h2, h3"));
+    if (headings.length === 0) {
+      tocGroup.hidden = true;
+      tocList.innerHTML = "";
+      return;
+    }
+
+    const used = new Set<string>();
+    headings.forEach((h, i) => {
+      if (!h.id) {
+        const base =
+          (h.textContent || "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "") || `section-${i}`;
+        let id = base;
+        let n = 2;
+        while (used.has(id) || document.getElementById(id))
+          id = `${base}-${n++}`;
+        h.id = id;
+      }
+      used.add(h.id);
+    });
+
+    const topLevel = headings.some((h) => h.tagName === "H2") ? "H2" : "H3";
+    tocList.innerHTML = "";
+    headings.forEach((h) => {
+      const a = document.createElement("a");
+      a.className = "toc-item" + (h.tagName !== topLevel ? " is-sub" : "");
+      a.href = `#${h.id}`;
+      a.dataset.target = h.id;
+      a.textContent = h.textContent;
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        h.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", `#${h.id}`);
+      });
+      tocList.appendChild(a);
+    });
+    tocGroup.hidden = false;
+
+    const items = Array.from(
+      tocList.querySelectorAll<HTMLElement>(".toc-item"),
+    );
+    function update() {
+      let current = headings[0];
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top <= 130) current = h;
+      }
+      items.forEach((b) =>
+        b.classList.toggle("is-current", b.dataset.target === current.id),
+      );
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+
+  document.addEventListener("astro:page-load", init);
+</script>

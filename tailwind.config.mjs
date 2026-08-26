@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Figtree", "sans-serif"],
+        sans: ["Source Sans 3", "system-ui", "sans-serif"],
+        serif: ["Fraunces", "Georgia", "serif"],
       },
       colors: {
-        background: "var(--color-bg)",
-        "background-secondary": "var(--color-bg-secondary)",
-        foreground: "var(--color-text)",
-        "foreground-muted": "var(--color-text-muted)",
-        border: "var(--color-border)",
-        primary: "var(--color-primary)",
-        "primary-hover": "var(--color-primary-hover)",
+        background: "var(--paper)",
+        "background-secondary": "var(--tile)",
+        foreground: "var(--ink)",
+        "foreground-muted": "var(--ink-soft)",
+        "foreground-faint": "var(--ink-faint)",
+        border: "var(--line)",
+        "border-soft": "var(--line-soft)",
+        accent: "var(--accent)",
+        primary: "var(--ink)",
+        "primary-hover": "var(--accent)",
       },
     },
   },

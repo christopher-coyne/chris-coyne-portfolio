@@ -1,172 +1,307 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
-
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog");
-let publishedPosts = blogPosts
+const publishedPosts = blogPosts
   .filter((post) => post.data.published)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  );
 
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  return d.toLocaleDateString("en-US", { month: "short", day: "2-digit" });
 }
 
 const recentPosts = publishedPosts.slice(0, 4);
 
 const recentArt = [
-  { src: "/images/art/Bull.jpg", title: "Bull", alt: "Bull artwork" },
-  { src: "/images/art/Falling-Through.jpg", title: "Falling Through", alt: "Falling Through artwork" },
-  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes", alt: "Birds And Fishes artwork" },
-  { src: "/images/art/Creation.jpg", title: "Creation", alt: "Creation artwork" },
-  { src: "/images/art/Palms.jpg", title: "Palms", alt: "Palms artwork" },
-  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light", alt: "Remain In Light artwork" },
+  { src: "/images/art/Bull.jpg", title: "Bull" },
+  { src: "/images/art/Falling-Through.jpg", title: "Falling Through" },
+  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes" },
+  { src: "/images/art/Creation.jpg", title: "Creation" },
+  { src: "/images/art/Palms.jpg", title: "Palms" },
+  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light" },
+];
+
+const projects = [
+  {
+    name: "foodmapnyc.com",
+    href: "/",
+    desc: "Repository of tagged posts from r/foodnyc over the past 3 years.",
+  },
+  {
+    name: "stuffiminto.com",
+    href: "https://stuffiminto.com/users/chris",
+    desc: "Media sharing site similar to Linktree",
+  },
 ];
 ---
 
 <Layout title="Christopher Coyne's blog and portfolio">
-  <main class="max-w-[720px] w-[90%] m-auto text-foreground pb-20">
-
-    <!-- Hero -->
-    <section class="mb-12 relative pl-8">
-      <div class="absolute left-0 top-0 bottom-0 w-3 rounded-full hero-gradient-bar"></div>
-      <div class="flex items-center gap-5 mb-5">
-        <img
-          src="/images/mypics/headshot.webp"
-          alt="Chris's headshot"
-          class="w-16 h-16 rounded-full"
-        />
-        <div>
-          <h1 class="hero-name">Christopher Coyne</h1>
-          <p class="text-foreground text-[16px] mt-1">Programmer & Creator</p>
-        </div>
+  <div class="content-col">
+    <!-- About -->
+    <section class="tile about">
+      <div class="tile-head">
+        <span class="eyebrow">About</span>
       </div>
-      <p class="text-[17px] leading-[1.6]">
-        I'm a software engineer at Pyyne Digital in NYC.
-        I love designing and building products from the ground up —
-        mostly with TypeScript, React, and Node. In my free time, I write articles about tech and internet culture, and make art.
-      </p>
-      <div class="flex items-center gap-5 mt-4">
+      <div class="about-body">
+        <div class="about-text">
+          <p>
+            My name is Chris. I work as a software developer in NYC, but I'm
+            originally from New Jersey. This is a place for me to share
+            everything I've worked on over the years, including projects, art,
+            writing, and anything else. I'm most interested in music, internet
+            subcultures, and the intersection between AI and human purpose.
+          </p>
+        </div>
+        <img
+          class="about-photo"
+          src="/images/mypics/headshot.webp"
+          alt="Chris Coyne"
+          width="1440"
+          height="960"
+        />
+      </div>
+      <div class="about-links">
+        <a
+          href="https://www.surrealcoding.com"
+          target="_blank"
+          rel="noopener noreferrer">Tech blog ↗</a
+        >
         <a
           href="https://github.com/christopher-coyne"
           target="_blank"
-          rel="noopener noreferrer"
-          class="text-foreground hover:opacity-60"
-          aria-label="Github"
+          rel="noopener noreferrer">Github ↗</a
         >
-          <Icon name="mdi:github" size={20} />
-        </a>
-        <a
-          href="mailto:christcoyne@gmail.com"
-          class="text-foreground hover:opacity-60"
-          aria-label="Email"
-        >
-          <Icon name="mdi:email" size={20} />
-        </a>
         <a
           href="https://www.linkedin.com/in/christopher-coyne/"
           target="_blank"
-          rel="noopener noreferrer"
-          class="text-foreground hover:opacity-60"
-          aria-label="LinkedIn"
+          rel="noopener noreferrer">LinkedIn ↗</a
         >
-          <Icon name="mdi:linkedin" size={20} />
-        </a>
       </div>
-      <p class="text-[14px] text-foreground-muted mt-3">
-        I also write on my tech blog, <a href="https://www.surrealcoding.com" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Surreal Coding</a>.
-      </p>
-    </section>
-
-    <!-- Writing -->
-    <section class="mb-12">
-      <div class="flex items-baseline justify-between mb-4">
-        <h2 class="section-heading">Writing</h2>
-        <a href="/blog" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
-      </div>
-      {
-        recentPosts.map((post: any, i: number) => (
-          <a
-            href={`/blog/${post.slug}`}
-            class:list={[
-              "group flex items-baseline justify-between py-3",
-              i < recentPosts.length - 1 && "border-b border-border/50"
-            ]}
-          >
-            <span class="text-[16px] leading-snug group-hover:underline">{post.data.title}</span>
-            <span class="text-[14px] text-foreground-muted ml-6 shrink-0 tabular-nums">
-              {formatDate(post.data.date)}
-            </span>
-          </a>
-        ))
-      }
     </section>
 
     <!-- Art -->
-    <section class="mb-12">
-      <div class="flex items-baseline justify-between mb-4">
-        <h2 class="section-heading">Art</h2>
-        <a href="/art" class="text-[14px] text-foreground-muted hover:text-foreground">See all &rarr;</a>
+    <section class="tile">
+      <div class="tile-head">
+        <span class="eyebrow">Art</span>
+        <a class="tile-link" href="/art">View all →</a>
       </div>
-      <div class="grid grid-cols-3 gap-3">
-        {recentArt.map((artwork) => (
-          <a href="/art" class="group relative block">
-            <div class="aspect-square overflow-hidden relative">
-              <img
-                src={artwork.src}
-                alt={artwork.alt}
-                class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
-                loading="lazy"
-              />
+      <div class="art-grid" aria-label="Recent artwork">
+        {
+          recentArt.map((art) => (
+            <a href="/art" aria-label={art.title}>
+              <img src={art.src} alt={art.title} loading="lazy" />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="tile">
+      <div class="tile-head">
+        <span class="eyebrow">Recent writing</span>
+        <a class="tile-link" href="/blog">All posts →</a>
+      </div>
+      <div class="post-list">
+        {
+          recentPosts.map((post) => (
+            <a href={`/blog/${post.slug}`}>
+              <span>{post.data.title}</span>
+              <time datetime={post.data.date}>
+                {formatDate(post.data.date)}
+              </time>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="tile">
+      <div class="tile-head">
+        <span class="eyebrow">Projects</span>
+        <a
+          class="tile-link"
+          href="https://github.com/christopher-coyne"
+          target="_blank"
+          rel="noopener noreferrer">github.com/christopher-coyne ↗</a
+        >
+      </div>
+      <div class="proj-list">
+        {
+          projects.map((p) => (
+            <div class="proj">
+              <a
+                class="proj-name"
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {p.name}
+                <span class="proj-arrow">↗</span>
+              </a>
+              <span class="proj-desc">{p.desc}</span>
             </div>
-            <p class="text-[14px] text-foreground-muted mt-2">{artwork.title}</p>
-          </a>
-        ))}
+          ))
+        }
       </div>
     </section>
-
-    <!-- Contact -->
-    <section>
-      <h2 class="section-heading mb-3">Get in touch</h2>
-      <p class="text-[16px] text-foreground-muted">
-        Always open to collaborating — <a href="mailto:christcoyne@gmail.com" class="text-foreground underline">christcoyne@gmail.com</a>
-      </p>
-    </section>
-
-  </main>
+  </div>
 </Layout>
 
 <style>
-  .hero-name {
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+  .about-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .about-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .about p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .about-photo {
+    flex: none;
+    width: 104px;
+    height: 104px;
+    object-fit: cover;
+    object-position: 65% 50%;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 760px) {
+    .about-body {
+      flex-direction: column-reverse;
+    }
+    .about-photo {
+      width: 88px;
+      height: 88px;
+    }
+  }
+  .about p + p {
+    margin-top: 10px;
+  }
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 16px;
+  }
+  .about-links a {
+    color: var(--ink-soft);
+    font-size: 15px;
+    text-decoration: underline;
+    text-decoration-color: var(--ink-faint);
+    text-underline-offset: 3px;
+  }
+  .about-links a:hover,
+  .about-links a:focus-visible {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
   }
 
-  .section-heading {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .art-grid a {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, var(--thumb-a) 0%, var(--thumb-b) 100%);
+  }
+  .art-grid a:hover,
+  .art-grid a:focus-visible {
+    border-color: var(--ink-faint);
+  }
+  .art-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
-  a[href^="mailto"] {
+  .post-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .post-list a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 15.5px;
+    color: var(--ink);
     text-decoration: none;
   }
-
-  .hero-gradient-bar {
-    background: linear-gradient(180deg, #22c55e, #10b981, #06b6d4, #22c55e);
-    background-size: 100% 300%;
-    animation: gradient-shift 3s ease infinite;
+  .post-list a:first-child {
+    padding-top: 0;
+  }
+  .post-list a:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .post-list a:hover span,
+  .post-list a:focus-visible span {
+    color: var(--accent);
+  }
+  .post-list time {
+    font-size: 13px;
+    color: var(--ink-faint);
+    white-space: nowrap;
   }
 
-  @keyframes gradient-shift {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 0% 100%; }
-    100% { background-position: 0% 0%; }
+  .proj {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .proj:first-child {
+    padding-top: 0;
+  }
+  .proj:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .proj-name {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--chip);
+    padding: 3px 10px;
+    border-radius: var(--radius);
+    text-decoration: none;
+  }
+  .proj-name:hover,
+  .proj-name:focus-visible {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+  }
+  .proj-arrow {
+    font-size: 12px;
+  }
+  .proj-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
   }
 </style>

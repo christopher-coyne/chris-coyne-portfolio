@@ -2,77 +2,97 @@
 import Layout from "../../layouts/Layout.astro";
 
 const artworks = [
-  { src: "/images/art/Bull.jpg", title: "Bull", alt: "Bull artwork" },
-  { src: "/images/art/Falling-Through.jpg", title: "Falling Through", alt: "Falling Through artwork" },
-  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes", alt: "Birds And Fishes artwork" },
-  { src: "/images/art/Creation.jpg", title: "Creation", alt: "Creation artwork" },
-  { src: "/images/art/Palms.jpg", title: "Palms", alt: "Palms artwork" },
-  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light", alt: "Remain In Light artwork" },
-  { src: "/images/art/Prospero.jpg", title: "Prospero", alt: "Prospero artwork" },
-  { src: "/images/art/Memory.jpg", title: "Memory", alt: "Memory artwork" },
-  { src: "/images/art/The-Angel.jpg", title: "The Angel", alt: "The Angel artwork" },
-  { src: "/images/art/bull-distort1.png", title: "Bull Distort 1", alt: "Bull Distort 1 artwork" },
-  { src: "/images/art/bull-1.png", title: "Bull 1", alt: "Bull 1 artwork" },
-  { src: "/images/art/bull-mutated.png", title: "Bull Mutated", alt: "Bull Mutated artwork" },
-  { src: "/images/art/node-a.png", title: "Node A", alt: "Node A artwork" },
-  { src: "/images/art/node-b.png", title: "Node B", alt: "Node B artwork" },
-  { src: "/images/art/node-c.png", title: "Node C", alt: "Node C artwork" },
-  { src: "/images/art/node-d.png", title: "Node D", alt: "Node D artwork" },
-  { src: "/images/art/node-e.png", title: "Node E", alt: "Node E artwork" },
-  { src: "/images/art/node-f.png", title: "Node F", alt: "Node F artwork" },
-  { src: "/images/art/node-g.png", title: "Node G", alt: "Node G artwork" },
-  { src: "/images/art/node-h.png", title: "Node H", alt: "Node H artwork" },
-  { src: "/images/art/node-i.png", title: "Node I", alt: "Node I artwork" },
-  { src: "/images/art/node-j.png", title: "Node J", alt: "Node J artwork" },
-  { src: "/images/art/node-k.png", title: "Node K", alt: "Node K artwork" },
+  { src: "/images/art/Bull.jpg", title: "Bull" },
+  { src: "/images/art/Falling-Through.jpg", title: "Falling Through" },
+  { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes" },
+  { src: "/images/art/Creation.jpg", title: "Creation" },
+  { src: "/images/art/Palms.jpg", title: "Palms" },
+  { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light" },
+  { src: "/images/art/Prospero.jpg", title: "Prospero" },
+  { src: "/images/art/Memory.jpg", title: "Memory" },
+  { src: "/images/art/The-Angel.jpg", title: "The Angel" },
+  { src: "/images/art/bull-distort1.png", title: "Bull Distort 1" },
+  { src: "/images/art/bull-1.png", title: "Bull 1" },
+  { src: "/images/art/bull-mutated.png", title: "Bull Mutated" },
+  { src: "/images/art/node-a.png", title: "Node A" },
+  { src: "/images/art/node-b.png", title: "Node B" },
+  { src: "/images/art/node-c.png", title: "Node C" },
+  { src: "/images/art/node-d.png", title: "Node D" },
+  { src: "/images/art/node-e.png", title: "Node E" },
+  { src: "/images/art/node-f.png", title: "Node F" },
+  { src: "/images/art/node-g.png", title: "Node G" },
+  { src: "/images/art/node-h.png", title: "Node H" },
+  { src: "/images/art/node-i.png", title: "Node I" },
+  { src: "/images/art/node-j.png", title: "Node J" },
+  { src: "/images/art/node-k.png", title: "Node K" },
 ];
 ---
 
 <Layout title="Christopher Coyne's art">
-  <main class="max-w-[720px] w-[90%] m-auto pb-32">
+  <section class="page">
+    <h2 class="page-title">Art</h2>
+    <p class="page-sub">Traditional and digital work.</p>
 
-    <header class="mb-12">
-      <h1 class="page-title">Art</h1>
-      <p class="text-foreground-muted text-[16px] mt-2">Traditional and digital work.</p>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {artworks.map((artwork) => (
-        <div
-          class="art-item cursor-pointer group"
-          data-src={artwork.src}
-          data-alt={artwork.alt}
-        >
-          <div class="aspect-square overflow-hidden relative">
-            <img
-              src={artwork.src}
-              alt={artwork.alt}
-              class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-          <p class="text-sm text-foreground-muted mt-2">{artwork.title}</p>
-        </div>
-      ))}
+    <div class="page-art-grid">
+      {
+        artworks.map((art) => (
+          <figure>
+            <button
+              class="art-item"
+              data-src={art.src}
+              data-alt={art.title}
+              aria-label={`View ${art.title}`}
+            >
+              <img src={art.src} alt={art.title} loading="lazy" />
+            </button>
+            <figcaption>{art.title}</figcaption>
+          </figure>
+        ))
+      }
     </div>
+  </section>
 
-    <!-- Modal -->
-    <div id="artModal" class="art-modal">
-      <button id="closeModal" class="modal-close" aria-label="Close modal">&times;</button>
-      <img id="modalImg" src="" alt="" class="modal-img" />
-    </div>
-
-  </main>
+  <!-- Modal -->
+  <div id="artModal" class="art-modal">
+    <button id="closeModal" class="modal-close" aria-label="Close modal"
+      >&times;</button
+    >
+    <img id="modalImg" src="" alt="" class="modal-img" />
+  </div>
 </Layout>
 
 <style>
-  .page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+  .page-art-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap);
   }
-
+  figure {
+    margin: 0;
+  }
+  .art-item {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--thumb-a) 0%, var(--thumb-b) 100%);
+  }
+  .art-item:hover,
+  .art-item:focus-visible {
+    border-color: var(--ink-faint);
+  }
+  .art-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  figcaption {
+    font-size: 14.5px;
+    margin-top: 8px;
+  }
 
   .art-modal {
     display: none;
@@ -84,69 +104,61 @@ const artworks = [
     justify-content: center;
     padding: 1rem;
   }
-
   .art-modal.open {
     display: flex;
   }
-
   .modal-img {
     max-width: 95vw;
     max-height: 95vh;
     object-fit: contain;
   }
-
   .modal-close {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    background: none;
-    border: none;
     color: rgba(255, 255, 255, 0.7);
     font-size: 2rem;
-    cursor: pointer;
     z-index: 51;
     line-height: 1;
   }
-
   .modal-close:hover {
     color: white;
+  }
+
+  @media (max-width: 760px) {
+    .page-art-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
   }
 </style>
 
 <script>
   function init() {
     const modal = document.getElementById("artModal");
-    const modalImg = document.getElementById("modalImg") as HTMLImageElement;
+    const modalImg = document.getElementById(
+      "modalImg",
+    ) as HTMLImageElement | null;
     const closeBtn = document.getElementById("closeModal");
-    const items = document.querySelectorAll(".art-item");
+    if (!modal || !modalImg) return;
 
-    items.forEach((item) => {
+    document.querySelectorAll(".art-item").forEach((item) => {
       item.addEventListener("click", () => {
-        const src = item.getAttribute("data-src") || "";
-        const alt = item.getAttribute("data-alt") || "";
-        if (modalImg && modal) {
-          modalImg.src = src;
-          modalImg.alt = alt;
-          modal.classList.add("open");
-        }
+        modalImg.src = item.getAttribute("data-src") || "";
+        modalImg.alt = item.getAttribute("data-alt") || "";
+        modal.classList.add("open");
       });
     });
 
-    if (closeBtn && modal) {
-      closeBtn.addEventListener("click", () => modal.classList.remove("open"));
-    }
-
-    if (modal) {
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) modal.classList.remove("open");
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") modal.classList.remove("open");
-      });
-    }
+    const close = () => modal.classList.remove("open");
+    closeBtn?.addEventListener("click", close);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
   }
 
-  init();
-  document.addEventListener("astro:after-swap", () => init());
+  document.addEventListener("astro:page-load", init);
 </script>
