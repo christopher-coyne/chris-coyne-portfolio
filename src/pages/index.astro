@@ -109,7 +109,7 @@ const projects = [
       <div class="post-list">
         {
           recentPosts.map((post) => (
-            <a href={`/blog/${post.slug}`}>
+            <a href={`/blog/${post.slug}`} data-astro-prefetch="hover">
               <span>{post.data.title}</span>
               <time datetime={post.data.date}>
                 {formatDate(post.data.date)}

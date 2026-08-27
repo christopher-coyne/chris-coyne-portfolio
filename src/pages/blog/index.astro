@@ -30,7 +30,11 @@ function formatDate(dateStr: string) {
       {
         publishedPosts.map((post) => (
           <article>
-            <a class="post-head" href={`/blog/${post.slug}`}>
+            <a
+              class="post-head"
+              href={`/blog/${post.slug}`}
+              data-astro-prefetch="hover"
+            >
               <h3 class="title">{post.data.title}</h3>
               <time datetime={post.data.date}>
                 {formatDate(post.data.date)}

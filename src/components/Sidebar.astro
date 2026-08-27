@@ -35,6 +35,7 @@ const links = [
             <a
               href={l.href}
               aria-current={current(l.href) ? "page" : undefined}
+              data-astro-prefetch="hover"
             >
               {l.label}
             </a>
@@ -331,5 +332,5 @@ const links = [
     }
   }
 
-  document.addEventListener("astro:page-load", init);
+  init();
 </script>
