@@ -25,3 +25,13 @@ Personal portfolio and blog site built with Astro, React, Tailwind CSS, and Dais
 - **Themes:** DaisyUI "night" (default) and "winter", toggled via navbar with localStorage persistence
 - **Styling conventions:** Tailwind utilities throughout; content centered with `max-w-[700px] m-auto w-[90%]`; `prose` class for blog content; custom `animate-fade-in` / `animate-fade-in-up` animations
 - **Static data:** `src/data/` for structured data files (e.g., JSON for interactive blog content)
+
+## Artwork Images
+
+Art images live in `public/images/art/` (full resolution), with WebP thumbnails in `public/images/art/thumbs/`. The art page (`/art`) and home page grids display the thumbnails; the full-resolution original is only fetched when a piece is clicked (modal). Thumbnail paths are derived from the original path (`/images/art/X.jpg` → `/images/art/thumbs/X.webp`), so the filenames must match.
+
+**When adding a new piece of artwork, you MUST generate a matching thumbnail** — without it the grid square will render a broken image:
+
+```bash
+cwebp -q 80 -resize 600 0 public/images/art/NewPiece.jpg -o public/images/art/thumbs/NewPiece.webp
+```

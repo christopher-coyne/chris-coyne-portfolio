@@ -25,6 +25,11 @@ const recentArt = [
   { src: "/images/art/Remain-In-Light.jpg", title: "Remain In Light" },
 ];
 
+const thumb = (src: string) =>
+  src
+    .replace("/images/art/", "/images/art/thumbs/")
+    .replace(/\.(jpg|png)$/, ".webp");
+
 const projects = [
   {
     name: "foodmapnyc.com",
@@ -93,7 +98,7 @@ const projects = [
         {
           recentArt.map((art) => (
             <a href="/art" aria-label={art.title}>
-              <img src={art.src} alt={art.title} loading="lazy" />
+              <img src={thumb(art.src)} alt={art.title} loading="lazy" />
             </a>
           ))
         }

@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 
 const artworks = [
-  { src: "/images/art/Bull.jpg", title: "Bull" },
   { src: "/images/art/Falling-Through.jpg", title: "Falling Through" },
   { src: "/images/art/Birds-And-Fishes.jpg", title: "Birds And Fishes" },
   { src: "/images/art/Creation.jpg", title: "Creation" },
@@ -11,21 +10,42 @@ const artworks = [
   { src: "/images/art/Prospero.jpg", title: "Prospero" },
   { src: "/images/art/Memory.jpg", title: "Memory" },
   { src: "/images/art/The-Angel.jpg", title: "The Angel" },
-  { src: "/images/art/bull-distort1.png", title: "Bull Distort 1" },
-  { src: "/images/art/bull-1.png", title: "Bull 1" },
-  { src: "/images/art/bull-mutated.png", title: "Bull Mutated" },
-  { src: "/images/art/node-a.png", title: "Node A" },
-  { src: "/images/art/node-b.png", title: "Node B" },
-  { src: "/images/art/node-c.png", title: "Node C" },
-  { src: "/images/art/node-d.png", title: "Node D" },
-  { src: "/images/art/node-e.png", title: "Node E" },
-  { src: "/images/art/node-f.png", title: "Node F" },
-  { src: "/images/art/node-g.png", title: "Node G" },
-  { src: "/images/art/node-h.png", title: "Node H" },
-  { src: "/images/art/node-i.png", title: "Node I" },
-  { src: "/images/art/node-j.png", title: "Node J" },
-  { src: "/images/art/node-k.png", title: "Node K" },
 ];
+
+const series = [
+  {
+    id: "bulls",
+    title: "Bulls",
+    pieces: [
+      { src: "/images/art/Bull.jpg", title: "Bull" },
+      { src: "/images/art/bull-1.png", title: "Bull 1" },
+      { src: "/images/art/bull-distort1.png", title: "Bull Distort 1" },
+      { src: "/images/art/bull-mutated.png", title: "Bull Mutated" },
+    ],
+  },
+  {
+    id: "liminal-city",
+    title: "Liminal City",
+    pieces: [
+      { src: "/images/art/node-a.png", title: "Node A" },
+      { src: "/images/art/node-b.png", title: "Node B" },
+      { src: "/images/art/node-c.png", title: "Node C" },
+      { src: "/images/art/node-d.png", title: "Node D" },
+      { src: "/images/art/node-e.png", title: "Node E" },
+      { src: "/images/art/node-f.png", title: "Node F" },
+      { src: "/images/art/node-g.png", title: "Node G" },
+      { src: "/images/art/node-h.png", title: "Node H" },
+      { src: "/images/art/node-i.png", title: "Node I" },
+      { src: "/images/art/node-j.png", title: "Node J" },
+      { src: "/images/art/node-k.png", title: "Node K" },
+    ],
+  },
+];
+
+const thumb = (src: string) =>
+  src
+    .replace("/images/art/", "/images/art/thumbs/")
+    .replace(/\.(jpg|png)$/, ".webp");
 ---
 
 <Layout title="Christopher Coyne's art">
@@ -43,13 +63,77 @@ const artworks = [
               data-alt={art.title}
               aria-label={`View ${art.title}`}
             >
-              <img src={art.src} alt={art.title} loading="lazy" />
+              <img src={thumb(art.src)} alt={art.title} loading="lazy" />
             </button>
             <figcaption>{art.title}</figcaption>
           </figure>
         ))
       }
     </div>
+
+    {
+      series.map((s) => (
+        <section class="series-block" id={s.id}>
+          <button
+            class="series-toggle"
+            aria-expanded="false"
+            aria-controls={`${s.id}-panel`}
+          >
+            <h3 class="series-title">{s.title}</h3>
+            <span class="series-count">
+              {s.pieces.length} pieces
+              <svg
+                class="series-chevron"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </span>
+          </button>
+          <div class="page-art-grid series-preview">
+            {s.pieces.slice(0, 3).map((p) => (
+              <figure>
+                <button
+                  class="art-item"
+                  data-src={p.src}
+                  data-alt={`${p.title} — ${s.title}`}
+                  aria-label={`View ${p.title}`}
+                >
+                  <img src={thumb(p.src)} alt={p.title} loading="lazy" />
+                </button>
+                <figcaption>{p.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <div class="series-panel" id={`${s.id}-panel`}>
+            <div class="series-panel-inner">
+              <div class="page-art-grid series-grid">
+                {s.pieces.slice(3).map((p) => (
+                  <figure>
+                    <button
+                      class="art-item"
+                      data-src={p.src}
+                      data-alt={`${p.title} — ${s.title}`}
+                      aria-label={`View ${p.title}`}
+                    >
+                      <img src={thumb(p.src)} alt={p.title} loading="lazy" />
+                    </button>
+                    <figcaption>{p.title}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))
+    }
   </section>
 
   <!-- Modal -->
@@ -94,6 +178,60 @@ const artworks = [
     margin-top: 8px;
   }
 
+  /* ---------- series ---------- */
+  .series-block {
+    margin-top: 40px;
+  }
+  .series-toggle {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 14px;
+  }
+  .series-toggle:hover .series-count,
+  .series-toggle:focus-visible .series-count {
+    color: var(--accent);
+  }
+  .series-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .series-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .series-chevron {
+    transition: transform 0.3s ease;
+  }
+  .series-block.open .series-chevron {
+    transform: rotate(180deg);
+  }
+
+  .series-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+  .series-panel-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .series-block.open .series-panel {
+    grid-template-rows: 1fr;
+  }
+  .series-grid {
+    padding-top: var(--gap);
+  }
+
+  /* ---------- modal ---------- */
   .art-modal {
     display: none;
     position: fixed;
@@ -130,6 +268,15 @@ const artworks = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
+    .series-toggle {
+      gap: 12px;
+    }
+    .series-stack {
+      gap: 12px;
+    }
+    .series-grid {
+      padding-top: 12px;
+    }
   }
 </style>
 
@@ -157,6 +304,15 @@ const artworks = [
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") close();
+    });
+
+    document.querySelectorAll<HTMLElement>(".series-block").forEach((block) => {
+      const toggle = block.querySelector(".series-toggle");
+      if (!toggle) return;
+      toggle.addEventListener("click", () => {
+        const open = block.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
     });
   }
 
