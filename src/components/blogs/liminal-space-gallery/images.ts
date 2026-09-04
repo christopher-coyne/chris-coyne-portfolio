@@ -28,11 +28,6 @@ const discordImages: LiminalImage[] = [
     origin: "discord",
   },
   {
-    src: "/images/blog/liminal-space-gallery/discord/20250914_195718.webp",
-    alt: "Liminal image",
-    origin: "discord",
-  },
-  {
     src: "/images/blog/liminal-space-gallery/discord/PXL_20250913_020647301.webp",
     alt: "Liminal image",
     origin: "discord",
@@ -53,11 +48,6 @@ const discordImages: LiminalImage[] = [
     origin: "discord",
   },
   {
-    src: "/images/blog/liminal-space-gallery/discord/IMG_6869.webp",
-    alt: "Liminal image",
-    origin: "discord",
-  },
-  {
     src: "/images/blog/liminal-space-gallery/discord/PXL_20250927_014541332.webp",
     alt: "Liminal image",
     origin: "discord",
@@ -65,6 +55,18 @@ const discordImages: LiminalImage[] = [
 ];
 
 const redditImages: LiminalImage[] = [
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/theres-nothing-you-need-to-do-in-here-new-art-installation-v0-hm7cmj85w3nh1.webp",
+    alt: "There's nothing you need to do in here (new art installation)",
+    link: "https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Ftheres-nothing-you-need-to-do-in-here-new-art-installation-v0-hm7cmj85w3nh1.jpeg%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D8c16bbc00b0151bb7a34f3742f3d801322670dab",
+    origin: "reddit",
+  },
+  {
+    src: "/images/blog/liminal-space-gallery/reddit/summers-end-v0-cd40bgjqv6mh1.webp",
+    alt: "Summer's end",
+    link: "https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fsummers-end-v0-cd40bgjqv6mh1.jpg%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D70de6075d0d37e4a89f841eb9fb8213aeab90f42",
+    origin: "reddit",
+  },
   {
     src: "/images/blog/liminal-space-gallery/reddit/this-photo-from-a-motorcycle-license-test-v0-p1p7601mysxg1.webp",
     alt: "This photo from a motorcycle license test",
