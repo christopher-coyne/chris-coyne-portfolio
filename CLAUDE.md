@@ -35,3 +35,9 @@ Art images live in `public/images/art/` (full resolution), with WebP thumbnails 
 ```bash
 cwebp -q 80 -resize 600 0 public/images/art/NewPiece.jpg -o public/images/art/thumbs/NewPiece.webp
 ```
+
+## Deployment
+
+Hosted on Cloudflare Pages (project `chris-coyne-portfolio`, served at ctcoyne.com and www.ctcoyne.com). `wrangler.jsonc` points Pages at `dist/`.
+
+- **Deploy:** `npm run deploy` (builds, then `wrangler pages deploy`). Requires a Wrangler login (`npx wrangler login`).
