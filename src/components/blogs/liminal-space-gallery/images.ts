@@ -64,7 +64,7 @@ const redditImages: LiminalImage[] = [
   {
     src: "/images/blog/liminal-space-gallery/reddit/summers-end-v0-cd40bgjqv6mh1.webp",
     alt: "Summer's end",
-    link: "https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fsummers-end-v0-cd40bgjqv6mh1.jpg%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3D70de6075d0d37e4a89f841eb9fb8213aeab90f42",
+    link: "https://www.reddit.com/r/LiminalSpace/comments/1w14elb/summers_end/",
     origin: "reddit",
   },
   {

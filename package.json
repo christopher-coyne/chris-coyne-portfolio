@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "deploy": "npm run build && wrangler pages deploy"
+    "deploy": "npm run build && wrangler pages deploy",
+    "photos:sync": "node scripts/sync-photos.mjs",
+    "photos:tag": "node scripts/tag-photos.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",

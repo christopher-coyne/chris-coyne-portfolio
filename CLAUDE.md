@@ -41,3 +41,12 @@ cwebp -q 80 -resize 600 0 public/images/art/NewPiece.jpg -o public/images/art/th
 Hosted on Cloudflare Pages (project `chris-coyne-portfolio`, served at ctcoyne.com and www.ctcoyne.com). `wrangler.jsonc` points Pages at `dist/`.
 
 - **Deploy:** `npm run deploy` (builds, then `wrangler pages deploy`). Requires a Wrangler login (`npx wrangler login`).
+
+## Photos Page
+
+`/photos` is driven by a shared Google Photos album. The album is the approval mechanism: anything in the album gets published, anything removed gets unpublished. Photos and videos are both supported.
+
+- **Sync:** `npm run photos:sync` (add `-- --force` to re-download everything). Fetches the shared album page and downloads new items straight from Google, no image tooling needed. Photos become WebP (2000px full in `public/images/photos/`, 600px thumb in `public/images/photos/thumbs/`). Videos become a 720p MP4 in `public/images/photos/videos/` plus a poster thumb. Updates `src/data/photos/manifest.json`. Individual download failures are logged and retried on the next run; they don't block the rest.
+- **Manifest:** one entry per item with `id`, `type` (`photo` | `video`), `file` (webp), `video` + `durationMs` (videos only), `width`, `height`, `takenAt`, `caption`, `published`. Sync preserves `caption` (edit it by hand) and flips `published` to `false` for items no longer in the album without deleting files. Set `hidden: true` by hand to keep an item off the site while it stays in the album; sync won't download it.
+- **Tagging:** `npm run photos:tag` opens a local UI (localhost:4322) for adding tags, a location, and a caption, and toggling `hidden` per item; it writes straight to the manifest. Tags are lowercase strings in a `tags` array; `location` is a single free-text string (the tagger reuses existing spellings case-insensitively). The photos page renders a filter row for each and they combine; deep links: `/photos?tag=<tag>&location=<place>`.
+- **Google dependency:** isolated to `fetchAlbumItems()` in `scripts/sync-photos.mjs`. If the shared-album page markup changes, only that function needs replacing.
